@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-11T09:47:31.313Z</updated>
+  <updated>2018-11-11T09:50:57.038Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,37 +21,15 @@
     <link href="http://yoursite.com/2018/11/11/github-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2018/11/11/github-hexo搭建个人博客/</id>
     <published>2018-11-11T09:46:19.000Z</published>
-    <updated>2018-11-11T09:47:31.313Z</updated>
+    <updated>2018-11-11T09:50:57.038Z</updated>
     
-    <content type="html"><![CDATA[<p>##一、在github上创建项目</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;##一、在github上创建项目&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>hello word</title>
-    <link href="http://yoursite.com/2018/11/10/hello-word/"/>
-    <id>http://yoursite.com/2018/11/10/hello-word/</id>
-    <published>2018-11-10T14:01:15.000Z</published>
-    <updated>2018-11-11T05:30:36.916Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="这是标题"><a href="#这是标题" class="headerlink" title="这是标题"></a>这是标题</h2><p><img src="https://i.loli.net/2018/11/10/5be6f9b8cca00.jpg" alt="5.jpg"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、在github上创建项目"><a href="#一、在github上创建项目" class="headerlink" title="一、在github上创建项目"></a>一、在github上创建项目</h2>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;这是标题&quot;&gt;&lt;a href=&quot;#这是标题&quot; class=&quot;headerlink&quot; title=&quot;这是标题&quot;&gt;&lt;/a&gt;这是标题&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/11/10/5be6f9b8cca00.jpg&quot; alt
+        &lt;h2 id=&quot;一、在github上创建项目&quot;&gt;&lt;a href=&quot;#一、在github上创建项目&quot; class=&quot;headerlink&quot; title=&quot;一、在github上创建项目&quot;&gt;&lt;/a&gt;一、在github上创建项目&lt;/h2&gt;
       
     
     </summary>
@@ -73,28 +51,6 @@
       
       
         &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>About</title>
-    <link href="http://yoursite.com/2016/04/21/index/"/>
-    <id>http://yoursite.com/2016/04/21/index/</id>
-    <published>2016-04-20T20:48:33.000Z</published>
-    <updated>2018-11-11T05:42:01.573Z</updated>
-    
-    <content type="html"><![CDATA[<p>##这是标题</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;##这是标题&lt;/p&gt;
-
       
     
     </summary>
