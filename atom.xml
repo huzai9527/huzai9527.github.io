@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-13T11:09:06.242Z</updated>
+  <updated>2018-11-13T11:52:18.194Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/11/11/github-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2018/11/11/github-hexo搭建个人博客/</id>
     <published>2018-11-11T09:46:19.000Z</published>
-    <updated>2018-11-13T11:09:06.242Z</updated>
+    <updated>2018-11-13T11:52:18.194Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="一、在github上创建项目"><a href="#一、在github上创建项目" class="headerlink" title="一、在github上创建项目"></a>一、在github上创建项目</h2><p>1.注意：创建的项目名默认为  <strong>用户名.github.io</strong>,创建时点击生成readme文件，方便后面添加说明<br><img aligen="center" src="https://i.loli.net/2018/11/13/5beaa5e07e5a7.png"><br>2.在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer<br><img src="https://i.loli.net/2018/11/13/5beaacf147c83.png" alt="使用vscode打开文件夹"><br>3.使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来<br>    hexo init<br><img src="https://i.loli.net/2018/11/13/5beaae3c7ee9d.png" alt="hexo初始化文件夹"><br>4.运行hexo server打开服务，看看本地能不能显示<br>    hexo server<br><img src="https://i.loli.net/2018/11/13/5beab03a63524.png" alt="hexo server"><br>运行后访问url，如果看到如图就成功了<br><img src="https://i.loli.net/2018/11/13/5beab09f5e2ab.jpg" alt="运行效果"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、在github上创建项目"><a href="#一、在github上创建项目" class="headerlink" title="一、在github上创建项目"></a>一、在github上创建项目</h2><p>1.注意：创建的项目名默认为  <strong>用户名.github.io</strong>,创建时点击生成readme文件，方便后面添加说明<br><img aligen="center" src="https://i.loli.net/2018/11/13/5beaa5e07e5a7.png"><br>2.在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer<br><img src="https://i.loli.net/2018/11/13/5beaacf147c83.png" alt="使用vscode打开文件夹"><br>3.使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来<br><img src="https://i.loli.net/2018/11/13/5beaae3c7ee9d.png" alt="hexo初始化文件夹"><br>4.运行hexo server打开服务，看看本地能不能显示<br><img src="https://i.loli.net/2018/11/13/5beab03a63524.png" alt="hexo server"><br>运行后访问url，如果看到如图就成功了<br><img src="https://i.loli.net/2018/11/13/5beab09f5e2ab.jpg" alt="运行效果"><br>5.配置文件中填写git的配置信息，按照如下格式填写<br><img src="https://i.loli.net/2018/11/13/5beab1fb7f83a.png" alt="配置信息"><br>6.打开文件夹，右键git bash here<br><img src="https://i.loli.net/2018/11/13/5beab3362770b.png" alt="git bash here"><br>7.输入cd ~/.ssh，进入ssh文件夹<br><img src="https://i.loli.net/2018/11/13/5beab3e76e0c4.png" alt="ssh"><br>8.配置git中的用户名和邮箱<br><img src="https://i.loli.net/2018/11/13/5beab93273357.png" alt="配置用户名"><br>9.生成ssh密钥<br><img src="https://i.loli.net/2018/11/13/5beab95f2f069.png" alt="生成密钥"><br>10.在github的项目中加入密钥<br><img src="https://i.loli.net/2018/11/13/5beab988e1bda.png" alt="添加密钥"><br>11.测试密钥链接是否成功<br><img src="https://i.loli.net/2018/11/13/5beab9fc045d7.png" alt="测试"><br>12.测试成功后再再编辑器中运行<br>     hexo clean<br>     hexo g<br>     hexo d<br><img src="https://i.loli.net/2018/11/13/5beaba9fb29d7.png" alt="4.png">这样就算上传成功<br>13.访问你的博客，看到之前再本地运行的界面，就行了</p>]]></content>
     
     <summary type="html">
     
