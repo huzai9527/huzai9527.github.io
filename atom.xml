@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-11T14:05:37.361Z</updated>
+  <updated>2018-11-13T10:24:29.613Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="http://yoursite.com/2018/11/11/github-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2018/11/11/github-hexo搭建个人博客/</id>
     <published>2018-11-11T09:46:19.000Z</published>
-    <updated>2018-11-11T14:05:37.361Z</updated>
+    <updated>2018-11-13T10:24:29.613Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="一、在github上创建项目"><a href="#一、在github上创建项目" class="headerlink" title="一、在github上创建项目"></a>一、在github上创建项目</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、在github上创建项目"><a href="#一、在github上创建项目" class="headerlink" title="一、在github上创建项目"></a>一、在github上创建项目</h2><pre><code>注意：创建的项目名默认为  用户名.github.io,创建时点击生成readme文件，方便后面添加说明![创建项目.png](https://i.loli.net/2018/11/13/5beaa5e07e5a7.png)</code></pre>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;一、在github上创建项目&quot;&gt;&lt;a href=&quot;#一、在github上创建项目&quot; class=&quot;headerlink&quot; title=&quot;一、在github上创建项目&quot;&gt;&lt;/a&gt;一、在github上创建项目&lt;/h2&gt;
+        &lt;h2 id=&quot;一、在github上创建项目&quot;&gt;&lt;a href=&quot;#一、在github上创建项目&quot; class=&quot;headerlink&quot; title=&quot;一、在github上创建项目&quot;&gt;&lt;/a&gt;一、在github上创建项目&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;注意：创建的项目名默认为  
       
     
     </summary>
