@@ -183,7 +183,7 @@
 <li><p><strong>&amp;</strong>:取地址运算符。返回变量对应的存储单元地址，若a为int变量，p为int型指针变量，则 p = &amp;a表示将a的存储单元地址赋给p。<br>用一个程序验证一下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line"> int a = 100;</span><br><span class="line"> int *p,*p1,*q;</span><br><span class="line"> p = &amp;a;</span><br><span class="line"> p1 = p;</span><br><span class="line"> q = NULL;</span><br><span class="line"> cout&lt;&lt;<span class="string">"a="</span>&lt;&lt;a&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"*p="</span>&lt;&lt;*p&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"p="</span>&lt;&lt;p&lt;&lt;endl;</span><br><span class="line"> *p1 = 200;</span><br><span class="line"> cout&lt;&lt;<span class="string">"a="</span>&lt;&lt;a&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"*p="</span>&lt;&lt;*p&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"p="</span>&lt;&lt;p&lt;&lt;endl;</span><br><span class="line"> cout&lt;&lt;<span class="string">"*p1="</span>&lt;&lt;*p1&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"p1="</span>&lt;&lt;p1&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>运行结果<br>![3.png]</p>
+<li><p>运行结果<br><img src="/2018/11/19/c-指针问题/3.png" alt="3.png"></p>
 <h2 id="指针与数组的关系"><a href="#指针与数组的关系" class="headerlink" title="指针与数组的关系"></a>指针与数组的关系</h2></li>
 <li>数组名和指针在引用数组元素和取他们的地址方面可以相互转换，但两者有一个重要的不同点</li>
 <li><p>数组是在定义时就分配好内存空间的，因此数组名是一个地址常量，在程序中不能将数组名作为变量为其赋值，而指针是一个变量，可以多次赋值<br>我们通过一个程序看一下他们的关系</p>
@@ -196,7 +196,7 @@
         </div>
 
         <section class="meta">
-            <time class="time" itemprop="dateUpdated" datetime="2018-11-19T17:40:16+08:00" content="2018-11-19">
+            <time class="time" itemprop="dateUpdated" datetime="2018-11-19T17:42:52+08:00" content="2018-11-19">
                 <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
                 本文最后更新于：2018-11-19
             </time>
