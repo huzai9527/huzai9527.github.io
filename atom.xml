@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-19T12:23:15.924Z</updated>
+  <updated>2018-11-23T09:13:03.602Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>小说更新后发送邮箱的问题解决</title>
+    <link href="http://yoursite.com/2018/11/23/%E5%B0%8F%E8%AF%B4%E6%9B%B4%E6%96%B0%E5%90%8E%E5%8F%91%E9%80%81%E9%82%AE%E7%AE%B1%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    <id>http://yoursite.com/2018/11/23/小说更新后发送邮箱的问题解决/</id>
+    <published>2018-11-23T08:54:00.000Z</published>
+    <updated>2018-11-23T09:13:03.602Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul><li>先上一张图，看一下问题在哪<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/1.png" alt="1.png"></li></ul><p>从图上我们可以看到，虽然小说是每天发两次给我，但是有时候会漏掉一章，有时候又会重复发一章，这都是小说作者不按时更新惹的祸啊！！！既然小说作者的习惯改变不了，那就完善自我吧!</p><h2 id="新的思路，加一个“缓存”"><a href="#新的思路，加一个“缓存”" class="headerlink" title="新的思路，加一个“缓存”"></a>新的思路，加一个“缓存”</h2><p>缓存是什么意思呢？</p><ul><li>本地建一个名为origin.txt的文本文件，每次爬取完成后与origin.txt里面的内容对比一下。</li><li>如果一样则不发送。</li><li>如果不一样就发送，并且将最新的内容保存到origin.txt文件中，作为下一次的对照。</li></ul><h2 id="演示效果"><a href="#演示效果" class="headerlink" title="演示效果"></a>演示效果</h2><ul><li>再origin.txt里写入test，然后启动<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/2.png" alt="2.png"><br>我们可以看到，origin文件已被重新写入，并且新的文本已经发送到邮箱</li><li>再次启动，也就是还没跟新的情况<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/3.png" alt="3"><br>我们看到，提示消息，这里不会跟新origin，也不会发送邮件</li></ul><h2 id="还遗留的问题"><a href="#还遗留的问题" class="headerlink" title="还遗留的问题"></a>还遗留的问题</h2><ul><li>如果作者一下爆发怎么办（一分钟更新十章！）<br>思考一下，其实原理差不多，缓存大小不同罢了！有兴趣的可以尝试一下！</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;遇到的问题&quot;&gt;&lt;a href=&quot;#遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;遇到的问题&quot;&gt;&lt;/a&gt;遇到的问题&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;先上一张图，看一下问题在哪&lt;br&gt;&lt;img src=&quot;/2018/11/23/小说更新后发送邮箱的问题解
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>c++指针问题</title>

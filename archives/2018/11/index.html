@@ -143,6 +143,62 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
+            <a href="/2018/11/23/小说更新后发送邮箱的问题解决/">
+                
+                    小说更新后发送邮箱的问题解决
+                
+            </a>
+        </h2>
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-23
+        </time>
+        
+    
+    <div class="cats">
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+        
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+        <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
+<li>先上一张图，看一下问题在哪<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/1.png" alt="1.png"></li>
+</ul>
+<p>从图上我们可以看到，虽然小说是每天发两次给我，但是有时候会漏掉一章，有时候又会重复发一章，这都是小说作者不按时更新惹的祸啊！！！既然小说作者的习惯改变不了，那就完善自我吧!</p>
+<h2 id="新的思路，加一个“缓存”"><a href="#新的思路，加一个“缓存”" class="headerlink" title="新的思路，加一个“缓存”"></a>新的思路，加一个“缓存”</h2><p>缓存是什么意思呢？</p>
+<ul>
+<li>本地建一个名为origin.txt的文本文件，每次爬取完成后与origin.txt里面的内容对比一下。</li>
+<li>如果一样则不发送。</li>
+<li>如果不一样就发送，并且将最新的内容保存到origin.txt文件中，作为下一次的对照。</li>
+</ul>
+<h2 id="演示效果"><a href="#演示效果" class="headerlink" title="演示效果"></a>演示效果</h2><ul>
+<li>再origin.txt里写入test，然后启动<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/2.png" alt="2.png"><br>我们可以看到，origin文件已被重新写入，并且新的文本已经发送到邮箱</li>
+<li>再次启动，也就是还没跟新的情况<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/3.png" alt="3"><br>我们看到，提示消息，这里不会跟新origin，也不会发送邮件</li>
+</ul>
+<h2 id="还遗留的问题"><a href="#还遗留的问题" class="headerlink" title="还遗留的问题"></a>还遗留的问题</h2><ul>
+<li>如果作者一下爆发怎么办（一分钟更新十章！）<br>思考一下，其实原理差不多，缓存大小不同罢了！有兴趣的可以尝试一下！</li>
+</ul>
+
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/python/"><i class="fas fa-tag fa-fw"></i>&nbsp;python</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+        </div>
+    
+        <div class="post-wrapper">
+            <article class="post reveal ">
+    <section class="meta">
+        <h2 class="title">
             <a href="/2018/11/19/c-指针问题/">
                 
                     c++指针问题
@@ -504,7 +560,7 @@ hexo d
     <section class="m_widget tagcloud">
         <div class="header"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         <div class="content">
-            <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 14px; color: #999">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a>
+            <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 24px; color: #555">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a>
         </div>
     </section>
 
