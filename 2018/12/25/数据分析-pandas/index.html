@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Tag: 数据分析 | huzai9527&#39;s personal blog</title>
+  <title>数据分析-pandas | huzai9527&#39;s personal blog</title>
   <meta name="HandheldFriendly" content="True">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="shortcut icon" href="https://xaoxuu.com/assets/img/favicon.ico">
@@ -129,28 +129,18 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
-            
-    <script>
-        window.subData= { title:'tag : 数据分析'}
-    </script>
-
-
-<section class="post-list">
-    
-    
-        <div class="post-wrapper">
-            <article class="post reveal ">
+            <article id="post-数据分析-pandas" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
     <section class="meta">
-        <h2 class="title">
-            <a href="/2018/12/25/数据分析-pandas/">
-                
-                    数据分析-pandas
-                
-            </a>
-        </h2>
+        
+            <h1 class="title">数据分析-pandas</h1>
+        
         <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-12-25
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+            2018-12-25
         </time>
+        <div class="browse"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </div>
         
     
     <div class="cats">
@@ -162,7 +152,9 @@
     </section>
 
     <section class="article typo">
-        <h1 id="数据分析—-pandas"><a href="#数据分析—-pandas" class="headerlink" title="数据分析—-pandas"></a>数据分析—-pandas</h1><h2 id="核心数据结构-Series-amp-DataFrame"><a href="#核心数据结构-Series-amp-DataFrame" class="headerlink" title="核心数据结构 Series &amp; DataFrame"></a>核心数据结构 Series &amp; DataFrame</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series, DataFrame</span><br></pre></td></tr></table></figure>
+
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="数据分析—-pandas"><a href="#数据分析—-pandas" class="headerlink" title="数据分析—-pandas"></a>数据分析—-pandas</h1><h2 id="核心数据结构-Series-amp-DataFrame"><a href="#核心数据结构-Series-amp-DataFrame" class="headerlink" title="核心数据结构 Series &amp; DataFrame"></a>核心数据结构 Series &amp; DataFrame</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series, DataFrame</span><br></pre></td></tr></table></figure>
 <h3 id="Series是一个定长的字典序列，它有两个基本属性index-、-value-index-默认是-0-1-2-3-递增的，也可以自己指定索引-index-‘a’-‘b’-‘c’"><a href="#Series是一个定长的字典序列，它有两个基本属性index-、-value-index-默认是-0-1-2-3-递增的，也可以自己指定索引-index-‘a’-‘b’-‘c’" class="headerlink" title="Series是一个定长的字典序列，它有两个基本属性index 、 value index 默认是 0 ,1,2,3 递增的，也可以自己指定索引 index=[‘a’, ‘b’, ‘c’]"></a><strong>Series是一个定长的字典序列</strong>，它有两个基本属性<strong>index 、 value</strong> index 默认是 0 ,1,2,3 递增的，也可以自己指定索引 index=[‘a’, ‘b’, ‘c’]</h3><h3 id="创建Series的三种方式"><a href="#创建Series的三种方式" class="headerlink" title="创建Series的三种方式"></a>创建Series的三种方式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x1 = Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">x2 = Series(data=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],index=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">dic = &#123;<span class="string">'a'</span>:<span class="number">1</span>,<span class="string">'b'</span>:<span class="number">2</span>,<span class="string">'c'</span>:<span class="number">3</span>,<span class="string">'d'</span>:<span class="number">4</span>&#125;</span><br><span class="line">x3 = Series(dic)</span><br><span class="line">print(x1)</span><br><span class="line">print(x2)</span><br><span class="line">print(x3)</span><br></pre></td></tr></table></figure>
 <pre><code>0    1
 1    2
@@ -336,128 +328,102 @@ min     38.000000  21.000000   20.000000  139.000000
 max    100.000000  74.000000  100.000000  258.000000
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-        
+        </div>
+
+        <section class="meta">
+            <time class="time" itemprop="dateUpdated" datetime="2018-12-25T08:31:28+08:00" content="2018-12-25">
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
+                本文最后更新于：2018-12-25
+            </time>
+            
+                
+                <div class="tags">
+                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                    <a class="tag" href="/tags/数据分析/">数据分析</a>
+                </div>
+            
+        </section>
 
         
-            <div class="full-width auto-padding tags">
+            <div class="prev-next">
                 
-                    <a href="/tags/数据分析/"><i class="fas fa-tag fa-fw"></i>&nbsp;数据分析</a>
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/12/23/数据分析-numpy/" rel="prev" title="数据分析----numpy ">
+                                    
+                                        数据分析----numpy 
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/数据分析/">数据分析</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
             </div>
         
+
     </section>
+
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/12/23/数据分析-numpy/">
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
                 
-                    数据分析----numpy 
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-12-23
-        </time>
-        
-    
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-        
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="http://yoursite.com/2018/12/23/数据分析-numpy/">数据分析----numpy </a></li>
+            
+                <li><a href="http://yoursite.com/2018/11/23/小说更新后发送邮箱的问题解决/">小说更新后发送邮箱的问题解决</a></li>
+            
+                <li><a href="http://yoursite.com/2018/11/19/c-指针问题/">c++指针问题</a></li>
+            
+                <li><a href="http://yoursite.com/2018/11/18/scrapy构建自己的ip代理池/">scrapy构建自己的ip代理池</a></li>
+            
+                <li><a href="http://yoursite.com/2018/11/17/python爬取最新更新的小说并发送到你的邮箱/">python爬取最新更新的小说并发送到你的邮箱</a></li>
+            
+        </ul>
     </div>
 
 
-    </section>
+            
 
-    <section class="article typo">
-        <h1 id="数据分析—numpy"><a href="#数据分析—numpy" class="headerlink" title="数据分析—numpy"></a>数据分析—numpy</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
-<h2 id="创建普通数组"><a href="#创建普通数组" class="headerlink" title="创建普通数组"></a>创建普通数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">b = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]])</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b[<span class="number">1</span>,<span class="number">1</span>] = <span class="number">10</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(a.shape)</span><br><span class="line">print(b.shape)</span><br><span class="line">print(a.dtype)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-<pre><code>(3,)
-(3, 3)
-int64
-[[1 2 3]
- [4 5 6]
- [7 8 9]]
-</code></pre><h2 id="创建结构数组"><a href="#创建结构数组" class="headerlink" title="创建结构数组"></a>创建结构数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">personalType = np.dtype(&#123;</span><br><span class="line">    <span class="string">'names'</span>:[<span class="string">'name'</span>,<span class="string">'age'</span>,<span class="string">'chinese'</span>,<span class="string">'math'</span>,<span class="string">'english'</span>],</span><br><span class="line">    <span class="string">'formats'</span>:[<span class="string">'S25'</span>,<span class="string">'i'</span>,<span class="string">'i'</span>,<span class="string">'i'</span>,<span class="string">'f'</span>]</span><br><span class="line">&#125;)</span><br><span class="line">students = np.array([(<span class="string">"huzai"</span>,<span class="number">22</span>,<span class="number">99</span>,<span class="number">99</span>,<span class="number">99.5</span>),(<span class="string">"huzai"</span>,<span class="number">22</span>,<span class="number">99</span>,<span class="number">99</span>,<span class="number">99.5</span>)],dtype=personalType)</span><br><span class="line">age = students[:][<span class="string">'age'</span>]</span><br><span class="line">print(np.mean(age))</span><br></pre></td></tr></table></figure>
-<pre><code>22.0
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(students)</span><br></pre></td></tr></table></figure>
-<pre><code>[(b&apos;huzai&apos;, 22, 99, 99, 99.5) (b&apos;huzai&apos;, 22, 99, 99, 99.5)]
-</code></pre><h2 id="创建连续数组"><a href="#创建连续数组" class="headerlink" title="创建连续数组"></a>创建连续数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x1 = np.arange(<span class="number">1</span>,<span class="number">11</span>,<span class="number">2</span>) <span class="comment">#步长为2，从1开始的等差数组(不包括终值)</span></span><br><span class="line">x2 = np.linspace(<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>) <span class="comment">#将1-9分成5块，结果如上</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(x1)</span><br><span class="line">print(x2)</span><br></pre></td></tr></table></figure>
-<pre><code>[1 3 5 7 9]
-[1. 3. 5. 7. 9.]
-</code></pre><h2 id="数组间的算数运算"><a href="#数组间的算数运算" class="headerlink" title="数组间的算数运算"></a>数组间的算数运算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(np.add(x1,x2))</span><br><span class="line">print(np.subtract(x1,x2))</span><br><span class="line">print(np.multiply(x1,x2))</span><br><span class="line">print(np.divide(x1,x2))</span><br></pre></td></tr></table></figure>
-<pre><code>[ 2.  6. 10. 14. 18.]
-[0. 0. 0. 0. 0.]
-[ 1.  9. 25. 49. 81.]
-[1. 1. 1. 1. 1.]
-</code></pre><h2 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h2><h3 id="数组中的最值-np-amin-amax"><a href="#数组中的最值-np-amin-amax" class="headerlink" title="数组中的最值 np.amin()  amax()"></a>数组中的最值 np.amin()  amax()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>,<span class="number">3</span>,<span class="number">7</span>],[<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>],[<span class="number">6</span>,<span class="number">4</span>,<span class="number">9</span>]])</span><br><span class="line">print(np.amin(a))</span><br><span class="line">print(np.amin(a,<span class="number">0</span>)) <span class="comment">#每一列的最小值</span></span><br><span class="line">print(np.amin(a,<span class="number">1</span>)) <span class="comment">#每行的最小值</span></span><br></pre></td></tr></table></figure>
-<pre><code>1
-[1 3 7]
-[1 2 4]
-</code></pre><h3 id="统计最大值与最小值之差-ptp"><a href="#统计最大值与最小值之差-ptp" class="headerlink" title="统计最大值与最小值之差 ptp()"></a>统计最大值与最小值之差 ptp()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(np.ptp(a))</span><br><span class="line">print(np.ptp(a,<span class="number">0</span>)) <span class="comment">#每列最大值与最小值的差</span></span><br><span class="line">print(np.ptp(a,<span class="number">1</span>)) <span class="comment">#每行最大值与最小值的差</span></span><br></pre></td></tr></table></figure>
-<pre><code>8
-[5 2 2]
-[6 6 5]
-</code></pre><h3 id="统计数组的百分位数-percentile-a-p-axis-a-数组名-p-代表百分比-axis代表是行还是列"><a href="#统计数组的百分位数-percentile-a-p-axis-a-数组名-p-代表百分比-axis代表是行还是列" class="headerlink" title="统计数组的百分位数 percentile(a, p, axis)  a:数组名 p 代表百分比 axis代表是行还是列"></a>统计数组的百分位数 percentile(a, p, axis)  a:数组名 p 代表百分比 axis代表是行还是列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(np.percentile(a,<span class="number">50</span>))</span><br><span class="line">print(np.percentile(a,<span class="number">50</span>,<span class="number">0</span>))</span><br><span class="line">print(np.percentile(a,<span class="number">50</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>5.0
-[2. 4. 8.]
-[3. 5. 6.]
-</code></pre><h3 id="统计数组中的中位数以及平均数-median-mean"><a href="#统计数组中的中位数以及平均数-median-mean" class="headerlink" title="统计数组中的中位数以及平均数 median() mean()"></a>统计数组中的中位数以及平均数 median() mean()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(np.median(a))</span><br><span class="line">print(np.median(a,<span class="number">0</span>))</span><br><span class="line">print(np.median(a,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>5.0
-[2. 4. 8.]
-[3. 5. 6.]
-</code></pre><h3 id="数组中的加权平均值-average-a-weights"><a href="#数组中的加权平均值-average-a-weights" class="headerlink" title="数组中的加权平均值 average(a,weights)"></a>数组中的加权平均值 average(a,weights)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">b = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">wts = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">print(np.average(b))</span><br><span class="line">print(np.average(b,weights=wts))</span><br></pre></td></tr></table></figure>
-<pre><code>2.5
-3.0
-</code></pre><h3 id="统计数组中的标准差（std（））与方差（var（））"><a href="#统计数组中的标准差（std（））与方差（var（））" class="headerlink" title="统计数组中的标准差（std（））与方差（var（））"></a>统计数组中的标准差（std（））与方差（var（））</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(np.std(b))</span><br><span class="line">print(np.var(b))</span><br></pre></td></tr></table></figure>
-<pre><code>1.118033988749895
-1.25
-</code></pre><h2 id="Numpy排序"><a href="#Numpy排序" class="headerlink" title="Numpy排序"></a>Numpy排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(a)</span><br><span class="line">print(np.sort(a))</span><br><span class="line">print(np.sort(a,<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>[[1 3 7]
- [2 5 8]
- [6 4 9]]
-[[1 3 7]
- [2 5 8]
- [4 6 9]]
-[[1 3 7]
- [2 4 8]
- [6 5 9]]
-</code></pre><h1 id="作业题"><a href="#作业题" class="headerlink" title="作业题"></a>作业题</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">st_type = np.dtype(&#123;</span><br><span class="line">    <span class="string">'names'</span>:[<span class="string">'name'</span>,<span class="string">'chinese'</span>,<span class="string">'english'</span>,<span class="string">'math'</span>],</span><br><span class="line">    <span class="string">'formats'</span>:[<span class="string">'S25'</span>,<span class="string">'i'</span>,<span class="string">'i'</span>,<span class="string">'i'</span>]</span><br><span class="line">&#125;)</span><br><span class="line">grades = np.array([(<span class="string">'zhangfei'</span>,<span class="number">66</span>,<span class="number">65</span>,<span class="number">30</span>),(<span class="string">'guanyu'</span>,<span class="number">95</span>,<span class="number">85</span>,<span class="number">98</span>),(<span class="string">'zhaoyun'</span>,<span class="number">93</span>,<span class="number">92</span>,<span class="number">96</span>),(<span class="string">'huangzhong'</span>,<span class="number">90</span>,<span class="number">88</span>,<span class="number">77</span>),</span><br><span class="line">                  (<span class="string">'dianwei'</span>,<span class="number">80</span>,<span class="number">90</span>,<span class="number">90</span>)],dtype=st_type)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(grades)</span><br></pre></td></tr></table></figure>
-<pre><code>[(b&apos;zhangfei&apos;, 66, 65, 30) (b&apos;guanyu&apos;, 95, 85, 98)
- (b&apos;zhaoyun&apos;, 93, 92, 96) (b&apos;huangzhong&apos;, 90, 88, 77)
- (b&apos;dianwei&apos;, 80, 90, 90)]
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chinese = grades[:][<span class="string">'chinese'</span>] </span><br><span class="line">english = grades[:][<span class="string">'english'</span>]</span><br><span class="line">math = grades[:][<span class="string">'math'</span>]</span><br><span class="line">total = np.add(chinese,english,math)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(total)</span><br></pre></td></tr></table></figure>
-<pre><code>[131 180 185 178 170]
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c_a,e_a,m_a = np.average(chinese),np.average(english),np.average(math)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(c_a)</span><br></pre></td></tr></table></figure>
-<pre><code>84.8
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            
 
-        
-
-        
-            <div class="full-width auto-padding tags">
                 
-                    <a href="/tags/数据分析/"><i class="fas fa-tag fa-fw"></i>&nbsp;数据分析</a>
+
                 
-            </div>
-        
-    </section>
-</article>
 
-        </div>
-    
-</section>
+                
+            
 
+        </section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: '数据分析-pandas',
+        tools: true
+    }
+</script>
 
 
         </div>
@@ -550,6 +516,13 @@ int64
     
     
         
+    <section class="m_widget toc-wrapper">
+        <div class="header"><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据分析—-pandas"><span class="toc-text">数据分析—-pandas</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#核心数据结构-Series-amp-DataFrame"><span class="toc-text">核心数据结构 Series &amp; DataFrame</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Series是一个定长的字典序列，它有两个基本属性index-、-value-index-默认是-0-1-2-3-递增的，也可以自己指定索引-index-‘a’-‘b’-‘c’"><span class="toc-text">Series是一个定长的字典序列，它有两个基本属性index 、 value index 默认是 0 ,1,2,3 递增的，也可以自己指定索引 index=[‘a’, ‘b’, ‘c’]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建Series的三种方式"><span class="toc-text">创建Series的三种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataFrame类似数据库中的表，可以将其看成是由有相同的索引的Series组成"><span class="toc-text">DataFrame类似数据库中的表，可以将其看成是由有相同的索引的Series组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建DataFra几种方式"><span class="toc-text">创建DataFra几种方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据清洗"><span class="toc-text">数据清洗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除不必要的行或列"><span class="toc-text">删除不必要的行或列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重命名列名"><span class="toc-text">重命名列名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#去除重复的值"><span class="toc-text">去除重复的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改数据格式"><span class="toc-text">更改数据格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清除数据间的空格"><span class="toc-text">清除数据间的空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除指定字符"><span class="toc-text">删除指定字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大小写转换"><span class="toc-text">大小写转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用apply函数对数据进行清洗"><span class="toc-text">使用apply函数对数据进行清洗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pandas中常用的统计函数"><span class="toc-text">pandas中常用的统计函数</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
 
     
 
@@ -617,6 +590,10 @@ int64
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
 
 
     <script>setLoadingBarProgress(100);</script>
