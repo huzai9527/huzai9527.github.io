@@ -166,7 +166,7 @@
         <h2 id="分析热评的请求URL"><a href="#分析热评的请求URL" class="headerlink" title="分析热评的请求URL"></a>分析热评的请求URL</h2><ul>
 <li><p>首先我们先对请求抓包，发现所有的评论都包含在 <strong><a href="https://music.163.com/weapi/v1/resource/comments/R_SO_4_32785700?csrf_token=&quot;" target="_blank" rel="noopener">https://music.163.com/weapi/v1/resource/comments/R_SO_4_32785700?csrf_token=&quot;</a></strong>里面，然后再去分析这个请求，发现这是一个<strong>POST</strong>请求，请求参数由两个<strong>params</strong>以及<strong>encSecKey</strong>。好了到此我们需要的东西都有了，接下来我们分析如何去得到这两个参数。</p>
 <h3 id="找到请求"><a href="#找到请求" class="headerlink" title="找到请求"></a>找到请求</h3><p><img src="/2019/01/12/爬取网易云热评并生成词云/1.png" alt="1.png"></p>
-<h3 id="分析请求参数"><a href="#分析请求参数" class="headerlink" title="分析请求参数"></a>分析请求参数</h3><p>！<a href="2.png">2.png</a></p>
+<h3 id="分析请求参数"><a href="#分析请求参数" class="headerlink" title="分析请求参数"></a>分析请求参数</h3><p><img src="/2019/01/12/爬取网易云热评并生成词云/2.png" alt="2.png"></p>
 <h2 id="分析js加密"><a href="#分析js加密" class="headerlink" title="分析js加密"></a>分析js加密</h2></li>
 <li>找到全局js文件，找到两个参数所在的位置<br><img src="/2019/01/12/爬取网易云热评并生成词云/3.png" alt="3.png"></li>
 <li>发现这两个参数是由<strong>window.asrsea</strong>获得的，接着去定位到这个函数找到对应的原函数<strong>d</strong><br><img src="/2019/01/12/爬取网易云热评并生成词云/4.png" alt="4.ong"></li>
