@@ -138,6 +138,207 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
+            <a href="/2019/01/20/数据分析-数据清洗/">
+                
+                    数据分析----数据清洗
+                
+            </a>
+        </h2>
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-20
+        </time>
+        
+    
+    <div class="cats">
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+        
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+        <h1 id="数据分析—-数据清洗"><a href="#数据分析—-数据清洗" class="headerlink" title="数据分析—-数据清洗"></a>数据分析—-数据清洗</h1><h2 id="一、导入数据"><a href="#一、导入数据" class="headerlink" title="一、导入数据"></a>一、导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame</span><br><span class="line"><span class="keyword">import</span> xlrd</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = DataFrame(pd.read_excel(<span class="string">'datas/grades.xlsx'</span>)) </span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>   Unnamed: 0  Unnamed: 1  Unnamed: 2  Unnamed: 3
+0         蒋广佳        43.0        69.0        61.0
+1          廖菲        80.0        64.0        62.0
+2         沈秀玲        68.0        74.0        98.0
+3          韦丹        48.0        53.0        64.0
+4         张梦雅        72.0        73.0        96.0
+5         赵雅欣        60.0         NaN        70.0
+6         曹海广        74.0        60.0        20.0
+7         陈泽灿        38.0        21.0        92.0
+8         NaN        88.0        67.0        84.0
+9         高海亮        86.0        74.0        96.0
+10        顾晓冬        84.0        60.0        90.0
+11        侯星宇        64.0       111.0         NaN
+12        江宜哲        60.0        33.0        70.0
+13        NaN         NaN         NaN         NaN
+14        梁杨杨        68.0        54.0        94.0
+15         刘辉         NaN        63.0        98.0
+16        罗嘉豪        39.0        44.0        56.0
+17        施亚君        90.0        63.0        90.0
+18         孙添        64.0        63.0        78.0
+19         王杰        74.0         NaN        76.0
+20         王泽        52.0        48.0        94.0
+21        NaN        60.0        69.0        74.0
+22        杨福程        70.0        49.0        76.0
+23        尤澳晨        91.0        67.0        86.0
+24         翟佳        78.0        73.0        88.0
+25         张旭       100.0        60.0        98.0
+26        支星哲        80.0        63.0       100.0
+27        邹湘涛        54.0        40.0        90.0
+</code></pre><ul>
+<li>我们可以看见上面的数据是缺少标注的，列名缺少标注；并且有很多是空值，因此我们要对数据进行清洗，提高数据的质量。在这里数据清洗有四个要点简称“完全合一”<ul>
+<li><strong>完</strong>整性：单条数据是否完整，统计的字段是否完善。</li>
+<li><strong>全</strong>面性：观察某一列的全部数值，选中一列，我们可以看到最大值，最小值，平均值。我们可以通过常识判断数据是否合理，比如：数据定义、单位标识、数值本身。</li>
+<li><strong>合</strong>法性：数据的类型、内容、大小的合法性。比如数据中存在非ASCII字符，性别存在未知，总分超过100等。</li>
+<li>唯<strong>一</strong>性：数据是否存在重复记录，由于数据来源于不同的渠道，重复的情况是非常常见的。行数据、列数据都需要是唯一的。</li>
+</ul>
+</li>
+<li>事实上数据清洗的标准有差不多七八条，有兴趣的可以了解一下，这里归纳为“完全合一”四条，按照这四条基本上可以解决数据清洗中的大部分问题，使得数据<strong>标准、干净、连续</strong>。</li>
+</ul>
+<h2 id="二、开始数据清洗"><a href="#二、开始数据清洗" class="headerlink" title="二、开始数据清洗"></a>二、开始数据清洗</h2><h3 id="1、完整性"><a href="#1、完整性" class="headerlink" title="1、完整性"></a>1、完整性</h3><h3 id="problem-1-空行"><a href="#problem-1-空行" class="headerlink" title="problem 1:空行"></a>problem 1:空行</h3><ul>
+<li>solution: 删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dropna(how=<span class="string">"all"</span>,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="problem-2-缺失值"><a href="#problem-2-缺失值" class="headerlink" title="problem 2:缺失值"></a>problem 2:缺失值</h3><ul>
+<li>solution：<ul>
+<li>删除：删除数据缺失的记录</li>
+<li>均值：使用当前列的均值</li>
+<li>高频：使用当前列出现平率最高的数据</li>
+</ul>
+</li>
+<li>首先我们先把列的标注补上</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.rename(columns=&#123;<span class="string">'Unnamed: 0'</span>:<span class="string">'index'</span>,<span class="string">'Unnamed: 1'</span>:<span class="string">'math'</span>,<span class="string">'Unnamed: 2'</span>:<span class="string">'english'</span>,<span class="string">'Unnamed: 3'</span>:<span class="string">'c++'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.drop(columns=<span class="string">'index'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>     math  english    c++
+0    43.0     69.0   61.0
+1    80.0     64.0   62.0
+2    68.0     74.0   98.0
+3    48.0     53.0   64.0
+4    72.0     73.0   96.0
+5    60.0      NaN   70.0
+6    74.0     60.0   20.0
+7    38.0     21.0   92.0
+8    88.0     67.0   84.0
+9    86.0     74.0   96.0
+10   84.0     60.0   90.0
+11   64.0    111.0    NaN
+12   60.0     33.0   70.0
+14   68.0     54.0   94.0
+15    NaN     63.0   98.0
+16   39.0     44.0   56.0
+17   90.0     63.0   90.0
+18   64.0     63.0   78.0
+19   74.0      NaN   76.0
+20   52.0     48.0   94.0
+21   60.0     69.0   74.0
+22   70.0     49.0   76.0
+23   91.0     67.0   86.0
+24   78.0     73.0   88.0
+25  100.0     60.0   98.0
+26   80.0     63.0  100.0
+27   54.0     40.0   90.0
+</code></pre><ul>
+<li>现在我们想对df[‘math’]中缺失的值用平均值代替</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'math'</span>].fillna(df[<span class="string">'math'</span>].mean(),inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>          math  english    c++
+0    43.000000     69.0   61.0
+1    80.000000     64.0   62.0
+2    68.000000     74.0   98.0
+3    48.000000     53.0   64.0
+4    72.000000     73.0   96.0
+5    60.000000      NaN   70.0
+6    74.000000     60.0   20.0
+7    38.000000     21.0   92.0
+8    88.000000     67.0   84.0
+9    86.000000     74.0   96.0
+10   84.000000     60.0   90.0
+11   64.000000    111.0    NaN
+12   60.000000     33.0   70.0
+13   68.653846      NaN    NaN
+14   68.000000     54.0   94.0
+15   68.653846     63.0   98.0
+16   39.000000     44.0   56.0
+17   90.000000     63.0   90.0
+18   64.000000     63.0   78.0
+19   74.000000      NaN   76.0
+20   52.000000     48.0   94.0
+21   60.000000     69.0   74.0
+22   70.000000     49.0   76.0
+23   91.000000     67.0   86.0
+24   78.000000     73.0   88.0
+25  100.000000     60.0   98.0
+26   80.000000     63.0  100.0
+27   54.000000     40.0   90.0
+</code></pre><ul>
+<li>如果想用最高频率的数据对english进行填充，可以通过value_counts获取math字段最高频次english_maxf,然后对其进行填充</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">english_maxf = df[<span class="string">'english'</span>].value_counts().index[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'english'</span>].fillna(english_maxf,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>          math  english    c++
+0    43.000000     69.0   61.0
+1    80.000000     64.0   62.0
+2    68.000000     74.0   98.0
+3    48.000000     53.0   64.0
+4    72.000000     73.0   96.0
+5    60.000000     63.0   70.0
+6    74.000000     60.0   20.0
+7    38.000000     21.0   92.0
+8    88.000000     67.0   84.0
+9    86.000000     74.0   96.0
+10   84.000000     60.0   90.0
+11   64.000000    111.0    NaN
+12   60.000000     33.0   70.0
+13   68.653846     63.0    NaN
+14   68.000000     54.0   94.0
+15   68.653846     63.0   98.0
+16   39.000000     44.0   56.0
+17   90.000000     63.0   90.0
+18   64.000000     63.0   78.0
+19   74.000000     63.0   76.0
+20   52.000000     48.0   94.0
+21   60.000000     69.0   74.0
+22   70.000000     49.0   76.0
+23   91.000000     67.0   86.0
+24   78.000000     73.0   88.0
+25  100.000000     60.0   98.0
+26   80.000000     63.0  100.0
+27   54.000000     40.0   90.0
+</code></pre><h3 id="2、全面性"><a href="#2、全面性" class="headerlink" title="2、全面性"></a>2、全面性</h3><h3 id="problem：列数据单位不统一"><a href="#problem：列数据单位不统一" class="headerlink" title="problem：列数据单位不统一"></a>problem：列数据单位不统一</h3><p>solution：将不同的单位的找出来，将其进行迭代替换，比如说将榜（lbs）转化为千克（kgs）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取 weight 数据列中单位为 lbs 的数据</span></span><br><span class="line">rows_with_lbs = df[<span class="string">'weight'</span>].str.contains(<span class="string">'lbs'</span>).fillna(<span class="keyword">False</span>)</span><br><span class="line"><span class="keyword">print</span> df[rows_with_lbs]</span><br><span class="line"><span class="comment"># 将 lbs 转换为 kgs, 2.2lbs=1kgs</span></span><br><span class="line"><span class="keyword">for</span> i,lbs_row <span class="keyword">in</span> df[rows_with_lbs].iterrows():</span><br><span class="line">    <span class="comment"># 截取从头开始到倒数第三个字符之前，即去掉 lbs。</span></span><br><span class="line">    weight = int(float(lbs_row[<span class="string">'weight'</span>][:<span class="number">-3</span>])/<span class="number">2.2</span>)</span><br><span class="line">    df.at[i,<span class="string">'weight'</span>] = <span class="string">'&#123;&#125;kgs'</span>.format(weight)</span><br></pre></td></tr></table></figure>
+<h3 id="3、合理性"><a href="#3、合理性" class="headerlink" title="3、合理性"></a>3、合理性</h3><h3 id="problem-非ASCII字符"><a href="#problem-非ASCII字符" class="headerlink" title="problem:非ASCII字符"></a>problem:非ASCII字符</h3><p>solution:对于非ASCII字符，我们可以采用删除或者替换的方式，我们直接选择删除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'name'</span>].replace(&#123;<span class="string">r'[^\x00-\x7f]+'</span>:<span class="string">''</span>&#125;,regex=<span class="keyword">True</span>,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="4、唯一性"><a href="#4、唯一性" class="headerlink" title="4、唯一性"></a>4、唯一性</h3><h3 id="problem1：一列有多个参数"><a href="#problem1：一列有多个参数" class="headerlink" title="problem1：一列有多个参数"></a>problem1：一列有多个参数</h3><p>solution：比如英文名字，是有两部分组成的，包含两个参数Firstname、Lastnamr，我们需要将name一列拆分为Firstname和Lastname两个字段，我们可以采用split方法，对其进行切分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'First_namr'</span>,<span class="string">'Last_name'</span>] = df[<span class="string">'name'</span>].str.split(expand=<span class="keyword">True</span>)</span><br><span class="line">df.drop(<span class="string">'name'</span>,axis=<span class="number">1</span>,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="problem2-重读数据"><a href="#problem2-重读数据" class="headerlink" title="problem2:重读数据"></a>problem2:重读数据</h3><p>solution：我们校验数据是否存在重复数据，如果有重复数据，如果就用pandas提供的drop_duplicates()来删除重复数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.drop_duplicates([<span class="string">'First_name'</span>,<span class="string">'Last_name'</span>],inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/数据分析/"><i class="fas fa-tag fa-fw"></i>&nbsp;数据分析</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+        </div>
+    
+        <div class="post-wrapper">
+            <article class="post reveal ">
+    <section class="meta">
+        <h2 class="title">
             <a href="/2019/01/12/爬取网易云热评并生成词云/">
                 
                     爬取网易云热评并生成词云
@@ -893,49 +1094,26 @@ hexo d
 
         </div>
     
-        <div class="post-wrapper">
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/10/hello-world/">
-                
-                    Hello World
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-10
-        </time>
-        
-    
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-        
-    </div>
+</section>
 
 
-    </section>
-
-    <section class="article typo">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-
-        
-    </section>
-</article>
+    <br>
+    <div class="prev-next">
+        <div class="prev-next">
+            
+            <p class="current">
+                1 / 2
+            </p>
+            
+                <a class="next" rel="next" href="/page/2/">
+                    <section class="post next">
+                        &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    </section>
+                </a>
+            
 
         </div>
-    
-</section>
+    </div>
 
 
 
@@ -990,7 +1168,7 @@ hexo d
     <section class="m_widget tagcloud">
         <div class="header"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         <div class="content">
-            <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 24px; color: #555">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
+            <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
         </div>
     </section>
 
