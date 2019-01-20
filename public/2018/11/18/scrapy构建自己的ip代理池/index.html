@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>scrapy构建自己的ip代理池 | huzai9527&#39;s personal blog</title>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="https://xaoxuu.com/assets/img/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="huzai9527's personal blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="https://xaoxuu.com/assets/img/favicon.ico">
+  <link rel="icon" href="https://xaoxuu.com/assets/img/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+</html>
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class="wrapper">
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href="/">huzai9527's personal blog</a>
+				<div class="menu">
+					<ul class="h-list">
+            
+    					
+    						<li>
+    							<a class="nav- flat-box" href="https://huzai9527.github.io/">
+    								<i class="fas fa-home fa-fw"></i>&nbsp;主页
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav- flat-box" href="https://github.com/huzai9527?tab=repositories">
+    								<i class="fas fa-flask fa-fw"></i>&nbsp;项目
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav-home flat-box" href="/">
+    								<i class="fas fa-rss fa-fw"></i>&nbsp;博客
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav-archives flat-box" href="/archives/">
+    								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+  								</a>
+  							</li>
+        			
+        		
+					</ul>
+					<div class="underline"></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search">
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class="switcher h-list">
+				
+					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
+				
+				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-sub container container--flex">
+			<a class="logo flat-box"></a>
+			<ul class="switcher h-list">
+				<li class="s-comment"><a class="fas fa-comments fa-fw flat-box" href="javascript:void(0)"></a></li>
+				<li class="s-top"><a class="fas fa-arrow-circle-up fa-fw flat-box" href="javascript:void(0)"></a></li>
+				<li class="s-toc"><a class="fas fa-list fa-fw flat-box" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+		<nav>
+      <ul>
+          
+              
+                  <li>
+                      <a class="nav- flat-box nav flat-box" href="https://huzai9527.github.io/">
+                      <i class="fas fa-home fa-fw"></i>&nbsp;主页</a>
+                  </li>
+              
+                  <li>
+                      <a class="nav- flat-box nav flat-box" href="https://github.com/huzai9527?tab=repositories">
+                      <i class="fas fa-flask fa-fw"></i>&nbsp;项目</a>
+                  </li>
+              
+                  <li>
+                      <a class="nav-home flat-box nav flat-box" href="/">
+                      <i class="fas fa-rss fa-fw"></i>&nbsp;博客</a>
+                  </li>
+              
+                  <li>
+                      <a class="nav-archives flat-box nav flat-box" href="/archives/">
+                      <i class="fas fa-archive fa-fw"></i>&nbsp;归档</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-scrapy构建自己的ip代理池" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+    <section class="meta">
+        
+            <h1 class="title">scrapy构建自己的ip代理池</h1>
+        
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+            2018-11-18
+        </time>
+        <div class="browse"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </div>
+        
+    
+    <div class="cats">
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+        
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="用scrapy爬取可用的代理"><a href="#用scrapy爬取可用的代理" class="headerlink" title="用scrapy爬取可用的代理"></a>用scrapy爬取可用的代理</h1><h2 id="分析免费代理网站的结构"><a href="#分析免费代理网站的结构" class="headerlink" title="分析免费代理网站的结构"></a>分析免费代理网站的结构</h2><ul>
+<li>我爬取了三个字段：<strong>IP</strong>、<strong>port</strong>、<strong>type</strong><br><img src="https://i.loli.net/2018/11/18/5bf12dc61a906.jpg" alt="TIM图片20181118171534.jpg"><h2 id="分析要爬取的数据，编写items-py"><a href="#分析要爬取的数据，编写items-py" class="headerlink" title="分析要爬取的数据，编写items.py"></a>分析要爬取的数据，编写items.py</h2></li>
+<li>因此在items.py中，建立相应的字段<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import scrapy</span><br><span class="line">class IproxyItem(scrapy.Item):</span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    <span class="comment"># name = scrapy.Field()</span></span><br><span class="line">    ip = scrapy.Field()</span><br><span class="line">    <span class="built_in">type</span> = scrapy.Field()</span><br><span class="line">    port = scrapy.Field()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="爬取所有的免费ip"><a href="#爬取所有的免费ip" class="headerlink" title="爬取所有的免费ip"></a>爬取所有的免费ip</h2><ul>
+<li>在spider目录下，创建IpSpider.py<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import scrapy</span><br><span class="line">import Iproxy.items</span><br><span class="line">class IpSpider(scrapy.Spider):</span><br><span class="line">    name = <span class="string">'IpSpider'</span></span><br><span class="line">    allowed_domains = [<span class="string">'xicidaili.com'</span>]</span><br><span class="line">    start_urls = [<span class="string">'http://www.xicidaili.com/'</span>]</span><br><span class="line"></span><br><span class="line">    def parse(self, response):</span><br><span class="line">        item = Iproxy.items.IproxyItem()</span><br><span class="line">        item[<span class="string">'ip'</span>] = response.css(<span class="string">'tr td:nth-child(2)::text'</span>).extract()</span><br><span class="line">        item[<span class="string">'port'</span>] = response.css(<span class="string">'tr td:nth-child(3)::text'</span>).extract()</span><br><span class="line">        item[<span class="string">'type'</span>] = response.css(<span class="string">'tr td:nth-child(6) ::text'</span>).extract()</span><br><span class="line">        yield item</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="检测是否可用，如果可用则存入数据库"><a href="#检测是否可用，如果可用则存入数据库" class="headerlink" title="检测是否可用，如果可用则存入数据库"></a>检测是否可用，如果可用则存入数据库</h2><ul>
+<li>因为是免费的ip，所以我们有必要检测一下他是否可用，对于可用的就存入数据库，反之则丢弃</li>
+<li>检测处理数据在pipeline.py中编写</li>
+<li>检测原理，通过代理访问百度，如果能够访问，则说明可用<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define your item pipelines here</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span></span><br><span class="line"><span class="comment"># See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span></span><br><span class="line"></span><br><span class="line">import pymysql</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">class IproxyPipeline(object):</span><br><span class="line">    def process_item(self, item, spider):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'</span>)</span><br><span class="line">        db = pymysql.connect(<span class="string">"localhost"</span>, <span class="string">"root"</span>, <span class="string">"168168"</span>, <span class="string">"spider"</span>)</span><br><span class="line">        cursor = db.cursor()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(1, len(item[<span class="string">'ip'</span>])):</span><br><span class="line">            ip = item[<span class="string">'ip'</span>][i] + <span class="string">':'</span> + item[<span class="string">'port'</span>][i]</span><br><span class="line">            try:</span><br><span class="line">                <span class="keyword">if</span> self.proxyIpCheck(ip) is False:</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">'此ip：'</span>+ip+<span class="string">"不能用"</span>)</span><br><span class="line">                    <span class="built_in">continue</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">'此ip：'</span>+ip+<span class="string">'可用，存入数据库！'</span>)</span><br><span class="line">                    sql = <span class="string">'insert into proxyIp value ("%s")'</span> % (ip)</span><br><span class="line">                    cursor.execute(sql)</span><br><span class="line">                    db.commit()</span><br><span class="line">            except:</span><br><span class="line">                db.rollback()</span><br><span class="line">        db.close()</span><br><span class="line">        <span class="built_in">return</span> item</span><br><span class="line"></span><br><span class="line">    def proxyIpCheck(self, ip):</span><br><span class="line">        proxies = &#123;<span class="string">'http'</span>: <span class="string">'http://'</span> + ip, <span class="string">'https'</span>: <span class="string">'https://'</span> + ip&#125;</span><br><span class="line">        try:</span><br><span class="line">            r = requests.get(<span class="string">'https://www.baidu.com/'</span>, proxies=proxies, timeout=1)</span><br><span class="line">            <span class="keyword">if</span> (r.status_code == 200):</span><br><span class="line">                <span class="built_in">return</span> True</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">return</span> False</span><br><span class="line">        except:</span><br><span class="line">            <span class="built_in">return</span> False</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="运行情况"><a href="#运行情况" class="headerlink" title="运行情况"></a>运行情况</h2><ul>
+<li>可以看出还是有好多ip不能用的<br><img src="https://i.loli.net/2018/11/18/5bf1308222b42.png" alt="TIM图片20181118172712.png"></li>
+<li>可用的存在数据库<br><img src="https://i.loli.net/2018/11/18/5bf130d8031b3.jpg" alt="TIM图片20181118172841.jpg"></li>
+</ul>
+
+        </div>
+
+        <section class="meta">
+            <time class="time" itemprop="dateUpdated" datetime="2018-11-19T16:15:02+08:00" content="2018-11-19">
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
+                本文最后更新于：2018-11-19
+            </time>
+            
+                
+                <div class="tags">
+                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                    <a class="tag" href="/tags/python-scrapy-爬虫/">python scrapy 爬虫</a>
+                </div>
+            
+        </section>
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2018/11/19/c-指针问题/" rel="prev" title="c++指针问题">
+                                  
+                                      c++指针问题
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/c/">c++</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/11/17/python爬取最新更新的小说并发送到你的邮箱/" rel="prev" title="python爬取最新更新的小说并发送到你的邮箱">
+                                    
+                                        python爬取最新更新的小说并发送到你的邮箱
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/python/">python</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="http://yoursite.com/2018/11/23/小说更新后发送邮箱的问题解决/">小说更新后发送邮箱的问题解决</a></li>
+            
+                <li><a href="http://yoursite.com/2018/11/19/c-指针问题/">c++指针问题</a></li>
+            
+                <li><a href="http://yoursite.com/2018/11/17/python爬取最新更新的小说并发送到你的邮箱/">python爬取最新更新的小说并发送到你的邮箱</a></li>
+            
+                <li><a href="http://yoursite.com/2018/11/11/github-hexo搭建个人博客/">github+hexo搭建个人博客</a></li>
+            
+                <li><a href="http://yoursite.com/2018/11/10/hello-world/">Hello World</a></li>
+            
+        </ul>
+    </div>
+
+
+            
+
+            
+
+                
+
+                
+
+                
+            
+
+        </section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: 'scrapy构建自己的ip代理池',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class="m_widget author">
+        
+            <div class="header">
+                <img class="avatar" src="https://i.loli.net/2018/11/11/5be7cef51ba6c.jpg">
+            </div>
+        
+        
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/hzuai9527" class="social flat-box" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+                    <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+                
+              
+            </div>
+        
+    </section>
+
+
+    
+    
+        <section class="m_widget categories">
+    <div class="header"><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    <div class="content">
+        
+    </div>
+</section>
+
+    
+    
+        
+    <section class="m_widget tagcloud">
+        <div class="header"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class="content">
+            <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
+        </div>
+    </section>
+
+
+    
+    
+        <section class="m_widget music">
+    <div class="header"><i class="fas fa-headphones-alt fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
+    <div class="content">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&id=1305861056&auto=1&height=66"></iframe>    </div>
+</section>
+
+    
+    
+        <section class="m_widget links">
+    <div class="header"><div><i class="fas fa-handshake fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+    
+    </div>
+    <div class="content">
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.xaoxuu.com">
+                    <div class="name">
+                        
+                            <img src="https://xaoxuu.com/assets/img/avatar.jpg">
+                        
+                        &nbsp;&nbsp;xaoxuu&#39;s blog
+                    </div>
+                </a></li>
+            
+        </ul>
+
+    </div>
+</section>
+
+    
+    
+        
+    <section class="m_widget toc-wrapper">
+        <div class="header"><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#用scrapy爬取可用的代理"><span class="toc-text">用scrapy爬取可用的代理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分析免费代理网站的结构"><span class="toc-text">分析免费代理网站的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析要爬取的数据，编写items-py"><span class="toc-text">分析要爬取的数据，编写items.py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#爬取所有的免费ip"><span class="toc-text">爬取所有的免费ip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检测是否可用，如果可用则存入数据库"><span class="toc-text">检测是否可用，如果可用则存入数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行情况"><span class="toc-text">运行情况</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/hzuai9527" class="social fab fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+                  <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/node-waves/0.7.5/waves.min.js"></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
