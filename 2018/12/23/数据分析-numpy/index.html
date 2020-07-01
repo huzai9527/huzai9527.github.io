@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>数据分析----numpy  | huzai9527&#39;s personal blog</title>
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="huzai9527's personal blog">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://xaoxuu.com/assets/img/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <header class="l_header material">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="material"></div>
+  </div>
+
+	<div class="wrapper">
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href="/">
+        
+          huzai9527's personal blog
+        
+      </a>
+			<div class="menu navgation">
+				<ul class="h-list">
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/" id="home">
+									<i class="fas fa-grin fa-fw"></i>&nbsp;近期文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+									<i class="fas fa-folder-open fa-fw"></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
+									<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search">
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class="switcher h-list">
+				
+					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
+				
+				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-sub container container--flex">
+			<a class="logo flat-box"></a>
+			<ul class="switcher h-list">
+				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+        
+          <li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/" id="home">
+								<i class="fas fa-clock fa-fw"></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
+								<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class="l_main">
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+      
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2018/12/23/数据分析-numpy/">
+        数据分析----numpy 
+      </a>
+    </h1>
+  
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-12-23</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h1 id="数据分析—numpy"><a href="#数据分析—numpy" class="headerlink" title="数据分析—numpy"></a>数据分析—numpy</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<h2 id="创建普通数组"><a href="#创建普通数组" class="headerlink" title="创建普通数组"></a>创建普通数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">b = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b[<span class="number">1</span>,<span class="number">1</span>] = <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(a.shape)</span><br><span class="line">print(b.shape)</span><br><span class="line">print(a.dtype)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+<pre><code>(3,)
+(3, 3)
+int64
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+</code></pre><h2 id="创建结构数组"><a href="#创建结构数组" class="headerlink" title="创建结构数组"></a>创建结构数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">personalType = np.dtype(&#123;</span><br><span class="line">    <span class="string">'names'</span>:[<span class="string">'name'</span>,<span class="string">'age'</span>,<span class="string">'chinese'</span>,<span class="string">'math'</span>,<span class="string">'english'</span>],</span><br><span class="line">    <span class="string">'formats'</span>:[<span class="string">'S25'</span>,<span class="string">'i'</span>,<span class="string">'i'</span>,<span class="string">'i'</span>,<span class="string">'f'</span>]</span><br><span class="line">&#125;)</span><br><span class="line">students = np.array([(<span class="string">"huzai"</span>,<span class="number">22</span>,<span class="number">99</span>,<span class="number">99</span>,<span class="number">99.5</span>),(<span class="string">"huzai"</span>,<span class="number">22</span>,<span class="number">99</span>,<span class="number">99</span>,<span class="number">99.5</span>)],dtype=personalType)</span><br><span class="line">age = students[:][<span class="string">'age'</span>]</span><br><span class="line">print(np.mean(age))</span><br></pre></td></tr></table></figure>
+<pre><code>22.0
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(students)</span><br></pre></td></tr></table></figure>
+<pre><code>[(b&apos;huzai&apos;, 22, 99, 99, 99.5) (b&apos;huzai&apos;, 22, 99, 99, 99.5)]
+</code></pre><h2 id="创建连续数组"><a href="#创建连续数组" class="headerlink" title="创建连续数组"></a>创建连续数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x1 = np.arange(<span class="number">1</span>,<span class="number">11</span>,<span class="number">2</span>) <span class="comment">#步长为2，从1开始的等差数组(不包括终值)</span></span><br><span class="line">x2 = np.linspace(<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>) <span class="comment">#将1-9分成5块，结果如上</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(x1)</span><br><span class="line">print(x2)</span><br></pre></td></tr></table></figure>
+<pre><code>[1 3 5 7 9]
+[1. 3. 5. 7. 9.]
+</code></pre><h2 id="数组间的算数运算"><a href="#数组间的算数运算" class="headerlink" title="数组间的算数运算"></a>数组间的算数运算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(np.add(x1,x2))</span><br><span class="line">print(np.subtract(x1,x2))</span><br><span class="line">print(np.multiply(x1,x2))</span><br><span class="line">print(np.divide(x1,x2))</span><br></pre></td></tr></table></figure>
+<pre><code>[ 2.  6. 10. 14. 18.]
+[0. 0. 0. 0. 0.]
+[ 1.  9. 25. 49. 81.]
+[1. 1. 1. 1. 1.]
+</code></pre><h2 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h2><h3 id="数组中的最值-np-amin-amax"><a href="#数组中的最值-np-amin-amax" class="headerlink" title="数组中的最值 np.amin()  amax()"></a>数组中的最值 np.amin()  amax()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>,<span class="number">3</span>,<span class="number">7</span>],[<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>],[<span class="number">6</span>,<span class="number">4</span>,<span class="number">9</span>]])</span><br><span class="line">print(np.amin(a))</span><br><span class="line">print(np.amin(a,<span class="number">0</span>)) <span class="comment">#每一列的最小值</span></span><br><span class="line">print(np.amin(a,<span class="number">1</span>)) <span class="comment">#每行的最小值</span></span><br></pre></td></tr></table></figure>
+<pre><code>1
+[1 3 7]
+[1 2 4]
+</code></pre><h3 id="统计最大值与最小值之差-ptp"><a href="#统计最大值与最小值之差-ptp" class="headerlink" title="统计最大值与最小值之差 ptp()"></a>统计最大值与最小值之差 ptp()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(np.ptp(a))</span><br><span class="line">print(np.ptp(a,<span class="number">0</span>)) <span class="comment">#每列最大值与最小值的差</span></span><br><span class="line">print(np.ptp(a,<span class="number">1</span>)) <span class="comment">#每行最大值与最小值的差</span></span><br></pre></td></tr></table></figure>
+<pre><code>8
+[5 2 2]
+[6 6 5]
+</code></pre><h3 id="统计数组的百分位数-percentile-a-p-axis-a-数组名-p-代表百分比-axis代表是行还是列"><a href="#统计数组的百分位数-percentile-a-p-axis-a-数组名-p-代表百分比-axis代表是行还是列" class="headerlink" title="统计数组的百分位数 percentile(a, p, axis)  a:数组名 p 代表百分比 axis代表是行还是列"></a>统计数组的百分位数 percentile(a, p, axis)  a:数组名 p 代表百分比 axis代表是行还是列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(np.percentile(a,<span class="number">50</span>))</span><br><span class="line">print(np.percentile(a,<span class="number">50</span>,<span class="number">0</span>))</span><br><span class="line">print(np.percentile(a,<span class="number">50</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>5.0
+[2. 4. 8.]
+[3. 5. 6.]
+</code></pre><h3 id="统计数组中的中位数以及平均数-median-mean"><a href="#统计数组中的中位数以及平均数-median-mean" class="headerlink" title="统计数组中的中位数以及平均数 median() mean()"></a>统计数组中的中位数以及平均数 median() mean()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(np.median(a))</span><br><span class="line">print(np.median(a,<span class="number">0</span>))</span><br><span class="line">print(np.median(a,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>5.0
+[2. 4. 8.]
+[3. 5. 6.]
+</code></pre><h3 id="数组中的加权平均值-average-a-weights"><a href="#数组中的加权平均值-average-a-weights" class="headerlink" title="数组中的加权平均值 average(a,weights)"></a>数组中的加权平均值 average(a,weights)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">b = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">wts = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">print(np.average(b))</span><br><span class="line">print(np.average(b,weights=wts))</span><br></pre></td></tr></table></figure>
+<pre><code>2.5
+3.0
+</code></pre><h3 id="统计数组中的标准差（std（））与方差（var（））"><a href="#统计数组中的标准差（std（））与方差（var（））" class="headerlink" title="统计数组中的标准差（std（））与方差（var（））"></a>统计数组中的标准差（std（））与方差（var（））</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(np.std(b))</span><br><span class="line">print(np.var(b))</span><br></pre></td></tr></table></figure>
+<pre><code>1.118033988749895
+1.25
+</code></pre><h2 id="Numpy排序"><a href="#Numpy排序" class="headerlink" title="Numpy排序"></a>Numpy排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(a)</span><br><span class="line">print(np.sort(a))</span><br><span class="line">print(np.sort(a,<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>[[1 3 7]
+ [2 5 8]
+ [6 4 9]]
+[[1 3 7]
+ [2 5 8]
+ [4 6 9]]
+[[1 3 7]
+ [2 4 8]
+ [6 5 9]]
+</code></pre><h1 id="作业题"><a href="#作业题" class="headerlink" title="作业题"></a>作业题</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">st_type = np.dtype(&#123;</span><br><span class="line">    <span class="string">'names'</span>:[<span class="string">'name'</span>,<span class="string">'chinese'</span>,<span class="string">'english'</span>,<span class="string">'math'</span>],</span><br><span class="line">    <span class="string">'formats'</span>:[<span class="string">'S25'</span>,<span class="string">'i'</span>,<span class="string">'i'</span>,<span class="string">'i'</span>]</span><br><span class="line">&#125;)</span><br><span class="line">grades = np.array([(<span class="string">'zhangfei'</span>,<span class="number">66</span>,<span class="number">65</span>,<span class="number">30</span>),(<span class="string">'guanyu'</span>,<span class="number">95</span>,<span class="number">85</span>,<span class="number">98</span>),(<span class="string">'zhaoyun'</span>,<span class="number">93</span>,<span class="number">92</span>,<span class="number">96</span>),(<span class="string">'huangzhong'</span>,<span class="number">90</span>,<span class="number">88</span>,<span class="number">77</span>),</span><br><span class="line">                  (<span class="string">'dianwei'</span>,<span class="number">80</span>,<span class="number">90</span>,<span class="number">90</span>)],dtype=st_type)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(grades)</span><br></pre></td></tr></table></figure>
+<pre><code>[(b&apos;zhangfei&apos;, 66, 65, 30) (b&apos;guanyu&apos;, 95, 85, 98)
+ (b&apos;zhaoyun&apos;, 93, 92, 96) (b&apos;huangzhong&apos;, 90, 88, 77)
+ (b&apos;dianwei&apos;, 80, 90, 90)]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chinese = grades[:][<span class="string">'chinese'</span>] </span><br><span class="line">english = grades[:][<span class="string">'english'</span>]</span><br><span class="line">math = grades[:][<span class="string">'math'</span>]</span><br><span class="line">total = np.add(chinese,english,math)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(total)</span><br></pre></td></tr></table></figure>
+<pre><code>[131 180 185 178 170]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c_a,e_a,m_a = np.average(chinese),np.average(english),np.average(math)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(c_a)</span><br></pre></td></tr></table></figure>
+<pre><code>84.8
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+          
+
+
+  <section class="meta" id="footer-meta">
+    <hr>
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-30T20:29:17+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>last updated at Jun 30, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/数据分析/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>数据分析</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/23/数据分析-numpy/&title=数据分析----numpy  | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2018/12/23/数据分析-numpy/&title=数据分析----numpy  | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/23/数据分析-numpy/&title=数据分析----numpy  | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                            <h4>
+                                <a href="/2018/12/25/数据分析-pandas/" rel="prev" title="数据分析-pandas">
+                                  
+                                      数据分析-pandas
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/数据分析/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数据分析</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/11/23/小说更新后发送邮箱的问题解决/" rel="prev" title="小说更新后发送邮箱的问题解决">
+                                    
+                                        小说更新后发送邮箱的问题解决
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/python/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>python</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '数据分析----numpy ',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class="l_side">
+  
+    
+    
+      
+        
+          
+          
+            <section class="widget author">
+  <div class="content material">
+    
+      <div class="avatar">
+        <img class="avatar" src="https://i.loli.net/2019/08/27/SCTrzsMhKIg2OYq.jpg">
+      </div>
+    
+    
+      <div class="text">
+        
+        
+          <p>王子和公主过上了性福的生活，那守城的小兵呢？</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            
+
+          
+        
+      
+        
+          
+          
+            
+  <section class="widget tagcloud">
+    
+<header class="material">
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+    <a class="rightBtn" rel="nofollow" href="/tags" title="/tags">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class="content material">
+      <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+
+
+
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
+    
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
+    
+    . 
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/app.js"></script>
+
+
+  <script src="/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

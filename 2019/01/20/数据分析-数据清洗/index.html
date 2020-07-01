@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>数据分析----数据清洗 | huzai9527&#39;s personal blog</title>
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="huzai9527's personal blog">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://xaoxuu.com/assets/img/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <header class="l_header material">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="material"></div>
+  </div>
+
+	<div class="wrapper">
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href="/">
+        
+          huzai9527's personal blog
+        
+      </a>
+			<div class="menu navgation">
+				<ul class="h-list">
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/" id="home">
+									<i class="fas fa-grin fa-fw"></i>&nbsp;近期文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+									<i class="fas fa-folder-open fa-fw"></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
+									<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search">
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class="switcher h-list">
+				
+					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
+				
+				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-sub container container--flex">
+			<a class="logo flat-box"></a>
+			<ul class="switcher h-list">
+				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+        
+          <li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/" id="home">
+								<i class="fas fa-clock fa-fw"></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
+								<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class="l_main">
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+      
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/01/20/数据分析-数据清洗/">
+        数据分析----数据清洗
+      </a>
+    </h1>
+  
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-20</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h1 id="数据分析—-数据清洗"><a href="#数据分析—-数据清洗" class="headerlink" title="数据分析—-数据清洗"></a>数据分析—-数据清洗</h1><h2 id="一、导入数据"><a href="#一、导入数据" class="headerlink" title="一、导入数据"></a>一、导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame</span><br><span class="line"><span class="keyword">import</span> xlrd</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = DataFrame(pd.read_excel(<span class="string">'datas/grades.xlsx'</span>)) </span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>   Unnamed: 0  Unnamed: 1  Unnamed: 2  Unnamed: 3
+0         蒋广佳        43.0        69.0        61.0
+1          廖菲        80.0        64.0        62.0
+2         沈秀玲        68.0        74.0        98.0
+3          韦丹        48.0        53.0        64.0
+4         张梦雅        72.0        73.0        96.0
+5         赵雅欣        60.0         NaN        70.0
+6         曹海广        74.0        60.0        20.0
+7         陈泽灿        38.0        21.0        92.0
+8         NaN        88.0        67.0        84.0
+9         高海亮        86.0        74.0        96.0
+10        顾晓冬        84.0        60.0        90.0
+11        侯星宇        64.0       111.0         NaN
+12        江宜哲        60.0        33.0        70.0
+13        NaN         NaN         NaN         NaN
+14        梁杨杨        68.0        54.0        94.0
+15         刘辉         NaN        63.0        98.0
+16        罗嘉豪        39.0        44.0        56.0
+17        施亚君        90.0        63.0        90.0
+18         孙添        64.0        63.0        78.0
+19         王杰        74.0         NaN        76.0
+20         王泽        52.0        48.0        94.0
+21        NaN        60.0        69.0        74.0
+22        杨福程        70.0        49.0        76.0
+23        尤澳晨        91.0        67.0        86.0
+24         翟佳        78.0        73.0        88.0
+25         张旭       100.0        60.0        98.0
+26        支星哲        80.0        63.0       100.0
+27        邹湘涛        54.0        40.0        90.0
+</code></pre><ul>
+<li>我们可以看见上面的数据是缺少标注的，列名缺少标注；并且有很多是空值，因此我们要对数据进行清洗，提高数据的质量。在这里数据清洗有四个要点简称“完全合一”<ul>
+<li><strong>完</strong>整性：单条数据是否完整，统计的字段是否完善。</li>
+<li><strong>全</strong>面性：观察某一列的全部数值，选中一列，我们可以看到最大值，最小值，平均值。我们可以通过常识判断数据是否合理，比如：数据定义、单位标识、数值本身。</li>
+<li><strong>合</strong>法性：数据的类型、内容、大小的合法性。比如数据中存在非ASCII字符，性别存在未知，总分超过100等。</li>
+<li>唯<strong>一</strong>性：数据是否存在重复记录，由于数据来源于不同的渠道，重复的情况是非常常见的。行数据、列数据都需要是唯一的。</li>
+</ul>
+</li>
+<li>事实上数据清洗的标准有差不多七八条，有兴趣的可以了解一下，这里归纳为“完全合一”四条，按照这四条基本上可以解决数据清洗中的大部分问题，使得数据<strong>标准、干净、连续</strong>。</li>
+</ul>
+<h2 id="二、开始数据清洗"><a href="#二、开始数据清洗" class="headerlink" title="二、开始数据清洗"></a>二、开始数据清洗</h2><h3 id="1、完整性"><a href="#1、完整性" class="headerlink" title="1、完整性"></a>1、完整性</h3><h3 id="problem-1-空行"><a href="#problem-1-空行" class="headerlink" title="problem 1:空行"></a>problem 1:空行</h3><ul>
+<li>solution: 删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dropna(how=<span class="string">"all"</span>,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="problem-2-缺失值"><a href="#problem-2-缺失值" class="headerlink" title="problem 2:缺失值"></a>problem 2:缺失值</h3><ul>
+<li>solution：<ul>
+<li>删除：删除数据缺失的记录</li>
+<li>均值：使用当前列的均值</li>
+<li>高频：使用当前列出现平率最高的数据</li>
+</ul>
+</li>
+<li>首先我们先把列的标注补上</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.rename(columns=&#123;<span class="string">'Unnamed: 0'</span>:<span class="string">'index'</span>,<span class="string">'Unnamed: 1'</span>:<span class="string">'math'</span>,<span class="string">'Unnamed: 2'</span>:<span class="string">'english'</span>,<span class="string">'Unnamed: 3'</span>:<span class="string">'c++'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.drop(columns=<span class="string">'index'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>     math  english    c++
+0    43.0     69.0   61.0
+1    80.0     64.0   62.0
+2    68.0     74.0   98.0
+3    48.0     53.0   64.0
+4    72.0     73.0   96.0
+5    60.0      NaN   70.0
+6    74.0     60.0   20.0
+7    38.0     21.0   92.0
+8    88.0     67.0   84.0
+9    86.0     74.0   96.0
+10   84.0     60.0   90.0
+11   64.0    111.0    NaN
+12   60.0     33.0   70.0
+14   68.0     54.0   94.0
+15    NaN     63.0   98.0
+16   39.0     44.0   56.0
+17   90.0     63.0   90.0
+18   64.0     63.0   78.0
+19   74.0      NaN   76.0
+20   52.0     48.0   94.0
+21   60.0     69.0   74.0
+22   70.0     49.0   76.0
+23   91.0     67.0   86.0
+24   78.0     73.0   88.0
+25  100.0     60.0   98.0
+26   80.0     63.0  100.0
+27   54.0     40.0   90.0
+</code></pre><ul>
+<li>现在我们想对df[‘math’]中缺失的值用平均值代替</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'math'</span>].fillna(df[<span class="string">'math'</span>].mean(),inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>          math  english    c++
+0    43.000000     69.0   61.0
+1    80.000000     64.0   62.0
+2    68.000000     74.0   98.0
+3    48.000000     53.0   64.0
+4    72.000000     73.0   96.0
+5    60.000000      NaN   70.0
+6    74.000000     60.0   20.0
+7    38.000000     21.0   92.0
+8    88.000000     67.0   84.0
+9    86.000000     74.0   96.0
+10   84.000000     60.0   90.0
+11   64.000000    111.0    NaN
+12   60.000000     33.0   70.0
+13   68.653846      NaN    NaN
+14   68.000000     54.0   94.0
+15   68.653846     63.0   98.0
+16   39.000000     44.0   56.0
+17   90.000000     63.0   90.0
+18   64.000000     63.0   78.0
+19   74.000000      NaN   76.0
+20   52.000000     48.0   94.0
+21   60.000000     69.0   74.0
+22   70.000000     49.0   76.0
+23   91.000000     67.0   86.0
+24   78.000000     73.0   88.0
+25  100.000000     60.0   98.0
+26   80.000000     63.0  100.0
+27   54.000000     40.0   90.0
+</code></pre><ul>
+<li>如果想用最高频率的数据对english进行填充，可以通过value_counts获取math字段最高频次english_maxf,然后对其进行填充</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">english_maxf = df[<span class="string">'english'</span>].value_counts().index[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'english'</span>].fillna(english_maxf,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>          math  english    c++
+0    43.000000     69.0   61.0
+1    80.000000     64.0   62.0
+2    68.000000     74.0   98.0
+3    48.000000     53.0   64.0
+4    72.000000     73.0   96.0
+5    60.000000     63.0   70.0
+6    74.000000     60.0   20.0
+7    38.000000     21.0   92.0
+8    88.000000     67.0   84.0
+9    86.000000     74.0   96.0
+10   84.000000     60.0   90.0
+11   64.000000    111.0    NaN
+12   60.000000     33.0   70.0
+13   68.653846     63.0    NaN
+14   68.000000     54.0   94.0
+15   68.653846     63.0   98.0
+16   39.000000     44.0   56.0
+17   90.000000     63.0   90.0
+18   64.000000     63.0   78.0
+19   74.000000     63.0   76.0
+20   52.000000     48.0   94.0
+21   60.000000     69.0   74.0
+22   70.000000     49.0   76.0
+23   91.000000     67.0   86.0
+24   78.000000     73.0   88.0
+25  100.000000     60.0   98.0
+26   80.000000     63.0  100.0
+27   54.000000     40.0   90.0
+</code></pre><h3 id="2、全面性"><a href="#2、全面性" class="headerlink" title="2、全面性"></a>2、全面性</h3><h3 id="problem：列数据单位不统一"><a href="#problem：列数据单位不统一" class="headerlink" title="problem：列数据单位不统一"></a>problem：列数据单位不统一</h3><p>solution：将不同的单位的找出来，将其进行迭代替换，比如说将榜（lbs）转化为千克（kgs）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取 weight 数据列中单位为 lbs 的数据</span></span><br><span class="line">rows_with_lbs = df[<span class="string">'weight'</span>].str.contains(<span class="string">'lbs'</span>).fillna(<span class="keyword">False</span>)</span><br><span class="line"><span class="keyword">print</span> df[rows_with_lbs]</span><br><span class="line"><span class="comment"># 将 lbs 转换为 kgs, 2.2lbs=1kgs</span></span><br><span class="line"><span class="keyword">for</span> i,lbs_row <span class="keyword">in</span> df[rows_with_lbs].iterrows():</span><br><span class="line">    <span class="comment"># 截取从头开始到倒数第三个字符之前，即去掉 lbs。</span></span><br><span class="line">    weight = int(float(lbs_row[<span class="string">'weight'</span>][:<span class="number">-3</span>])/<span class="number">2.2</span>)</span><br><span class="line">    df.at[i,<span class="string">'weight'</span>] = <span class="string">'&#123;&#125;kgs'</span>.format(weight)</span><br></pre></td></tr></table></figure>
+<h3 id="3、合理性"><a href="#3、合理性" class="headerlink" title="3、合理性"></a>3、合理性</h3><h3 id="problem-非ASCII字符"><a href="#problem-非ASCII字符" class="headerlink" title="problem:非ASCII字符"></a>problem:非ASCII字符</h3><p>solution:对于非ASCII字符，我们可以采用删除或者替换的方式，我们直接选择删除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'name'</span>].replace(&#123;<span class="string">r'[^\x00-\x7f]+'</span>:<span class="string">''</span>&#125;,regex=<span class="keyword">True</span>,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="4、唯一性"><a href="#4、唯一性" class="headerlink" title="4、唯一性"></a>4、唯一性</h3><h3 id="problem1：一列有多个参数"><a href="#problem1：一列有多个参数" class="headerlink" title="problem1：一列有多个参数"></a>problem1：一列有多个参数</h3><p>solution：比如英文名字，是有两部分组成的，包含两个参数Firstname、Lastnamr，我们需要将name一列拆分为Firstname和Lastname两个字段，我们可以采用split方法，对其进行切分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'First_namr'</span>,<span class="string">'Last_name'</span>] = df[<span class="string">'name'</span>].str.split(expand=<span class="keyword">True</span>)</span><br><span class="line">df.drop(<span class="string">'name'</span>,axis=<span class="number">1</span>,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="problem2-重读数据"><a href="#problem2-重读数据" class="headerlink" title="problem2:重读数据"></a>problem2:重读数据</h3><p>solution：我们校验数据是否存在重复数据，如果有重复数据，如果就用pandas提供的drop_duplicates()来删除重复数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.drop_duplicates([<span class="string">'First_name'</span>,<span class="string">'Last_name'</span>],inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+          
+
+
+  <section class="meta" id="footer-meta">
+    <hr>
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-30T20:29:17+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>last updated at Jun 30, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/数据分析/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>数据分析</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/01/20/数据分析-数据清洗/&title=数据分析----数据清洗 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2019/01/20/数据分析-数据清洗/&title=数据分析----数据清洗 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/01/20/数据分析-数据清洗/&title=数据分析----数据清洗 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                            <h4>
+                                <a href="/2020/06/30/hello-world/" rel="prev" title="Hello World">
+                                  
+                                      Hello World
+                                  
+                                </a>
+                            </h4>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/01/12/爬取网易云热评并生成词云/" rel="prev" title="爬取网易云热评并生成词云">
+                                    
+                                        爬取网易云热评并生成词云
+                                    
+                                </a>
+                            </h4>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '数据分析----数据清洗',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class="l_side">
+  
+    
+    
+      
+        
+          
+          
+            <section class="widget author">
+  <div class="content material">
+    
+      <div class="avatar">
+        <img class="avatar" src="https://i.loli.net/2019/08/27/SCTrzsMhKIg2OYq.jpg">
+      </div>
+    
+    
+      <div class="text">
+        
+        
+          <p>王子和公主过上了性福的生活，那守城的小兵呢？</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            
+
+          
+        
+      
+        
+          
+          
+            
+  <section class="widget tagcloud">
+    
+<header class="material">
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+    <a class="rightBtn" rel="nofollow" href="/tags" title="/tags">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class="content material">
+      <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+
+
+
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
+    
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
+    
+    . 
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/app.js"></script>
+
+
+  <script src="/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
