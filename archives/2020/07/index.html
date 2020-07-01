@@ -245,9 +245,51 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      
+      <h2 id="docker命令提示"><a href="#docker命令提示" class="headerlink" title="docker命令提示"></a>docker命令提示</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">command</span> --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/1.jpg" alt="1"></p>
+<h2 id="use-images"><a href="#use-images" class="headerlink" title="use images"></a>use images</h2><ul>
+<li>list images<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2020/07/01/docker常用命令/2.jpg" alt="2"></p>
+<ul>
+<li>start container by image<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu:16.04 /bin/bash</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2020/07/01/docker常用命令/3.jpg" alt="3"></p>
+<ul>
+<li>search images<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search mysql</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2020/07/01/docker常用命令/5.jpg" alt="5"></p>
+<ul>
+<li>get new images<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:18.04</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2020/07/01/docker常用命令/4.jpg" alt="4"></p>
+<ul>
+<li>delete image<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi ubuntu:18.04</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2020/07/01/docker常用命令/6.jpg" alt="6"></p>
+<ul>
+<li><strong>[more operations][<a href="https://www.runoob.com/docker/docker-image-usage.html]" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-image-usage.html]</a> </strong><h2 id="use-container"><a href="#use-container" class="headerlink" title="use container"></a>use container</h2></li>
+<li><p>get images(default latest)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>if you want get specific version</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search ubuntu</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/docker/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>docker</a>
+        
+      </div>
     
   </section>
 </article>
@@ -347,7 +389,7 @@
 </header>
 
     <div class="content material">
-      <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
+      <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
     </div>
   </section>
 
