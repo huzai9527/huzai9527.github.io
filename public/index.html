@@ -5,75 +5,97 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
   <title>huzai9527&#39;s personal blog</title>
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="huzai9527's personal blog">
+  
+
   <meta name="HandheldFriendly" content="True">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="shortcut icon" href="https://xaoxuu.com/assets/img/favicon.ico">
-  <link rel="alternate" href="/atom.xml" title="huzai9527's personal blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
 
-  <link rel="shortcut icon" href="https://xaoxuu.com/assets/img/favicon.ico">
-  <link rel="icon" href="https://xaoxuu.com/assets/img/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://xaoxuu.com/assets/img/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
   <script>
     function setLoadingBarProgress(num) {
       document.getElementById('loading-bar').style.width=num+"%";
     }
   </script>
+
+  
+  
 </head>
-</html>
+
 <body>
-    <div id="loading-bar-wrapper">
-  <div id="loading-bar"></div>
-</div>
+  
+  
+  <header class="l_header material">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="material"></div>
+  </div>
 
-
-    <script>setLoadingBarProgress(20)</script>
-    <header class="l_header">
 	<div class="wrapper">
 		<div class="nav-main container container--flex">
-			<a class="logo flat-box" href="/">huzai9527's personal blog</a>
-				<div class="menu">
-					<ul class="h-list">
-            
-    					
-    						<li>
-    							<a class="nav- flat-box" href="https://huzai9527.github.io/">
-    								<i class="fas fa-home fa-fw"></i>&nbsp;主页
-  								</a>
-  							</li>
-        			
-    						<li>
-    							<a class="nav- flat-box" href="https://github.com/huzai9527?tab=repositories">
-    								<i class="fas fa-flask fa-fw"></i>&nbsp;项目
-  								</a>
-  							</li>
-        			
-    						<li>
-    							<a class="nav-home flat-box" href="/">
-    								<i class="fas fa-rss fa-fw"></i>&nbsp;博客
-  								</a>
-  							</li>
-        			
-    						<li>
-    							<a class="nav-archives flat-box" href="/archives/">
-    								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
-  								</a>
-  							</li>
-        			
-        		
-					</ul>
-					<div class="underline"></div>
-				</div>
+      <a class="logo flat-box" href="/">
+        
+          huzai9527's personal blog
+        
+      </a>
+			<div class="menu navgation">
+				<ul class="h-list">
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/" id="home">
+									<i class="fas fa-grin fa-fw"></i>&nbsp;近期文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="https://github.com/huzai9527?tab=repositories" rel="nofollow" id="https:github.comhuzai9527?tab=repositories">
+									<i class="fas fa-folder-open fa-fw"></i>&nbsp;项目
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="https://xaoxuu.com/wiki/volantis/" rel="nofollow" id="https:xaoxuu.comwikivolantis">
+									<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
 
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
 						<input type="text" class="input u-search-input" placeholder="Search">
-						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
 			
@@ -88,77 +110,456 @@
 		<div class="nav-sub container container--flex">
 			<a class="logo flat-box"></a>
 			<ul class="switcher h-list">
-				<li class="s-comment"><a class="fas fa-comments fa-fw flat-box" href="javascript:void(0)"></a></li>
-				<li class="s-top"><a class="fas fa-arrow-circle-up fa-fw flat-box" href="javascript:void(0)"></a></li>
-				<li class="s-toc"><a class="fas fa-list fa-fw flat-box" href="javascript:void(0)"></a></li>
+				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+        
+          <li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+        
 			</ul>
 		</div>
 	</div>
 </header>
 	<aside class="menu-phone">
-		<nav>
+    <header>
+		<nav class="menu navgation">
       <ul>
+        
           
-              
-                  <li>
-                      <a class="nav- flat-box nav flat-box" href="https://huzai9527.github.io/">
-                      <i class="fas fa-home fa-fw"></i>&nbsp;主页</a>
-                  </li>
-              
-                  <li>
-                      <a class="nav- flat-box nav flat-box" href="https://github.com/huzai9527?tab=repositories">
-                      <i class="fas fa-flask fa-fw"></i>&nbsp;项目</a>
-                  </li>
-              
-                  <li>
-                      <a class="nav-home flat-box nav flat-box" href="/">
-                      <i class="fas fa-rss fa-fw"></i>&nbsp;博客</a>
-                  </li>
-              
-                  <li>
-                      <a class="nav-archives flat-box nav flat-box" href="/archives/">
-                      <i class="fas fa-archive fa-fw"></i>&nbsp;归档</a>
-                  </li>
-              
+            <li>
+							<a class="nav flat-box" href="/" id="home">
+								<i class="fas fa-clock fa-fw"></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
+								<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
+							</a>
+            </li>
+          
        
       </ul>
 		</nav>
+    </header>
 	</aside>
+<script>setLoadingBarProgress(40);</script>
 
-    <script>setLoadingBarProgress(40);</script>
-    <div class="l_body">
-    <div class='container clearfix'>
-        <div class='l_main'>
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class="l_main">
+  
+  <section class="post-list">
+    
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2020/07/01/docker常用命令/">
+      docker常用命令
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-07-01</p>
+  </a>
+</div>
+
+          
+        
+          
             
 
-<section class="post-list">
-    
-    
-        <div class="post-wrapper">
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/01/20/数据分析-数据清洗/">
-                
-                    数据分析----数据清洗
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-20
-        </time>
+          
         
-    
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+          
+            
+
+          
         
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="docker-command-help"><a href="#docker-command-help" class="headerlink" title="docker command help"></a>docker command help</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">command</span> --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/1.jpg" alt="1"></p>
+<h2 id="use-images"><a href="#use-images" class="headerlink" title="use images"></a>use images</h2><h3 id="list-images"><a href="#list-images" class="headerlink" title="list images"></a>list images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/2.jpg" alt="2"></p>
+<h3 id="start-container-by-image"><a href="#start-container-by-image" class="headerlink" title="start container by image"></a>start container by image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu:16.04 /bin/bash</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/3.jpg" alt="3"></p>
+<h3 id="search-images"><a href="#search-images" class="headerlink" title="search images"></a>search images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search mysql</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/5.jpg" alt="5"></p>
+<h3 id="get-new-images"><a href="#get-new-images" class="headerlink" title="get new images"></a>get new images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:18.04</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/4.jpg" alt="4"></p>
+<h3 id="delete-image"><a href="#delete-image" class="headerlink" title="delete image"></a>delete image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi ubuntu:18.04</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/6.jpg" alt="6"></p>
+<h3 id="more-operations-https-www-runoob-com-docker-docker-image-usage-html"><a href="#more-operations-https-www-runoob-com-docker-docker-image-usage-html" class="headerlink" title="[more operations][https://www.runoob.com/docker/docker-image-usage.html] "></a><strong>[more operations][<a href="https://www.runoob.com/docker/docker-image-usage.html]" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-image-usage.html]</a> </strong></h3><h2 id="use-container"><a href="#use-container" class="headerlink" title="use container"></a>use container</h2><h3 id="start-container"><a href="#start-container" class="headerlink" title="start container"></a>start container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu:16.04 /bin/bash <span class="comment">## -d background</span></span><br></pre></td></tr></table></figure>
+<h3 id="show-containers"><a href="#show-containers" class="headerlink" title="show containers"></a>show containers</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/7.jpg" alt="7"></p>
+<h3 id="stop-amp-start-amp-restart-container"><a href="#stop-amp-start-amp-restart-container" class="headerlink" title="stop &amp; start &amp; restart container"></a>stop &amp; start &amp; restart container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker start container_id <span class="comment">## RUN IN THE BACKGROUND</span></span><br><span class="line">docker stop container_id</span><br><span class="line">docker restart container_id</span><br></pre></td></tr></table></figure>
+<h3 id="enter-container"><a href="#enter-container" class="headerlink" title="enter container"></a>enter container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach container_id <span class="comment">## use exit will stop container</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it container_id /bin/bash  <span class="comment">## use exit will not stop container</span></span><br></pre></td></tr></table></figure>
+<h3 id="export-container"><a href="#export-container" class="headerlink" title="export container"></a>export container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">export</span> container_id &gt; container.tar</span><br></pre></td></tr></table></figure>
+<h3 id="import-container-snap-to-image"><a href="#import-container-snap-to-image" class="headerlink" title="import container_snap to image"></a>import container_snap to image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat docker/mysql.tar | docker import - mysql:v1</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/9.jpg" alt="8"></p>
+<h3 id="delete-container"><a href="#delete-container" class="headerlink" title="delete container"></a>delete container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f container_id</span><br></pre></td></tr></table></figure>
+<h3 id="show-container’s-port-mapping"><a href="#show-container’s-port-mapping" class="headerlink" title="show container’s port mapping"></a>show container’s port mapping</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker port container_id</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/9.jpg" alt="9"></p>
+<h3 id="connect-container-by-port-mapping"><a href="#connect-container-by-port-mapping" class="headerlink" title="connect container by port mapping"></a>connect container by port mapping</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD = 123456 mysql</span><br></pre></td></tr></table></figure>
+<h2 id="connect-containers"><a href="#connect-containers" class="headerlink" title="connect containers"></a>connect containers</h2><h3 id="create-a-docker-network"><a href="#create-a-docker-network" class="headerlink" title="create a docker network"></a>create a docker network</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge hadoop-net</span><br></pre></td></tr></table></figure>
+<h3 id="show-networks"><a href="#show-networks" class="headerlink" title="show networks"></a>show networks</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network ls</span><br></pre></td></tr></table></figure>
+<h3 id="run-a-container-and-connect-to-the-network"><a href="#run-a-container-and-connect-to-the-network" class="headerlink" title="run a container and connect to the network"></a>run a container and connect to the network</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name hadoop1 --network hadoop-net ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/docker/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>docker</a>
+        
+      </div>
+    
+  </section>
+</article>
 
-    <section class="article typo">
-        <h1 id="数据分析—-数据清洗"><a href="#数据分析—-数据清洗" class="headerlink" title="数据分析—-数据清洗"></a>数据分析—-数据清洗</h1><h2 id="一、导入数据"><a href="#一、导入数据" class="headerlink" title="一、导入数据"></a>一、导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame</span><br><span class="line"><span class="keyword">import</span> xlrd</span><br></pre></td></tr></table></figure>
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2020/06/30/测试异地管理/">
+      测试异地管理
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-06-30</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="test"><a href="#test" class="headerlink" title="test"></a>test</h1>
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2020/06/30/hello-world/">
+      Hello World
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-06-30</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/01/20/数据分析-数据清洗/">
+      数据分析----数据清洗
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-20</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="数据分析—-数据清洗"><a href="#数据分析—-数据清洗" class="headerlink" title="数据分析—-数据清洗"></a>数据分析—-数据清洗</h1><h2 id="一、导入数据"><a href="#一、导入数据" class="headerlink" title="一、导入数据"></a>一、导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame</span><br><span class="line"><span class="keyword">import</span> xlrd</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = DataFrame(pd.read_excel(<span class="string">'datas/grades.xlsx'</span>)) </span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
 <pre><code>   Unnamed: 0  Unnamed: 1  Unnamed: 2  Unnamed: 3
 0         蒋广佳        43.0        69.0        61.0
@@ -321,45 +722,95 @@
 <h3 id="problem2-重读数据"><a href="#problem2-重读数据" class="headerlink" title="problem2:重读数据"></a>problem2:重读数据</h3><p>solution：我们校验数据是否存在重复数据，如果有重复数据，如果就用pandas提供的drop_duplicates()来删除重复数据。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.drop_duplicates([<span class="string">'First_name'</span>,<span class="string">'Last_name'</span>],inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
 
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/数据分析/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>数据分析</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/数据分析/"><i class="fas fa-tag fa-fw"></i>&nbsp;数据分析</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2019/01/12/爬取网易云热评并生成词云/">
-                
-                    爬取网易云热评并生成词云
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-12
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2019/01/12/爬取网易云热评并生成词云/">
+      爬取网易云热评并生成词云
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h2 id="分析热评的请求URL"><a href="#分析热评的请求URL" class="headerlink" title="分析热评的请求URL"></a>分析热评的请求URL</h2><ul>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="分析热评的请求URL"><a href="#分析热评的请求URL" class="headerlink" title="分析热评的请求URL"></a>分析热评的请求URL</h2><ul>
 <li><p>首先我们先对请求抓包，发现所有的评论都包含在 <strong><a href="https://music.163.com/weapi/v1/resource/comments/R_SO_4_32785700?csrf_token=&quot;" target="_blank" rel="noopener">https://music.163.com/weapi/v1/resource/comments/R_SO_4_32785700?csrf_token=&quot;</a></strong>里面，然后再去分析这个请求，发现这是一个<strong>POST</strong>请求，请求参数由两个<strong>params</strong>以及<strong>encSecKey</strong>。好了到此我们需要的东西都有了，接下来我们分析如何去得到这两个参数。</p>
 <h3 id="找到请求"><a href="#找到请求" class="headerlink" title="找到请求"></a>找到请求</h3><p><img src="/2019/01/12/爬取网易云热评并生成词云/1.png" alt="1.png"></p>
 <h3 id="分析请求参数"><a href="#分析请求参数" class="headerlink" title="分析请求参数"></a>分析请求参数</h3><p><img src="/2019/01/12/爬取网易云热评并生成词云/2.png" alt="2.png"></p>
@@ -385,39 +836,89 @@
 </li>
 </ul>
 <h2 id="解析json，获取评论"><a href="#解析json，获取评论" class="headerlink" title="解析json，获取评论"></a>解析json，获取评论</h2>
-        
-
-        
-    </section>
+      
+    </div>
+    
+  </section>
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/12/25/git简单指令/">
-                
-                    git简单指令
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-12-25
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2018/12/25/git简单指令/">
+      git简单指令
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-12-25</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h1 id="git简单指令"><a href="#git简单指令" class="headerlink" title="git简单指令"></a>git简单指令</h1><h2 id="首先放一张学习路线"><a href="#首先放一张学习路线" class="headerlink" title="首先放一张学习路线"></a>首先放一张学习路线</h2><p><img src="/2018/12/25/git简单指令/Git.png" alt="git学习路线"></p>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="git简单指令"><a href="#git简单指令" class="headerlink" title="git简单指令"></a>git简单指令</h1><h2 id="首先放一张学习路线"><a href="#首先放一张学习路线" class="headerlink" title="首先放一张学习路线"></a>首先放一张学习路线</h2><p><img src="/2018/12/25/git简单指令/Git.png" alt="git学习路线"></p>
 <h2 id="1、创建版本库"><a href="#1、创建版本库" class="headerlink" title="1、创建版本库"></a>1、创建版本库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir huzai //创建一个空目录</span><br><span class="line"><span class="built_in">cd</span> huzai  //进入此目录</span><br><span class="line">git init  //初始化git仓库</span><br></pre></td></tr></table></figure>
 <h2 id="2、添加文件到版本库"><a href="#2、添加文件到版本库" class="headerlink" title="2、添加文件到版本库"></a>2、添加文件到版本库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add file  //将文件添加到缓存区</span><br><span class="line">git commit -m <span class="string">"post message"</span> //提交并附带提交信息</span><br></pre></td></tr></table></figure>
 <h2 id="3、版本回退"><a href="#3、版本回退" class="headerlink" title="3、版本回退"></a>3、版本回退</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^ //HEAD是一个指针，指向当前的版本,^代表上一代版本，HEAD^^代表上两代</span><br><span class="line">git reflog //查询每次提交的commit_id</span><br><span class="line">git reset --hard commit_id //根据id进行回退</span><br></pre></td></tr></table></figure>
@@ -440,45 +941,95 @@
 </ul>
 <p>或者你不知道有什么分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote -v //查看远程仓库的信息</span><br><span class="line">git checkout -b branch_name origin/branch_name //创建本地分支以及远程分支</span><br><span class="line">git branch --<span class="built_in">set</span>-upstream-to branch_name origin/branch_name //进行关联</span><br></pre></td></tr></table></figure></p>
 
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/git/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>git</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/git/"><i class="fas fa-tag fa-fw"></i>&nbsp;git</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/12/25/数据分析-pandas/">
-                
-                    数据分析-pandas
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-12-25
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2018/12/25/数据分析-pandas/">
+      数据分析-pandas
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-12-25</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h1 id="数据分析—-pandas"><a href="#数据分析—-pandas" class="headerlink" title="数据分析—-pandas"></a>数据分析—-pandas</h1><h2 id="核心数据结构-Series-amp-DataFrame"><a href="#核心数据结构-Series-amp-DataFrame" class="headerlink" title="核心数据结构 Series &amp; DataFrame"></a>核心数据结构 Series &amp; DataFrame</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series, DataFrame</span><br></pre></td></tr></table></figure>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="数据分析—-pandas"><a href="#数据分析—-pandas" class="headerlink" title="数据分析—-pandas"></a>数据分析—-pandas</h1><h2 id="核心数据结构-Series-amp-DataFrame"><a href="#核心数据结构-Series-amp-DataFrame" class="headerlink" title="核心数据结构 Series &amp; DataFrame"></a>核心数据结构 Series &amp; DataFrame</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series, DataFrame</span><br></pre></td></tr></table></figure>
 <h3 id="Series是一个定长的字典序列，它有两个基本属性index-、-value-index-默认是-0-1-2-3-递增的，也可以自己指定索引-index-‘a’-‘b’-‘c’"><a href="#Series是一个定长的字典序列，它有两个基本属性index-、-value-index-默认是-0-1-2-3-递增的，也可以自己指定索引-index-‘a’-‘b’-‘c’" class="headerlink" title="Series是一个定长的字典序列，它有两个基本属性index 、 value index 默认是 0 ,1,2,3 递增的，也可以自己指定索引 index=[‘a’, ‘b’, ‘c’]"></a><strong>Series是一个定长的字典序列</strong>，它有两个基本属性<strong>index 、 value</strong> index 默认是 0 ,1,2,3 递增的，也可以自己指定索引 index=[‘a’, ‘b’, ‘c’]</h3><h3 id="创建Series的三种方式"><a href="#创建Series的三种方式" class="headerlink" title="创建Series的三种方式"></a>创建Series的三种方式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x1 = Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">x2 = Series(data=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],index=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">dic = &#123;<span class="string">'a'</span>:<span class="number">1</span>,<span class="string">'b'</span>:<span class="number">2</span>,<span class="string">'c'</span>:<span class="number">3</span>,<span class="string">'d'</span>:<span class="number">4</span>&#125;</span><br><span class="line">x3 = Series(dic)</span><br><span class="line">print(x1)</span><br><span class="line">print(x2)</span><br><span class="line">print(x3)</span><br></pre></td></tr></table></figure>
 <pre><code>0    1
 1    2
@@ -652,45 +1203,95 @@ min     38.000000  21.000000   20.000000  139.000000
 max    100.000000  74.000000  100.000000  258.000000
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/数据分析/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>数据分析</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/数据分析/"><i class="fas fa-tag fa-fw"></i>&nbsp;数据分析</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/12/23/数据分析-numpy/">
-                
-                    数据分析----numpy 
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-12-23
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2018/12/23/数据分析-numpy/">
+      数据分析----numpy 
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-12-23</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h1 id="数据分析—numpy"><a href="#数据分析—numpy" class="headerlink" title="数据分析—numpy"></a>数据分析—numpy</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="数据分析—numpy"><a href="#数据分析—numpy" class="headerlink" title="数据分析—numpy"></a>数据分析—numpy</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
 <h2 id="创建普通数组"><a href="#创建普通数组" class="headerlink" title="创建普通数组"></a>创建普通数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">b = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]])</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b[<span class="number">1</span>,<span class="number">1</span>] = <span class="number">10</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(a.shape)</span><br><span class="line">print(b.shape)</span><br><span class="line">print(a.dtype)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
@@ -758,45 +1359,95 @@ int64
 <pre><code>84.8
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/数据分析/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>数据分析</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/数据分析/"><i class="fas fa-tag fa-fw"></i>&nbsp;数据分析</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/23/小说更新后发送邮箱的问题解决/">
-                
-                    小说更新后发送邮箱的问题解决
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-23
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2018/11/23/小说更新后发送邮箱的问题解决/">
+      小说更新后发送邮箱的问题解决
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-11-23</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
 <li>先上一张图，看一下问题在哪<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/1.png" alt="1.png"></li>
 </ul>
 <p>从图上我们可以看到，虽然小说是每天发两次给我，但是有时候会漏掉一章，有时候又会重复发一章，这都是小说作者不按时更新惹的祸啊！！！既然小说作者的习惯改变不了，那就完善自我吧!</p>
@@ -814,45 +1465,95 @@ int64
 <li>如果作者一下爆发怎么办（一分钟更新十章！）<br>思考一下，其实原理差不多，缓存大小不同罢了！有兴趣的可以尝试一下！<h2 id="项目源码已发布在github"><a href="#项目源码已发布在github" class="headerlink" title="项目源码已发布在github"></a>项目源码已发布在github</h2><a href="https://github.com/huzai9527/fictionSend" target="_blank" rel="noopener">https://github.com/huzai9527/fictionSend</a></li>
 </ul>
 
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/python/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>python</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/python/"><i class="fas fa-tag fa-fw"></i>&nbsp;python</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/19/c-指针问题/">
-                
-                    c++指针问题
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-19
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2018/11/19/c-指针问题/">
+      c++指针问题
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-11-19</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h2 id="指针究竟是什么"><a href="#指针究竟是什么" class="headerlink" title="指针究竟是什么"></a>指针究竟是什么</h2><ul>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="指针究竟是什么"><a href="#指针究竟是什么" class="headerlink" title="指针究竟是什么"></a>指针究竟是什么</h2><ul>
 <li>指针是一类特殊的变量，他保存的不是一般数据的值，而是程序中另一对象在内存中的地址<br>我们先通过一个小程序看一看指针如何工作<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">	int n = 123,m = 456;</span><br><span class="line">	int *p = &amp;n;</span><br><span class="line">	cout&lt;&lt;<span class="string">"&amp;n:"</span>&lt;&lt;&amp;n&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">"&amp;p:"</span>&lt;&lt;&amp;p&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">" p:"</span>&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">"*p:"</span>&lt;&lt;*p&lt;&lt;endl;</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -907,374 +1608,427 @@ int64
 <p>指针常量：表示所定义的指针是一个常量，只能在定义的时候初始化<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int i,j;</span><br><span class="line">int * const p = &amp;i;</span><br><span class="line">p = &amp;j;//错误</span><br></pre></td></tr></table></figure></p>
 <p>指向常量的指针常量：格式为 const 类型 * const 指针常量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int i,j;</span><br><span class="line">const int * const p = &amp;i;</span><br><span class="line">*p = 10;//错误</span><br><span class="line">p = &amp;j;//错误</span><br><span class="line">i = 10;//正确</span><br></pre></td></tr></table></figure></p>
 
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/c/"><i class="fas fa-tag fa-fw"></i>&nbsp;c++</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class="post-wrapper">
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/18/scrapy构建自己的ip代理池/">
-                
-                    scrapy构建自己的ip代理池
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-18
-        </time>
-        
-    
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-        
+      
     </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <h1 id="用scrapy爬取可用的代理"><a href="#用scrapy爬取可用的代理" class="headerlink" title="用scrapy爬取可用的代理"></a>用scrapy爬取可用的代理</h1><h2 id="分析免费代理网站的结构"><a href="#分析免费代理网站的结构" class="headerlink" title="分析免费代理网站的结构"></a>分析免费代理网站的结构</h2><ul>
-<li>我爬取了三个字段：<strong>IP</strong>、<strong>port</strong>、<strong>type</strong><br><img src="https://i.loli.net/2018/11/18/5bf12dc61a906.jpg" alt="TIM图片20181118171534.jpg"><h2 id="分析要爬取的数据，编写items-py"><a href="#分析要爬取的数据，编写items-py" class="headerlink" title="分析要爬取的数据，编写items.py"></a>分析要爬取的数据，编写items.py</h2></li>
-<li>因此在items.py中，建立相应的字段<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import scrapy</span><br><span class="line">class IproxyItem(scrapy.Item):</span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    <span class="comment"># name = scrapy.Field()</span></span><br><span class="line">    ip = scrapy.Field()</span><br><span class="line">    <span class="built_in">type</span> = scrapy.Field()</span><br><span class="line">    port = scrapy.Field()</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="爬取所有的免费ip"><a href="#爬取所有的免费ip" class="headerlink" title="爬取所有的免费ip"></a>爬取所有的免费ip</h2><ul>
-<li>在spider目录下，创建IpSpider.py<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import scrapy</span><br><span class="line">import Iproxy.items</span><br><span class="line">class IpSpider(scrapy.Spider):</span><br><span class="line">    name = <span class="string">'IpSpider'</span></span><br><span class="line">    allowed_domains = [<span class="string">'xicidaili.com'</span>]</span><br><span class="line">    start_urls = [<span class="string">'http://www.xicidaili.com/'</span>]</span><br><span class="line"></span><br><span class="line">    def parse(self, response):</span><br><span class="line">        item = Iproxy.items.IproxyItem()</span><br><span class="line">        item[<span class="string">'ip'</span>] = response.css(<span class="string">'tr td:nth-child(2)::text'</span>).extract()</span><br><span class="line">        item[<span class="string">'port'</span>] = response.css(<span class="string">'tr td:nth-child(3)::text'</span>).extract()</span><br><span class="line">        item[<span class="string">'type'</span>] = response.css(<span class="string">'tr td:nth-child(6) ::text'</span>).extract()</span><br><span class="line">        yield item</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="检测是否可用，如果可用则存入数据库"><a href="#检测是否可用，如果可用则存入数据库" class="headerlink" title="检测是否可用，如果可用则存入数据库"></a>检测是否可用，如果可用则存入数据库</h2><ul>
-<li>因为是免费的ip，所以我们有必要检测一下他是否可用，对于可用的就存入数据库，反之则丢弃</li>
-<li>检测处理数据在pipeline.py中编写</li>
-<li>检测原理，通过代理访问百度，如果能够访问，则说明可用<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define your item pipelines here</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span></span><br><span class="line"><span class="comment"># See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span></span><br><span class="line"></span><br><span class="line">import pymysql</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">class IproxyPipeline(object):</span><br><span class="line">    def process_item(self, item, spider):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'</span>)</span><br><span class="line">        db = pymysql.connect(<span class="string">"localhost"</span>, <span class="string">"root"</span>, <span class="string">"168168"</span>, <span class="string">"spider"</span>)</span><br><span class="line">        cursor = db.cursor()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(1, len(item[<span class="string">'ip'</span>])):</span><br><span class="line">            ip = item[<span class="string">'ip'</span>][i] + <span class="string">':'</span> + item[<span class="string">'port'</span>][i]</span><br><span class="line">            try:</span><br><span class="line">                <span class="keyword">if</span> self.proxyIpCheck(ip) is False:</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">'此ip：'</span>+ip+<span class="string">"不能用"</span>)</span><br><span class="line">                    <span class="built_in">continue</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">'此ip：'</span>+ip+<span class="string">'可用，存入数据库！'</span>)</span><br><span class="line">                    sql = <span class="string">'insert into proxyIp value ("%s")'</span> % (ip)</span><br><span class="line">                    cursor.execute(sql)</span><br><span class="line">                    db.commit()</span><br><span class="line">            except:</span><br><span class="line">                db.rollback()</span><br><span class="line">        db.close()</span><br><span class="line">        <span class="built_in">return</span> item</span><br><span class="line"></span><br><span class="line">    def proxyIpCheck(self, ip):</span><br><span class="line">        proxies = &#123;<span class="string">'http'</span>: <span class="string">'http://'</span> + ip, <span class="string">'https'</span>: <span class="string">'https://'</span> + ip&#125;</span><br><span class="line">        try:</span><br><span class="line">            r = requests.get(<span class="string">'https://www.baidu.com/'</span>, proxies=proxies, timeout=1)</span><br><span class="line">            <span class="keyword">if</span> (r.status_code == 200):</span><br><span class="line">                <span class="built_in">return</span> True</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">return</span> False</span><br><span class="line">        except:</span><br><span class="line">            <span class="built_in">return</span> False</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="运行情况"><a href="#运行情况" class="headerlink" title="运行情况"></a>运行情况</h2><ul>
-<li>可以看出还是有好多ip不能用的<br><img src="https://i.loli.net/2018/11/18/5bf1308222b42.png" alt="TIM图片20181118172712.png"></li>
-<li>可用的存在数据库<br><img src="https://i.loli.net/2018/11/18/5bf130d8031b3.jpg" alt="TIM图片20181118172841.jpg"></li>
-</ul>
-
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/c/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>c++</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/python-scrapy-爬虫/"><i class="fas fa-tag fa-fw"></i>&nbsp;python scrapy 爬虫</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
+          </div>
+        
+      
     
-        <div class="post-wrapper">
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/17/python爬取最新更新的小说并发送到你的邮箱/">
-                
-                    python爬取最新更新的小说并发送到你的邮箱
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-17
-        </time>
-        
+  </section>
+  
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-        
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <h2 id="数据获取—Spider"><a href="#数据获取—Spider" class="headerlink" title="数据获取—Spider()"></a>数据获取—Spider()</h2><h3 id="找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取"><a href="#找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取" class="headerlink" title="找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取"></a>找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取</h3><p>  <img src="https://i.loli.net/2018/11/17/5befc2f9dd2a9.png" alt="1.png"><br>  这里我获取最新章节的时间、标题以及标题的连接<br>  <img src="https://i.loli.net/2018/11/17/5befc38daf280.png" alt="2.png"><br>  这里获取内容</p>
-<h3 id="编写spider方法，确定他的返回值，这里我返回的是一个list，包括更新的时间、标题、内容"><a href="#编写spider方法，确定他的返回值，这里我返回的是一个list，包括更新的时间、标题、内容" class="headerlink" title="编写spider方法，确定他的返回值，这里我返回的是一个list，包括更新的时间、标题、内容"></a>编写spider方法，确定他的返回值，这里我返回的是一个list，包括更新的时间、标题、内容</h3><ul>
-<li>方法中需要导入的包 <strong>requests</strong> <strong>bs4</strong> <strong>re</strong> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def spider():</span><br><span class="line">    list = []</span><br><span class="line">    response = requests.get(<span class="string">'https://www.xbiquge6.com/13_13134/'</span>)</span><br><span class="line">    response.encoding = (<span class="string">'utf-8'</span>)</span><br><span class="line">    html = response.text</span><br><span class="line">    html = BeautifulSoup(html, <span class="string">'html.parser'</span>)</span><br><span class="line">    time = html.select(<span class="string">'div#info p:nth-of-type(3)'</span>).__getitem__(0).text[5:]</span><br><span class="line">    title = html.select(<span class="string">'div#info p:nth-of-type(4) a[href]'</span>).__getitem__(0).text</span><br><span class="line">    href = html.select(<span class="string">'div#info p:nth-of-type(4) a[href]'</span>).__getitem__(0)</span><br><span class="line">    <span class="comment"># print(title)</span></span><br><span class="line">    pattern = re.compile(r<span class="string">'href="(.+?)"'</span>)</span><br><span class="line">    href = re.findall(pattern, href.__str__()).__getitem__(0)</span><br><span class="line">    href = <span class="string">"https://www.xbiquge6.com"</span> + href</span><br><span class="line">    response = requests.get(href)</span><br><span class="line">    response.encoding = (<span class="string">'utf-8'</span>)</span><br><span class="line">    html = BeautifulSoup(response.text, <span class="string">'html.parser'</span>)</span><br><span class="line">    content = html.select(<span class="string">'div#content'</span>)</span><br><span class="line">    <span class="comment"># print(content)</span></span><br><span class="line">    list.append(title)</span><br><span class="line">    list.append(content)</span><br><span class="line">    list.append(time)</span><br><span class="line">    <span class="built_in">return</span> list</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="邮件发送—smtp"><a href="#邮件发送—smtp" class="headerlink" title="邮件发送—smtp()"></a>邮件发送—smtp()</h2><h3 id="首先先在你的邮箱中设置打开smtp服务"><a href="#首先先在你的邮箱中设置打开smtp服务" class="headerlink" title="首先先在你的邮箱中设置打开smtp服务"></a>首先先在你的邮箱中设置打开smtp服务</h3><p>比如我的QQ邮箱，先进入邮箱-&gt;点击设置-&gt;点击账户-&gt;下滑找到smtp服务-&gt;点击开启服务-&gt;生成授权码（就是你在smtp方法中用到的password）<br>![PCO_6AO93%@2W$B}<a href="https://i.loli.net/2018/11/17/5befc49990bec.png" target="_blank" rel="noopener">GFGHI0 (1).png</a></p>
-<h3 id="编写smtp方法，向我的邮箱发送小说，确定返回值是bool类型，成功为True，失败为False"><a href="#编写smtp方法，向我的邮箱发送小说，确定返回值是bool类型，成功为True，失败为False" class="headerlink" title="编写smtp方法，向我的邮箱发送小说，确定返回值是bool类型，成功为True，失败为False"></a>编写smtp方法，向我的邮箱发送小说，确定返回值是bool类型，成功为True，失败为False</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def mail():</span><br><span class="line">    list = spider();</span><br><span class="line">    ret = True</span><br><span class="line">    try:</span><br><span class="line">        mail_msg = list.__getitem__(1).__str__()</span><br><span class="line">        msg = MIMEText(mail_msg, <span class="string">'html'</span>, <span class="string">'utf-8'</span>)</span><br><span class="line">        msg[<span class="string">'From'</span>] = formataddr([<span class="string">'huzai'</span>, my_sender])</span><br><span class="line">        msg[<span class="string">'To'</span>] = formataddr([<span class="string">'huzai'</span>, receiver])</span><br><span class="line">        msg[<span class="string">'Subject'</span>] = list.__getitem__(0)</span><br><span class="line">        server = smtplib.SMTP_SSL(<span class="string">'smtp.qq.com'</span>, 465)</span><br><span class="line">        server.login(my_sender, my_pwd)</span><br><span class="line">        server.sendmail(my_sender, [receiver], msg.as_string())</span><br><span class="line">        server.quit()</span><br><span class="line">    except Exception:</span><br><span class="line">        ret = False</span><br><span class="line">    <span class="built_in">return</span> ret</span><br></pre></td></tr></table></figure>
-<h2 id="上传脚本到服务器"><a href="#上传脚本到服务器" class="headerlink" title="上传脚本到服务器"></a>上传脚本到服务器</h2><h3 id="使用xftp将写好的smtp-py上传到你的云服务器上"><a href="#使用xftp将写好的smtp-py上传到你的云服务器上" class="headerlink" title="使用xftp将写好的smtp.py上传到你的云服务器上"></a>使用xftp将写好的smtp.py上传到你的云服务器上</h3><p><img src="https://i.loli.net/2018/11/17/5befc6acf033d.png" alt="3.png"><br>直接拖进去就行</p>
-<h3 id="这里注意保证你的服务器上的python版本和你本机一致，且需要的包已经安装"><a href="#这里注意保证你的服务器上的python版本和你本机一致，且需要的包已经安装" class="headerlink" title="这里注意保证你的服务器上的python版本和你本机一致，且需要的包已经安装"></a>这里注意保证你的服务器上的python版本和你本机一致，且需要的包已经安装</h3><ul>
-<li>如果你的服务器上的版本是2.*的可以运行下面代码安装python3<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove python</span><br><span class="line">sudo apt-get install python3</span><br><span class="line">sudo apt autoremove</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="用xshell进入服务器试着运行"><a href="#用xshell进入服务器试着运行" class="headerlink" title="用xshell进入服务器试着运行"></a>用xshell进入服务器试着运行</h3><p><img src="https://i.loli.net/2018/11/17/5befc966d6b17.png" alt="TIM图片20181117155505.png"></p>
-<h2 id="在服务器端设置定时执行"><a href="#在服务器端设置定时执行" class="headerlink" title="在服务器端设置定时执行"></a>在服务器端设置定时执行</h2><h3 id="确保你安装了crontab（ubuntu默认安装）"><a href="#确保你安装了crontab（ubuntu默认安装）" class="headerlink" title="确保你安装了crontab（ubuntu默认安装）"></a>确保你安装了crontab（ubuntu默认安装）</h3><p>cron命名解析：执行的时间 + 执行的用户 + 执行的命令<br><img src="https://i.loli.net/2018/11/17/5befc8af89fb3.png" alt="4.png"></p>
-<h3 id="查看原有的cron"><a href="#查看原有的cron" class="headerlink" title="查看原有的cron"></a>查看原有的cron</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/crontab</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2018/11/17/5befc9f6040d2.png" alt="TIM图片20181117155728.png"></p>
-<h3 id="编辑你的程序"><a href="#编辑你的程序" class="headerlink" title="编辑你的程序"></a>编辑你的程序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/crontab</span><br></pre></td></tr></table></figure>
-<p>编写你的命令，每天14:58给我发送邮件，这里根据你看的小说的更新时间设置，一天几更在大约什么时间等等<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">58 14 * * * root python3 smtp.py</span><br></pre></td></tr></table></figure></p>
-<p>编辑好了再次查看cron是否已经写入，我这里已经写入<br><img src="https://i.loli.net/2018/11/17/5befcb198cbae.png" alt="TIM图片20181117160221.png"><br>重启crontab服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service cron restart</span><br></pre></td></tr></table></figure></p>
-<h2 id="静静的等待14-58的到来，查看邮箱"><a href="#静静的等待14-58的到来，查看邮箱" class="headerlink" title="静静的等待14:58的到来，查看邮箱"></a>静静的等待14:58的到来，查看邮箱</h2><ul>
-<li>邮件收到了最新更新的哦<br><img src="https://i.loli.net/2018/11/17/5befcbd7281ec.png" alt="TIM图片20181117160515.png"></li>
-</ul>
-
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/python/"><i class="fas fa-tag fa-fw"></i>&nbsp;python</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class="post-wrapper">
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/11/github-hexo搭建个人博客/">
-                
-                    github+hexo搭建个人博客
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-11
-        </time>
-        
-    
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-        
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <h3 id="1-创建的项目名默认为-用户名-github-io-创建时点击生成readme文件，方便后面添加说明"><a href="#1-创建的项目名默认为-用户名-github-io-创建时点击生成readme文件，方便后面添加说明" class="headerlink" title="1.创建的项目名默认为  用户名.github.io,创建时点击生成readme文件，方便后面添加说明"></a>1.创建的项目名默认为  <strong>用户名.github.io</strong>,创建时点击生成readme文件，方便后面添加说明</h3><p><img aligen="center" src="https://i.loli.net/2018/11/13/5beaa5e07e5a7.png"></p>
-<h3 id="2-在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer"><a href="#2-在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer" class="headerlink" title="2.在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer"></a>2.在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer</h3><p><img src="https://i.loli.net/2018/11/13/5beaacf147c83.png" alt="使用vscode打开文件夹"></p>
-<h3 id="3-使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来"><a href="#3-使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来" class="headerlink" title="3.使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来"></a>3.使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来</h3><p><img src="https://i.loli.net/2018/11/13/5beaae3c7ee9d.png" alt="hexo初始化文件夹"></p>
-<h3 id="4-运行hexo-server打开服务，看看本地能不能显示"><a href="#4-运行hexo-server打开服务，看看本地能不能显示" class="headerlink" title="4.运行hexo server打开服务，看看本地能不能显示"></a>4.运行hexo server打开服务，看看本地能不能显示</h3><p><img src="https://i.loli.net/2018/11/13/5beab03a63524.png" alt="hexo server"><br>运行后访问url，如果看到如图就成功了<br><img src="https://i.loli.net/2018/11/13/5beab09f5e2ab.jpg" alt="运行效果"></p>
-<h3 id="5-配置文件中填写git的配置信息，按照如下格式填写"><a href="#5-配置文件中填写git的配置信息，按照如下格式填写" class="headerlink" title="5.配置文件中填写git的配置信息，按照如下格式填写"></a>5.配置文件中填写git的配置信息，按照如下格式填写</h3><p><img src="https://i.loli.net/2018/11/13/5beab1fb7f83a.png" alt="配置信息"></p>
-<h3 id="6-打开文件夹，右键git-bash-here"><a href="#6-打开文件夹，右键git-bash-here" class="headerlink" title="6.打开文件夹，右键git bash here"></a>6.打开文件夹，右键git bash here</h3><p><img src="https://i.loli.net/2018/11/13/5beab3362770b.png" alt="git bash here"></p>
-<h3 id="7-输入cd-ssh，进入ssh文件夹"><a href="#7-输入cd-ssh，进入ssh文件夹" class="headerlink" title="7.输入cd ~/.ssh，进入ssh文件夹"></a>7.输入cd ~/.ssh，进入ssh文件夹</h3><p><img src="https://i.loli.net/2018/11/13/5beab3e76e0c4.png" alt="ssh"></p>
-<h3 id="8-配置git中的用户名和邮箱"><a href="#8-配置git中的用户名和邮箱" class="headerlink" title="8.配置git中的用户名和邮箱"></a>8.配置git中的用户名和邮箱</h3><p><img src="https://i.loli.net/2018/11/13/5beab93273357.png" alt="配置用户名"></p>
-<h3 id="9-生成ssh密钥"><a href="#9-生成ssh密钥" class="headerlink" title="9.生成ssh密钥"></a>9.生成ssh密钥</h3><p><img src="https://i.loli.net/2018/11/13/5beab95f2f069.png" alt="生成密钥"></p>
-<h3 id="10-在github的项目中加入密钥"><a href="#10-在github的项目中加入密钥" class="headerlink" title="10.在github的项目中加入密钥"></a>10.在github的项目中加入密钥</h3><p><img src="https://i.loli.net/2018/11/13/5beab988e1bda.png" alt="添加密钥"></p>
-<h3 id="11-测试密钥链接是否成功"><a href="#11-测试密钥链接是否成功" class="headerlink" title="11.测试密钥链接是否成功"></a>11.测试密钥链接是否成功</h3><p><img src="https://i.loli.net/2018/11/13/5beab9fc045d7.png" alt="测试"></p>
-<h3 id="12-测试成功后再再编辑器中运行"><a href="#12-测试成功后再再编辑器中运行" class="headerlink" title="12.测试成功后再再编辑器中运行"></a>12.测试成功后再再编辑器中运行</h3><pre><code>hexo clean
-hexo g
-hexo d
-</code></pre><p><img src="https://i.loli.net/2018/11/13/5beaba9fb29d7.png" alt="4.png">这样就算上传成功</p>
-<h3 id="13-访问你的博客，看到之前再本地运行的界面，就行了"><a href="#13-访问你的博客，看到之前再本地运行的界面，就行了" class="headerlink" title="13.访问你的博客，看到之前再本地运行的界面，就行了"></a>13.访问你的博客，看到之前再本地运行的界面，就行了</h3>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/github/"><i class="fas fa-tag fa-fw"></i>&nbsp;github</a>
-                
-            </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-</section>
-
-
-    <br>
-    <div class="prev-next">
+      <br>
+      <div class="prev-next">
         <div class="prev-next">
-            
-            <p class="current">
-                1 / 2
-            </p>
-            
-                <a class="next" rel="next" href="/page/2/">
-                    <section class="post next">
-                        &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-                    </section>
-                </a>
-            
-
+          
+          <p class="current">
+            1 / 2
+          </p>
+          
+            <a class="next" rel="next" href="/page/2/">
+              <section class="post next">
+                &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+              </section>
+            </a>
+          
         </div>
-    </div>
-
-
-
-        </div>
-        <aside class='l_side'>
-            
-    
-        
-    <section class="m_widget author">
-        
-            <div class="header">
-                <img class="avatar" src="https://i.loli.net/2018/11/11/5be7cef51ba6c.jpg">
-            </div>
-        
-        
-        
-            <div class="social-wrapper">
-              
-                
-                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
-                
-              
-                
-                    <a href="https://github.com/hzuai9527" class="social flat-box" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
-                
-              
-                
-              
-                
-              
-                
-                    <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
-                
-              
-            </div>
-        
-    </section>
-
+      </div>
 
     
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
     
-        <section class="m_widget categories">
-    <div class="header"><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
-    <div class="content">
+    
+
+  
+
+
+</div>
+<aside class="l_side">
+  
+    
+    
+      
         
-    </div>
+          
+          
+            <section class="widget author">
+  <div class="content material">
+    
+      <div class="avatar">
+        <img class="avatar" src="https://i.loli.net/2019/08/27/SCTrzsMhKIg2OYq.jpg">
+      </div>
+    
+    
+      <div class="text">
+        
+        
+          <p>王子和公主过上了性福的生活，那守城的小兵呢？</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
 </section>
 
-    
-    
+          
         
-    <section class="m_widget tagcloud">
-        <div class="header"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
-        <div class="content">
-            <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
-        </div>
-    </section>
-
-
-    
-    
-        <section class="m_widget music">
-    <div class="header"><i class="fas fa-headphones-alt fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
-    <div class="content">
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&id=1305861056&auto=1&height=66"></iframe>    </div>
-</section>
-
-    
-    
-        <section class="m_widget links">
-    <div class="header"><div><i class="fas fa-handshake fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
-    
-    </div>
-    <div class="content">
-        <ul class="entry" id="links">
-            
-                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.xaoxuu.com">
-                    <div class="name">
-                        
-                            <img src="https://xaoxuu.com/assets/img/avatar.jpg">
-                        
-                        &nbsp;&nbsp;xaoxuu&#39;s blog
-                    </div>
-                </a></li>
-            
-        </ul>
-
-    </div>
-</section>
-
-    
-    
+      
         
+          
+          
+            
 
+          
+        
+      
+        
+          
+          
+            
+  <section class="widget tagcloud">
+    
+<header class="material">
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+    <a class="rightBtn" rel="nofollow" href="/tags" title="/tags">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class="content material">
+      <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+
+
+  <section class="widget music">
+    
+<header class="material">
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" rel="external nofollow noopener noreferrer" target="_blank" href="https://music.163.com/#/user/home?id=63035382" title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class="content material">
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="netease" data-type="playlist" data-id="2615636388" data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+          
+        
+      
     
 
+  
+</aside>
 
-        </aside>
-        <script>setLoadingBarProgress(60);</script>
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
     </div>
-    </div>
-    <footer id="footer" class="clearfix">
+  
+  <br>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
     
-        <div class="social-wrapper">
-          
-              
-                  <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-box" target="_blank" rel="external"></a>
-              
-          
-              
-                  <a href="https://github.com/hzuai9527" class="social fab fa-github flat-box" target="_blank" rel="external"></a>
-              
-          
-              
-          
-              
-          
-              
-                  <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-box" target="_blank" rel="external"></a>
-              
-          
-        </div>
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
     
-    <br>
-    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
-    <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，
-		总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
-    </div>
+    . 
+  </div>
 </footer>
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+<script>setLoadingBarProgress(80);</script>
 
 
-    <script>setLoadingBarProgress(80);</script>
-    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/node-waves/0.7.5/waves.min.js"></script>
-<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
-<!-- 访问统计 -->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
 
 
-<script src="/js/jquery.fitvids.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
 
-    <script>
-        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
-        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
-        var ALGOLIA_API_KEY = "";
-        var ALGOLIA_APP_ID = "";
-        var ALGOLIA_INDEX_NAME = "";
-        var AZURE_SERVICE_NAME = "";
-        var AZURE_INDEX_NAME = "";
-        var AZURE_QUERY_KEY = "";
-        var BAIDU_API_ID = "";
-        var SEARCH_SERVICE = "hexo" || "hexo";
-        var ROOT = "/"||"/";
-        if(!ROOT.endsWith('/'))ROOT += '/';
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
     </script>
-
-<script src="/js/search.js"></script>
-<script src="/js/app.js"></script>
+  
 
 
 
-    <script>setLoadingBarProgress(100);</script>
+
+
+
+
+
+
+
+
+  <script src="/js/app.js"></script>
+
+
+  <script src="/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
 </body>
+</html>

@@ -5,75 +5,97 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
   <title>Archives: 2018/11 | huzai9527&#39;s personal blog</title>
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="huzai9527's personal blog">
+  
+
   <meta name="HandheldFriendly" content="True">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="shortcut icon" href="https://xaoxuu.com/assets/img/favicon.ico">
-  <link rel="alternate" href="/atom.xml" title="huzai9527's personal blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
 
-  <link rel="shortcut icon" href="https://xaoxuu.com/assets/img/favicon.ico">
-  <link rel="icon" href="https://xaoxuu.com/assets/img/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://xaoxuu.com/assets/img/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
   <script>
     function setLoadingBarProgress(num) {
       document.getElementById('loading-bar').style.width=num+"%";
     }
   </script>
+
+  
+  
 </head>
-</html>
+
 <body>
-    <div id="loading-bar-wrapper">
-  <div id="loading-bar"></div>
-</div>
+  
+  
+  <header class="l_header material">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="material"></div>
+  </div>
 
-
-    <script>setLoadingBarProgress(20)</script>
-    <header class="l_header">
 	<div class="wrapper">
 		<div class="nav-main container container--flex">
-			<a class="logo flat-box" href="/">huzai9527's personal blog</a>
-				<div class="menu">
-					<ul class="h-list">
-            
-    					
-    						<li>
-    							<a class="nav- flat-box" href="https://huzai9527.github.io/">
-    								<i class="fas fa-home fa-fw"></i>&nbsp;主页
-  								</a>
-  							</li>
-        			
-    						<li>
-    							<a class="nav- flat-box" href="https://github.com/huzai9527?tab=repositories">
-    								<i class="fas fa-flask fa-fw"></i>&nbsp;项目
-  								</a>
-  							</li>
-        			
-    						<li>
-    							<a class="nav-home flat-box" href="/">
-    								<i class="fas fa-rss fa-fw"></i>&nbsp;博客
-  								</a>
-  							</li>
-        			
-    						<li>
-    							<a class="nav-archives flat-box" href="/archives/">
-    								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
-  								</a>
-  							</li>
-        			
-        		
-					</ul>
-					<div class="underline"></div>
-				</div>
+      <a class="logo flat-box" href="/">
+        
+          huzai9527's personal blog
+        
+      </a>
+			<div class="menu navgation">
+				<ul class="h-list">
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/" id="home">
+									<i class="fas fa-grin fa-fw"></i>&nbsp;近期文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="https://github.com/huzai9527?tab=repositories" rel="nofollow" id="https:github.comhuzai9527?tab=repositories">
+									<i class="fas fa-folder-open fa-fw"></i>&nbsp;项目
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="https://xaoxuu.com/wiki/volantis/" rel="nofollow" id="https:xaoxuu.comwikivolantis">
+									<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
 
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
 						<input type="text" class="input u-search-input" placeholder="Search">
-						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
 			
@@ -88,82 +110,150 @@
 		<div class="nav-sub container container--flex">
 			<a class="logo flat-box"></a>
 			<ul class="switcher h-list">
-				<li class="s-comment"><a class="fas fa-comments fa-fw flat-box" href="javascript:void(0)"></a></li>
-				<li class="s-top"><a class="fas fa-arrow-circle-up fa-fw flat-box" href="javascript:void(0)"></a></li>
-				<li class="s-toc"><a class="fas fa-list fa-fw flat-box" href="javascript:void(0)"></a></li>
+				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+        
+          <li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+        
 			</ul>
 		</div>
 	</div>
 </header>
 	<aside class="menu-phone">
-		<nav>
+    <header>
+		<nav class="menu navgation">
       <ul>
+        
           
-              
-                  <li>
-                      <a class="nav- flat-box nav flat-box" href="https://huzai9527.github.io/">
-                      <i class="fas fa-home fa-fw"></i>&nbsp;主页</a>
-                  </li>
-              
-                  <li>
-                      <a class="nav- flat-box nav flat-box" href="https://github.com/huzai9527?tab=repositories">
-                      <i class="fas fa-flask fa-fw"></i>&nbsp;项目</a>
-                  </li>
-              
-                  <li>
-                      <a class="nav-home flat-box nav flat-box" href="/">
-                      <i class="fas fa-rss fa-fw"></i>&nbsp;博客</a>
-                  </li>
-              
-                  <li>
-                      <a class="nav-archives flat-box nav flat-box" href="/archives/">
-                      <i class="fas fa-archive fa-fw"></i>&nbsp;归档</a>
-                  </li>
-              
+            <li>
+							<a class="nav flat-box" href="/" id="home">
+								<i class="fas fa-clock fa-fw"></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
+								<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
+							</a>
+            </li>
+          
        
       </ul>
 		</nav>
+    </header>
 	</aside>
+<script>setLoadingBarProgress(40);</script>
 
-    <script>setLoadingBarProgress(40);</script>
-    <div class="l_body">
-    <div class='container clearfix'>
-        <div class='l_main'>
-            
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class="l_main">
 	
-    <script>
-        window.subData= { title:'year : 2018.11'}
-    </script>
-
-
-<section class="post-list">
+		
+  <section class="post-list">
+    
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
     
     
-        <div class="post-wrapper">
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/23/小说更新后发送邮箱的问题解决/">
-                
-                    小说更新后发送邮箱的问题解决
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-23
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2018/11/23/小说更新后发送邮箱的问题解决/">
+      小说更新后发送邮箱的问题解决
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-11-23</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
 <li>先上一张图，看一下问题在哪<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/1.png" alt="1.png"></li>
 </ul>
 <p>从图上我们可以看到，虽然小说是每天发两次给我，但是有时候会漏掉一章，有时候又会重复发一章，这都是小说作者不按时更新惹的祸啊！！！既然小说作者的习惯改变不了，那就完善自我吧!</p>
@@ -181,45 +271,95 @@
 <li>如果作者一下爆发怎么办（一分钟更新十章！）<br>思考一下，其实原理差不多，缓存大小不同罢了！有兴趣的可以尝试一下！<h2 id="项目源码已发布在github"><a href="#项目源码已发布在github" class="headerlink" title="项目源码已发布在github"></a>项目源码已发布在github</h2><a href="https://github.com/huzai9527/fictionSend" target="_blank" rel="noopener">https://github.com/huzai9527/fictionSend</a></li>
 </ul>
 
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/python/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>python</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/python/"><i class="fas fa-tag fa-fw"></i>&nbsp;python</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/19/c-指针问题/">
-                
-                    c++指针问题
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-19
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2018/11/19/c-指针问题/">
+      c++指针问题
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-11-19</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h2 id="指针究竟是什么"><a href="#指针究竟是什么" class="headerlink" title="指针究竟是什么"></a>指针究竟是什么</h2><ul>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="指针究竟是什么"><a href="#指针究竟是什么" class="headerlink" title="指针究竟是什么"></a>指针究竟是什么</h2><ul>
 <li>指针是一类特殊的变量，他保存的不是一般数据的值，而是程序中另一对象在内存中的地址<br>我们先通过一个小程序看一看指针如何工作<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">	int n = 123,m = 456;</span><br><span class="line">	int *p = &amp;n;</span><br><span class="line">	cout&lt;&lt;<span class="string">"&amp;n:"</span>&lt;&lt;&amp;n&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">"&amp;p:"</span>&lt;&lt;&amp;p&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">" p:"</span>&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">"*p:"</span>&lt;&lt;*p&lt;&lt;endl;</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -274,45 +414,95 @@
 <p>指针常量：表示所定义的指针是一个常量，只能在定义的时候初始化<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int i,j;</span><br><span class="line">int * const p = &amp;i;</span><br><span class="line">p = &amp;j;//错误</span><br></pre></td></tr></table></figure></p>
 <p>指向常量的指针常量：格式为 const 类型 * const 指针常量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int i,j;</span><br><span class="line">const int * const p = &amp;i;</span><br><span class="line">*p = 10;//错误</span><br><span class="line">p = &amp;j;//错误</span><br><span class="line">i = 10;//正确</span><br></pre></td></tr></table></figure></p>
 
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/c/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>c++</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/c/"><i class="fas fa-tag fa-fw"></i>&nbsp;c++</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/18/scrapy构建自己的ip代理池/">
-                
-                    scrapy构建自己的ip代理池
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-18
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2018/11/18/scrapy构建自己的ip代理池/">
+      scrapy构建自己的ip代理池
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-11-18</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h1 id="用scrapy爬取可用的代理"><a href="#用scrapy爬取可用的代理" class="headerlink" title="用scrapy爬取可用的代理"></a>用scrapy爬取可用的代理</h1><h2 id="分析免费代理网站的结构"><a href="#分析免费代理网站的结构" class="headerlink" title="分析免费代理网站的结构"></a>分析免费代理网站的结构</h2><ul>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="用scrapy爬取可用的代理"><a href="#用scrapy爬取可用的代理" class="headerlink" title="用scrapy爬取可用的代理"></a>用scrapy爬取可用的代理</h1><h2 id="分析免费代理网站的结构"><a href="#分析免费代理网站的结构" class="headerlink" title="分析免费代理网站的结构"></a>分析免费代理网站的结构</h2><ul>
 <li>我爬取了三个字段：<strong>IP</strong>、<strong>port</strong>、<strong>type</strong><br><img src="https://i.loli.net/2018/11/18/5bf12dc61a906.jpg" alt="TIM图片20181118171534.jpg"><h2 id="分析要爬取的数据，编写items-py"><a href="#分析要爬取的数据，编写items-py" class="headerlink" title="分析要爬取的数据，编写items.py"></a>分析要爬取的数据，编写items.py</h2></li>
 <li>因此在items.py中，建立相应的字段<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import scrapy</span><br><span class="line">class IproxyItem(scrapy.Item):</span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    <span class="comment"># name = scrapy.Field()</span></span><br><span class="line">    ip = scrapy.Field()</span><br><span class="line">    <span class="built_in">type</span> = scrapy.Field()</span><br><span class="line">    port = scrapy.Field()</span><br></pre></td></tr></table></figure>
 </li>
@@ -332,45 +522,95 @@
 <li>可用的存在数据库<br><img src="https://i.loli.net/2018/11/18/5bf130d8031b3.jpg" alt="TIM图片20181118172841.jpg"></li>
 </ul>
 
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/python-scrapy-爬虫/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>python scrapy 爬虫</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/python-scrapy-爬虫/"><i class="fas fa-tag fa-fw"></i>&nbsp;python scrapy 爬虫</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/17/python爬取最新更新的小说并发送到你的邮箱/">
-                
-                    python爬取最新更新的小说并发送到你的邮箱
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-17
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2018/11/17/python爬取最新更新的小说并发送到你的邮箱/">
+      python爬取最新更新的小说并发送到你的邮箱
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-11-17</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h2 id="数据获取—Spider"><a href="#数据获取—Spider" class="headerlink" title="数据获取—Spider()"></a>数据获取—Spider()</h2><h3 id="找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取"><a href="#找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取" class="headerlink" title="找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取"></a>找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取</h3><p>  <img src="https://i.loli.net/2018/11/17/5befc2f9dd2a9.png" alt="1.png"><br>  这里我获取最新章节的时间、标题以及标题的连接<br>  <img src="https://i.loli.net/2018/11/17/5befc38daf280.png" alt="2.png"><br>  这里获取内容</p>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="数据获取—Spider"><a href="#数据获取—Spider" class="headerlink" title="数据获取—Spider()"></a>数据获取—Spider()</h2><h3 id="找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取"><a href="#找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取" class="headerlink" title="找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取"></a>找目标网站，该网站是你看小说的网站，分析该网站的结构方便你对内容的抓取</h3><p>  <img src="https://i.loli.net/2018/11/17/5befc2f9dd2a9.png" alt="1.png"><br>  这里我获取最新章节的时间、标题以及标题的连接<br>  <img src="https://i.loli.net/2018/11/17/5befc38daf280.png" alt="2.png"><br>  这里获取内容</p>
 <h3 id="编写spider方法，确定他的返回值，这里我返回的是一个list，包括更新的时间、标题、内容"><a href="#编写spider方法，确定他的返回值，这里我返回的是一个list，包括更新的时间、标题、内容" class="headerlink" title="编写spider方法，确定他的返回值，这里我返回的是一个list，包括更新的时间、标题、内容"></a>编写spider方法，确定他的返回值，这里我返回的是一个list，包括更新的时间、标题、内容</h3><ul>
 <li>方法中需要导入的包 <strong>requests</strong> <strong>bs4</strong> <strong>re</strong> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def spider():</span><br><span class="line">    list = []</span><br><span class="line">    response = requests.get(<span class="string">'https://www.xbiquge6.com/13_13134/'</span>)</span><br><span class="line">    response.encoding = (<span class="string">'utf-8'</span>)</span><br><span class="line">    html = response.text</span><br><span class="line">    html = BeautifulSoup(html, <span class="string">'html.parser'</span>)</span><br><span class="line">    time = html.select(<span class="string">'div#info p:nth-of-type(3)'</span>).__getitem__(0).text[5:]</span><br><span class="line">    title = html.select(<span class="string">'div#info p:nth-of-type(4) a[href]'</span>).__getitem__(0).text</span><br><span class="line">    href = html.select(<span class="string">'div#info p:nth-of-type(4) a[href]'</span>).__getitem__(0)</span><br><span class="line">    <span class="comment"># print(title)</span></span><br><span class="line">    pattern = re.compile(r<span class="string">'href="(.+?)"'</span>)</span><br><span class="line">    href = re.findall(pattern, href.__str__()).__getitem__(0)</span><br><span class="line">    href = <span class="string">"https://www.xbiquge6.com"</span> + href</span><br><span class="line">    response = requests.get(href)</span><br><span class="line">    response.encoding = (<span class="string">'utf-8'</span>)</span><br><span class="line">    html = BeautifulSoup(response.text, <span class="string">'html.parser'</span>)</span><br><span class="line">    content = html.select(<span class="string">'div#content'</span>)</span><br><span class="line">    <span class="comment"># print(content)</span></span><br><span class="line">    list.append(title)</span><br><span class="line">    list.append(content)</span><br><span class="line">    list.append(time)</span><br><span class="line">    <span class="built_in">return</span> list</span><br></pre></td></tr></table></figure>
 </li>
@@ -393,45 +633,95 @@
 <li>邮件收到了最新更新的哦<br><img src="https://i.loli.net/2018/11/17/5befcbd7281ec.png" alt="TIM图片20181117160515.png"></li>
 </ul>
 
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/python/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>python</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/python/"><i class="fas fa-tag fa-fw"></i>&nbsp;python</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
-    
-        <div class="post-wrapper">
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
             <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/11/github-hexo搭建个人博客/">
-                
-                    github+hexo搭建个人博客
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-11
-        </time>
-        
+  
+
+
+  <section class="meta">
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    
+    <div class="meta" id="header-meta">
+      
         
+  <h2 class="title">
+    <a href="/2018/11/11/github-hexo搭建个人博客/">
+      github+hexo搭建个人博客
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-11-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
     </div>
+  </section>
 
 
-    </section>
-
-    <section class="article typo">
-        <h3 id="1-创建的项目名默认为-用户名-github-io-创建时点击生成readme文件，方便后面添加说明"><a href="#1-创建的项目名默认为-用户名-github-io-创建时点击生成readme文件，方便后面添加说明" class="headerlink" title="1.创建的项目名默认为  用户名.github.io,创建时点击生成readme文件，方便后面添加说明"></a>1.创建的项目名默认为  <strong>用户名.github.io</strong>,创建时点击生成readme文件，方便后面添加说明</h3><p><img aligen="center" src="https://i.loli.net/2018/11/13/5beaa5e07e5a7.png"></p>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="1-创建的项目名默认为-用户名-github-io-创建时点击生成readme文件，方便后面添加说明"><a href="#1-创建的项目名默认为-用户名-github-io-创建时点击生成readme文件，方便后面添加说明" class="headerlink" title="1.创建的项目名默认为  用户名.github.io,创建时点击生成readme文件，方便后面添加说明"></a>1.创建的项目名默认为  <strong>用户名.github.io</strong>,创建时点击生成readme文件，方便后面添加说明</h3><p><img aligen="center" src="https://i.loli.net/2018/11/13/5beaa5e07e5a7.png"></p>
 <h3 id="2-在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer"><a href="#2-在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer" class="headerlink" title="2.在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer"></a>2.在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer</h3><p><img src="https://i.loli.net/2018/11/13/5beaacf147c83.png" alt="使用vscode打开文件夹"></p>
 <h3 id="3-使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来"><a href="#3-使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来" class="headerlink" title="3.使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来"></a>3.使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来</h3><p><img src="https://i.loli.net/2018/11/13/5beaae3c7ee9d.png" alt="hexo初始化文件夹"></p>
 <h3 id="4-运行hexo-server打开服务，看看本地能不能显示"><a href="#4-运行hexo-server打开服务，看看本地能不能显示" class="headerlink" title="4.运行hexo server打开服务，看看本地能不能显示"></a>4.运行hexo server打开服务，看看本地能不能显示</h3><p><img src="https://i.loli.net/2018/11/13/5beab03a63524.png" alt="hexo server"><br>运行后访问url，如果看到如图就成功了<br><img src="https://i.loli.net/2018/11/13/5beab09f5e2ab.jpg" alt="运行效果"></p>
@@ -447,226 +737,418 @@ hexo g
 hexo d
 </code></pre><p><img src="https://i.loli.net/2018/11/13/5beaba9fb29d7.png" alt="4.png">这样就算上传成功</p>
 <h3 id="13-访问你的博客，看到之前再本地运行的界面，就行了"><a href="#13-访问你的博客，看到之前再本地运行的界面，就行了" class="headerlink" title="13.访问你的博客，看到之前再本地运行的界面，就行了"></a>13.访问你的博客，看到之前再本地运行的界面，就行了</h3>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-
+          <a href="/tags/github/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>github</a>
         
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/github/"><i class="fas fa-tag fa-fw"></i>&nbsp;github</a>
-                
-            </div>
-        
-    </section>
+      </div>
+    
+  </section>
 </article>
 
-        </div>
+          </div>
+        
+      
     
-        <div class="post-wrapper">
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/11/10/hello-world/">
-                
-                    Hello World
-                
+  </section>
+  
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
+
+  
+
+
+	
+</div>
+<aside class="l_side">
+  
+    
+    
+      
+        
+          
+          
+            <section class="widget author">
+  <div class="content material">
+    
+      <div class="avatar">
+        <img class="avatar" src="https://i.loli.net/2019/08/27/SCTrzsMhKIg2OYq.jpg">
+      </div>
+    
+    
+      <div class="text">
+        
+        
+          <p>王子和公主过上了性福的生活，那守城的小兵呢？</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
             </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-11-10
-        </time>
+          
         
+          
+            <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
     
-    <div class="cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-        
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-
-        
-    </section>
-</article>
-
-        </div>
-    
+  </div>
 </section>
 
-
-
-
-
-        </div>
-        <aside class='l_side'>
+          
+        
+      
+        
+          
+          
             
-    
-        
-    <section class="m_widget author">
-        
-            <div class="header">
-                <img class="avatar" src="https://i.loli.net/2018/11/11/5be7cef51ba6c.jpg">
-            </div>
-        
-        
-        
-            <div class="social-wrapper">
-              
-                
-                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
-                
-              
-                
-                    <a href="https://github.com/hzuai9527" class="social flat-box" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
-                
-              
-                
-              
-                
-              
-                
-                    <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
-                
-              
-            </div>
-        
-    </section>
 
-
-    
-    
-        <section class="m_widget categories">
-    <div class="header"><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
-    <div class="content">
+          
         
-    </div>
-</section>
-
-    
-    
+      
         
-    <section class="m_widget tagcloud">
-        <div class="header"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
-        <div class="content">
-            <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
-        </div>
-    </section>
-
-
-    
-    
-        <section class="m_widget music">
-    <div class="header"><i class="fas fa-headphones-alt fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
-    <div class="content">
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&id=1305861056&auto=1&height=66"></iframe>    </div>
-</section>
-
-    
-    
-        <section class="m_widget links">
-    <div class="header"><div><i class="fas fa-handshake fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
-    
-    </div>
-    <div class="content">
-        <ul class="entry" id="links">
+          
+          
             
-                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.xaoxuu.com">
-                    <div class="name">
-                        
-                            <img src="https://xaoxuu.com/assets/img/avatar.jpg">
-                        
-                        &nbsp;&nbsp;xaoxuu&#39;s blog
-                    </div>
-                </a></li>
-            
-        </ul>
+  <section class="widget tagcloud">
+    
+<header class="material">
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+    <a class="rightBtn" rel="nofollow" href="/tags" title="/tags">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
 
+    <div class="content material">
+      <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
     </div>
-</section>
+  </section>
 
-    
-    
+
+          
         
+      
+        
+          
+          
+            
 
+
+  <section class="widget music">
+    
+<header class="material">
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" rel="external nofollow noopener noreferrer" target="_blank" href="https://music.163.com/#/user/home?id=63035382" title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class="content material">
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="netease" data-type="playlist" data-id="2615636388" data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+          
+        
+      
     
 
+  
+</aside>
 
-        </aside>
-        <script>setLoadingBarProgress(60);</script>
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
     </div>
-    </div>
-    <footer id="footer" class="clearfix">
+  
+  <br>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
     
-        <div class="social-wrapper">
-          
-              
-                  <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-box" target="_blank" rel="external"></a>
-              
-          
-              
-                  <a href="https://github.com/hzuai9527" class="social fab fa-github flat-box" target="_blank" rel="external"></a>
-              
-          
-              
-          
-              
-          
-              
-                  <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-box" target="_blank" rel="external"></a>
-              
-          
-        </div>
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
     
-    <br>
-    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
-    <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，
-		总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
-    </div>
+    . 
+  </div>
 </footer>
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+<script>setLoadingBarProgress(80);</script>
 
 
-    <script>setLoadingBarProgress(80);</script>
-    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/node-waves/0.7.5/waves.min.js"></script>
-<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
-<!-- 访问统计 -->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
-<script src="/js/jquery.fitvids.js"></script>
+	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+	
 
-    <script>
-        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
-        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
-        var ALGOLIA_API_KEY = "";
-        var ALGOLIA_APP_ID = "";
-        var ALGOLIA_INDEX_NAME = "";
-        var AZURE_SERVICE_NAME = "";
-        var AZURE_INDEX_NAME = "";
-        var AZURE_QUERY_KEY = "";
-        var BAIDU_API_ID = "";
-        var SEARCH_SERVICE = "hexo" || "hexo";
-        var ROOT = "/"||"/";
-        if(!ROOT.endsWith('/'))ROOT += '/';
+	
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
     </script>
-
-<script src="/js/search.js"></script>
-<script src="/js/app.js"></script>
+  
 
 
 
-    <script>setLoadingBarProgress(100);</script>
+
+
+
+
+
+
+
+
+  <script src="/js/app.js"></script>
+
+
+  <script src="/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
 </body>
+</html>
