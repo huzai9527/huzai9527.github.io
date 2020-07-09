@@ -3,6 +3,40 @@
   
     
     <entry>
+      <title>ubuntu自动换源</title>
+      <link href="/2020/07/09/ubuntu%E8%87%AA%E5%8A%A8%E6%8D%A2%E6%BA%90/"/>
+      <url>/2020/07/09/ubuntu%E8%87%AA%E5%8A%A8%E6%8D%A2%E6%BA%90/</url>
+      
+        <content type="html"><![CDATA[<h2 id="下载huanyuan-sh"><a href="#下载huanyuan-sh" class="headerlink" title="下载huanyuan.sh"></a>下载huanyuan.sh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span>  git@github.com:huzai9527/ubuntu_huanyuan.git</span><br></pre></td></tr></table></figure><h2 id="进入文件夹"><a href="#进入文件夹" class="headerlink" title="进入文件夹"></a>进入文件夹</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash huanyuan.sh</span><br></pre></td></tr></table></figure><h2 id="期间需要你输入管理员密码"><a href="#期间需要你输入管理员密码" class="headerlink" title="期间需要你输入管理员密码"></a>期间需要你输入管理员密码</h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>python网络编程</title>
+      <link href="/2020/07/08/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+      <url>/2020/07/08/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h2 id="套接字类型"><a href="#套接字类型" class="headerlink" title="套接字类型"></a>套接字类型</h2><h3 id="面向连接的套接字"><a href="#面向连接的套接字" class="headerlink" title="面向连接的套接字"></a>面向连接的套接字</h3><pre><code>- 基于TCP/IP，使用SOCKET_STREAM作为套接字类型</code></pre><h3 id="无连接的套接字"><a href="#无连接的套接字" class="headerlink" title="无连接的套接字"></a>无连接的套接字</h3><pre><code>- 基于UDP/IP，使用SOCKET_DGRAM作为套接字类型</code></pre><h2 id="pyhton中的网络编程"><a href="#pyhton中的网络编程" class="headerlink" title="pyhton中的网络编程"></a>pyhton中的网络编程</h2><h3 id="socket模块"><a href="#socket模块" class="headerlink" title="socket模块"></a>socket模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket(socket_family, socket_type, protocol = <span class="number">0</span>)</span><br></pre></td></tr></table></figure><ul><li>其中socket_family 是选择网络类型,本地网（AF_UNIX）还是因特网(AF_INET)</li><li><p>socket_type 是选择套接字的类型, protocaol默认为0</p><h3 id="套接字对象常用的方法"><a href="#套接字对象常用的方法" class="headerlink" title="套接字对象常用的方法"></a>套接字对象常用的方法</h3><ul><li>服务器套接字<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s.bind() <span class="comment">#将主机号端口号绑定到套接字上</span></span><br><span class="line">s.listen() <span class="comment">#设置并启动TCP监听器</span></span><br><span class="line">s.accept() <span class="comment">#被动接受客户端连接</span></span><br></pre></td></tr></table></figure></li></ul></li></ul><ul><li>客户端套接字<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s.connect() <span class="comment">#主动发起TCP服务连接</span></span><br><span class="line">s.connect_ex() <span class="comment">#此时会以错误码的形式抛出问题而不是一大串异常</span></span><br></pre></td></tr></table></figure></li></ul><h3 id="创建一个时间戳服务器"><a href="#创建一个时间戳服务器" class="headerlink" title="创建一个时间戳服务器"></a>创建一个时间戳服务器</h3>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 网络编程 python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>docker常用命令</title>
       <link href="/2020/07/01/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2020/07/01/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
