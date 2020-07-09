@@ -178,6 +178,255 @@
       
         
   <h2 class="title">
+    <a href="/2018/11/23/小说更新后发送邮箱的问题解决/">
+      小说更新后发送邮箱的问题解决
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-11-23</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
+<li>先上一张图，看一下问题在哪<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/1.png" alt="1.png"></li>
+</ul>
+<p>从图上我们可以看到，虽然小说是每天发两次给我，但是有时候会漏掉一章，有时候又会重复发一章，这都是小说作者不按时更新惹的祸啊！！！既然小说作者的习惯改变不了，那就完善自我吧!</p>
+<h2 id="新的思路，加一个“缓存”"><a href="#新的思路，加一个“缓存”" class="headerlink" title="新的思路，加一个“缓存”"></a>新的思路，加一个“缓存”</h2><p>缓存是什么意思呢？</p>
+<ul>
+<li>本地建一个名为origin.txt的文本文件，每次爬取完成后与origin.txt里面的内容对比一下。</li>
+<li>如果一样则不发送。</li>
+<li>如果不一样就发送，并且将最新的内容保存到origin.txt文件中，作为下一次的对照。</li>
+</ul>
+<h2 id="演示效果"><a href="#演示效果" class="headerlink" title="演示效果"></a>演示效果</h2><ul>
+<li>再origin.txt里写入test，然后启动<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/2.png" alt="2.png"><br>我们可以看到，origin文件已被重新写入，并且新的文本已经发送到邮箱</li>
+<li>再次启动，也就是还没跟新的情况<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/3.png" alt="3"><br>我们看到，提示消息，这里不会跟新origin，也不会发送邮件</li>
+</ul>
+<h2 id="还遗留的问题"><a href="#还遗留的问题" class="headerlink" title="还遗留的问题"></a>还遗留的问题</h2><ul>
+<li>如果作者一下爆发怎么办（一分钟更新十章！）<br>思考一下，其实原理差不多，缓存大小不同罢了！有兴趣的可以尝试一下！<h2 id="项目源码已发布在github"><a href="#项目源码已发布在github" class="headerlink" title="项目源码已发布在github"></a>项目源码已发布在github</h2><a href="https://github.com/huzai9527/fictionSend" target="_blank" rel="noopener">https://github.com/huzai9527/fictionSend</a></li>
+</ul>
+
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/python/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>python</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2018/11/19/c-指针问题/">
+      c++指针问题
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-11-19</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="指针究竟是什么"><a href="#指针究竟是什么" class="headerlink" title="指针究竟是什么"></a>指针究竟是什么</h2><ul>
+<li>指针是一类特殊的变量，他保存的不是一般数据的值，而是程序中另一对象在内存中的地址<br>我们先通过一个小程序看一看指针如何工作<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">	int n = 123,m = 456;</span><br><span class="line">	int *p = &amp;n;</span><br><span class="line">	cout&lt;&lt;<span class="string">"&amp;n:"</span>&lt;&lt;&amp;n&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">"&amp;p:"</span>&lt;&lt;&amp;p&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">" p:"</span>&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">"*p:"</span>&lt;&lt;*p&lt;&lt;endl;</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2018/11/19/c-指针问题/1.png" alt="1"><br>从运行结果可以看出下面几点：</p>
+<ul>
+<li>p本身是有一个地址的且地址为 <strong>&amp;p</strong></li>
+<li>p的值是另一个变量n的地址 <strong>&amp;n</strong></li>
+<li>*p所表示的意思是地址为 <strong>p</strong> 的内存中所存的值 <strong>n</strong></li>
+<li>即本段程序中共涉及到2个地址，一个是 <strong>n</strong> 的地址，一个是 <strong>p</strong> 的地址,我们用一张图来表示他们的关系<br><img src="/2018/11/19/c-指针问题/2.png" alt="2"><h2 id="指针的初始化"><a href="#指针的初始化" class="headerlink" title="指针的初始化"></a>指针的初始化</h2></li>
+<li><p>被具有相同类型的对象初始化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int i = 10;</span><br><span class="line">int *p = &amp;i;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由另一个同一类型的指针初始化,这时两个指针指向同一地址空间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int *p1 = p;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过直接分配内存地址得到初值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int *p2 = new int;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指针也可以没有类型，通用指针的定义,这样的指针可以指向任一对象</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void *p3</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="指针的运算符"><a href="#指针的运算符" class="headerlink" title="指针的运算符"></a>指针的运算符</h2><p>定义指针的目的事通过指针变量间接的访问变量</p>
+<ul>
+<li><strong>*</strong>:取指针值运算符。通过指针所指内存单元的地址间接的访问对应的存储单元。若指针变量p指向变量a，则 *p的运算结果为变量a的值</li>
+<li><p><strong>&amp;</strong>:取地址运算符。返回变量对应的存储单元地址，若a为int变量，p为int型指针变量，则 p = &amp;a表示将a的存储单元地址赋给p。<br>用一个程序验证一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line"> int a = 100;</span><br><span class="line"> int *p,*p1,*q;</span><br><span class="line"> p = &amp;a;</span><br><span class="line"> p1 = p;</span><br><span class="line"> q = NULL;</span><br><span class="line"> cout&lt;&lt;<span class="string">"a="</span>&lt;&lt;a&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"*p="</span>&lt;&lt;*p&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"p="</span>&lt;&lt;p&lt;&lt;endl;</span><br><span class="line"> *p1 = 200;</span><br><span class="line"> cout&lt;&lt;<span class="string">"a="</span>&lt;&lt;a&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"*p="</span>&lt;&lt;*p&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"p="</span>&lt;&lt;p&lt;&lt;endl;</span><br><span class="line"> cout&lt;&lt;<span class="string">"*p1="</span>&lt;&lt;*p1&lt;&lt;<span class="string">","</span>&lt;&lt;<span class="string">"p1="</span>&lt;&lt;p1&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果<br><img src="/2018/11/19/c-指针问题/3.png" alt="3.png"></p>
+<h2 id="指针与数组的关系"><a href="#指针与数组的关系" class="headerlink" title="指针与数组的关系"></a>指针与数组的关系</h2></li>
+<li>数组名和指针在引用数组元素和取他们的地址方面可以相互转换，但两者有一个重要的不同点</li>
+<li><p>数组是在定义时就分配好内存空间的，因此数组名是一个地址常量，在程序中不能将数组名作为变量为其赋值，而指针是一个变量，可以多次赋值<br>我们通过一个程序看一下他们的关系</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">int a[10]=&#123;1,2,3,4,5,6,7,8,9,10&#125;;</span><br><span class="line">int *pa = a;</span><br><span class="line">int i = 3;</span><br><span class="line">cout&lt;&lt;<span class="string">"a[i]   :"</span>&lt;&lt;a[i]&lt;&lt;endl;</span><br><span class="line">cout&lt;&lt;<span class="string">"*(pa+i):"</span>&lt;&lt;*(pa+i)&lt;&lt;endl;</span><br><span class="line">cout&lt;&lt;<span class="string">"*(a+i) :"</span>&lt;&lt;*(a+i)&lt;&lt;endl;</span><br><span class="line">cout&lt;&lt;<span class="string">"&amp;a[i]  :"</span>&lt;&lt;&amp;a[i]&lt;&lt;endl;</span><br><span class="line">cout&lt;&lt;<span class="string">"a+i    :"</span>&lt;&lt;a+i&lt;&lt;endl;</span><br><span class="line">cout&lt;&lt;<span class="string">"pa+i   :"</span>&lt;&lt;pa+i&lt;&lt;endl;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果<br><img src="/2018/11/19/c-指针问题/4.png" alt="4"></p>
+<h2 id="易重要的和易混淆的概念"><a href="#易重要的和易混淆的概念" class="headerlink" title="易重要的和易混淆的概念"></a>易重要的和易混淆的概念</h2></li>
+<li>为什么要对指针初始化？<br>定义了指针变量后，系统会为其分配一个内存空间，若没有赋值则此内存区域的内容是随机的，也就是指针随机指向一个内存单元。你想想如果你对一个随机的内存空间进行写操作，会怎样！</li>
+<li>指针的运算<br>指针 + 整数 = 指针<br>指针 - 指针 = 整数 //同类行的指针相减表示两个基类型变量的个数<br>指针 + 指针 = ？？？？ //不可以</li>
+<li><p>new、 new[]、 delete、 delete[]有什么区别</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int *p = new int(3) // 为p分配了一个整形变量的存储区域并初始化为3</span><br><span class="line">int *p1 = new int[20] // 分配20个整形变量的区域给p1</span><br><span class="line">delete p //释放有new申请的空间</span><br><span class="line">delete[] p1 //释放由new[]申请的空间</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++程序中动态分配的内存不会被自动释放</p>
+</li>
+<li>指针函数和函数指针含义相同吗？<br>完全不同！<br>指针函数：若一个函数返回的是一个地址，则称该函数为指针函数。格式是 数据类型<em> 函数名（参数列表）<br>函数指针：指针变量指向一个函数的入口地址，格式为 数据类型 （</em>函数指针变量）（参数列表）<br>函数指针的用法：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int cul(int (*pf)(int,int), int x, int y)&#123;</span><br><span class="line">	<span class="built_in">return</span> pf(x,y);</span><br><span class="line">&#125;</span><br><span class="line">int add(int x,int y)&#123;</span><br><span class="line">	<span class="built_in">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line">int sub(int x,int y)&#123;</span><br><span class="line">	<span class="built_in">return</span> x-y;</span><br><span class="line">&#125;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">	int a=10,b=20;</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;<span class="string">"+"</span>&lt;&lt;b&lt;&lt;<span class="string">"="</span>&lt;&lt;cul(add,a,b)&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;<span class="string">"-"</span>&lt;&lt;b&lt;&lt;<span class="string">"="</span>&lt;&lt;cul(sub,a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2018/11/19/c-指针问题/5.png" alt="5"></p>
+<ul>
+<li>常量指针、指针常量、指向常量的指针常量有什么区别<br>常量指针：表示指针指向的是一个常量，格式：const 类型<em> 指针变量 或 类型 const </em> 指针变量<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int i;</span><br><span class="line">const int *p = &amp;i;</span><br><span class="line">*p = 10; //错误</span><br><span class="line">i = 10; //正确</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>指针常量：表示所定义的指针是一个常量，只能在定义的时候初始化<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int i,j;</span><br><span class="line">int * const p = &amp;i;</span><br><span class="line">p = &amp;j;//错误</span><br></pre></td></tr></table></figure></p>
+<p>指向常量的指针常量：格式为 const 类型 * const 指针常量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int i,j;</span><br><span class="line">const int * const p = &amp;i;</span><br><span class="line">*p = 10;//错误</span><br><span class="line">p = &amp;j;//错误</span><br><span class="line">i = 10;//正确</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/c/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>c++</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2018/11/18/scrapy构建自己的ip代理池/">
       scrapy构建自己的ip代理池
     </a>
@@ -597,7 +846,7 @@ hexo d
 </header>
 
     <div class="content material">
-      <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a>
+      <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
     </div>
   </section>
 
