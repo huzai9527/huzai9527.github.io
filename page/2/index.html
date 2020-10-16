@@ -178,6 +178,738 @@
       
         
   <h2 class="title">
+    <a href="/2019/01/20/数据分析-数据清洗/">
+      数据分析----数据清洗
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-20</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="数据分析—-数据清洗"><a href="#数据分析—-数据清洗" class="headerlink" title="数据分析—-数据清洗"></a>数据分析—-数据清洗</h1><h2 id="一、导入数据"><a href="#一、导入数据" class="headerlink" title="一、导入数据"></a>一、导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame</span><br><span class="line"><span class="keyword">import</span> xlrd</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = DataFrame(pd.read_excel(<span class="string">'datas/grades.xlsx'</span>)) </span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>   Unnamed: 0  Unnamed: 1  Unnamed: 2  Unnamed: 3
+0         蒋广佳        43.0        69.0        61.0
+1          廖菲        80.0        64.0        62.0
+2         沈秀玲        68.0        74.0        98.0
+3          韦丹        48.0        53.0        64.0
+4         张梦雅        72.0        73.0        96.0
+5         赵雅欣        60.0         NaN        70.0
+6         曹海广        74.0        60.0        20.0
+7         陈泽灿        38.0        21.0        92.0
+8         NaN        88.0        67.0        84.0
+9         高海亮        86.0        74.0        96.0
+10        顾晓冬        84.0        60.0        90.0
+11        侯星宇        64.0       111.0         NaN
+12        江宜哲        60.0        33.0        70.0
+13        NaN         NaN         NaN         NaN
+14        梁杨杨        68.0        54.0        94.0
+15         刘辉         NaN        63.0        98.0
+16        罗嘉豪        39.0        44.0        56.0
+17        施亚君        90.0        63.0        90.0
+18         孙添        64.0        63.0        78.0
+19         王杰        74.0         NaN        76.0
+20         王泽        52.0        48.0        94.0
+21        NaN        60.0        69.0        74.0
+22        杨福程        70.0        49.0        76.0
+23        尤澳晨        91.0        67.0        86.0
+24         翟佳        78.0        73.0        88.0
+25         张旭       100.0        60.0        98.0
+26        支星哲        80.0        63.0       100.0
+27        邹湘涛        54.0        40.0        90.0
+</code></pre><ul>
+<li>我们可以看见上面的数据是缺少标注的，列名缺少标注；并且有很多是空值，因此我们要对数据进行清洗，提高数据的质量。在这里数据清洗有四个要点简称“完全合一”<ul>
+<li><strong>完</strong>整性：单条数据是否完整，统计的字段是否完善。</li>
+<li><strong>全</strong>面性：观察某一列的全部数值，选中一列，我们可以看到最大值，最小值，平均值。我们可以通过常识判断数据是否合理，比如：数据定义、单位标识、数值本身。</li>
+<li><strong>合</strong>法性：数据的类型、内容、大小的合法性。比如数据中存在非ASCII字符，性别存在未知，总分超过100等。</li>
+<li>唯<strong>一</strong>性：数据是否存在重复记录，由于数据来源于不同的渠道，重复的情况是非常常见的。行数据、列数据都需要是唯一的。</li>
+</ul>
+</li>
+<li>事实上数据清洗的标准有差不多七八条，有兴趣的可以了解一下，这里归纳为“完全合一”四条，按照这四条基本上可以解决数据清洗中的大部分问题，使得数据<strong>标准、干净、连续</strong>。</li>
+</ul>
+<h2 id="二、开始数据清洗"><a href="#二、开始数据清洗" class="headerlink" title="二、开始数据清洗"></a>二、开始数据清洗</h2><h3 id="1、完整性"><a href="#1、完整性" class="headerlink" title="1、完整性"></a>1、完整性</h3><h3 id="problem-1-空行"><a href="#problem-1-空行" class="headerlink" title="problem 1:空行"></a>problem 1:空行</h3><ul>
+<li>solution: 删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dropna(how=<span class="string">"all"</span>,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="problem-2-缺失值"><a href="#problem-2-缺失值" class="headerlink" title="problem 2:缺失值"></a>problem 2:缺失值</h3><ul>
+<li>solution：<ul>
+<li>删除：删除数据缺失的记录</li>
+<li>均值：使用当前列的均值</li>
+<li>高频：使用当前列出现平率最高的数据</li>
+</ul>
+</li>
+<li>首先我们先把列的标注补上</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.rename(columns=&#123;<span class="string">'Unnamed: 0'</span>:<span class="string">'index'</span>,<span class="string">'Unnamed: 1'</span>:<span class="string">'math'</span>,<span class="string">'Unnamed: 2'</span>:<span class="string">'english'</span>,<span class="string">'Unnamed: 3'</span>:<span class="string">'c++'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.drop(columns=<span class="string">'index'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>     math  english    c++
+0    43.0     69.0   61.0
+1    80.0     64.0   62.0
+2    68.0     74.0   98.0
+3    48.0     53.0   64.0
+4    72.0     73.0   96.0
+5    60.0      NaN   70.0
+6    74.0     60.0   20.0
+7    38.0     21.0   92.0
+8    88.0     67.0   84.0
+9    86.0     74.0   96.0
+10   84.0     60.0   90.0
+11   64.0    111.0    NaN
+12   60.0     33.0   70.0
+14   68.0     54.0   94.0
+15    NaN     63.0   98.0
+16   39.0     44.0   56.0
+17   90.0     63.0   90.0
+18   64.0     63.0   78.0
+19   74.0      NaN   76.0
+20   52.0     48.0   94.0
+21   60.0     69.0   74.0
+22   70.0     49.0   76.0
+23   91.0     67.0   86.0
+24   78.0     73.0   88.0
+25  100.0     60.0   98.0
+26   80.0     63.0  100.0
+27   54.0     40.0   90.0
+</code></pre><ul>
+<li>现在我们想对df[‘math’]中缺失的值用平均值代替</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'math'</span>].fillna(df[<span class="string">'math'</span>].mean(),inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>          math  english    c++
+0    43.000000     69.0   61.0
+1    80.000000     64.0   62.0
+2    68.000000     74.0   98.0
+3    48.000000     53.0   64.0
+4    72.000000     73.0   96.0
+5    60.000000      NaN   70.0
+6    74.000000     60.0   20.0
+7    38.000000     21.0   92.0
+8    88.000000     67.0   84.0
+9    86.000000     74.0   96.0
+10   84.000000     60.0   90.0
+11   64.000000    111.0    NaN
+12   60.000000     33.0   70.0
+13   68.653846      NaN    NaN
+14   68.000000     54.0   94.0
+15   68.653846     63.0   98.0
+16   39.000000     44.0   56.0
+17   90.000000     63.0   90.0
+18   64.000000     63.0   78.0
+19   74.000000      NaN   76.0
+20   52.000000     48.0   94.0
+21   60.000000     69.0   74.0
+22   70.000000     49.0   76.0
+23   91.000000     67.0   86.0
+24   78.000000     73.0   88.0
+25  100.000000     60.0   98.0
+26   80.000000     63.0  100.0
+27   54.000000     40.0   90.0
+</code></pre><ul>
+<li>如果想用最高频率的数据对english进行填充，可以通过value_counts获取math字段最高频次english_maxf,然后对其进行填充</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">english_maxf = df[<span class="string">'english'</span>].value_counts().index[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'english'</span>].fillna(english_maxf,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>          math  english    c++
+0    43.000000     69.0   61.0
+1    80.000000     64.0   62.0
+2    68.000000     74.0   98.0
+3    48.000000     53.0   64.0
+4    72.000000     73.0   96.0
+5    60.000000     63.0   70.0
+6    74.000000     60.0   20.0
+7    38.000000     21.0   92.0
+8    88.000000     67.0   84.0
+9    86.000000     74.0   96.0
+10   84.000000     60.0   90.0
+11   64.000000    111.0    NaN
+12   60.000000     33.0   70.0
+13   68.653846     63.0    NaN
+14   68.000000     54.0   94.0
+15   68.653846     63.0   98.0
+16   39.000000     44.0   56.0
+17   90.000000     63.0   90.0
+18   64.000000     63.0   78.0
+19   74.000000     63.0   76.0
+20   52.000000     48.0   94.0
+21   60.000000     69.0   74.0
+22   70.000000     49.0   76.0
+23   91.000000     67.0   86.0
+24   78.000000     73.0   88.0
+25  100.000000     60.0   98.0
+26   80.000000     63.0  100.0
+27   54.000000     40.0   90.0
+</code></pre><h3 id="2、全面性"><a href="#2、全面性" class="headerlink" title="2、全面性"></a>2、全面性</h3><h3 id="problem：列数据单位不统一"><a href="#problem：列数据单位不统一" class="headerlink" title="problem：列数据单位不统一"></a>problem：列数据单位不统一</h3><p>solution：将不同的单位的找出来，将其进行迭代替换，比如说将榜（lbs）转化为千克（kgs）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取 weight 数据列中单位为 lbs 的数据</span></span><br><span class="line">rows_with_lbs = df[<span class="string">'weight'</span>].str.contains(<span class="string">'lbs'</span>).fillna(<span class="keyword">False</span>)</span><br><span class="line"><span class="keyword">print</span> df[rows_with_lbs]</span><br><span class="line"><span class="comment"># 将 lbs 转换为 kgs, 2.2lbs=1kgs</span></span><br><span class="line"><span class="keyword">for</span> i,lbs_row <span class="keyword">in</span> df[rows_with_lbs].iterrows():</span><br><span class="line">    <span class="comment"># 截取从头开始到倒数第三个字符之前，即去掉 lbs。</span></span><br><span class="line">    weight = int(float(lbs_row[<span class="string">'weight'</span>][:<span class="number">-3</span>])/<span class="number">2.2</span>)</span><br><span class="line">    df.at[i,<span class="string">'weight'</span>] = <span class="string">'&#123;&#125;kgs'</span>.format(weight)</span><br></pre></td></tr></table></figure>
+<h3 id="3、合理性"><a href="#3、合理性" class="headerlink" title="3、合理性"></a>3、合理性</h3><h3 id="problem-非ASCII字符"><a href="#problem-非ASCII字符" class="headerlink" title="problem:非ASCII字符"></a>problem:非ASCII字符</h3><p>solution:对于非ASCII字符，我们可以采用删除或者替换的方式，我们直接选择删除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'name'</span>].replace(&#123;<span class="string">r'[^\x00-\x7f]+'</span>:<span class="string">''</span>&#125;,regex=<span class="keyword">True</span>,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="4、唯一性"><a href="#4、唯一性" class="headerlink" title="4、唯一性"></a>4、唯一性</h3><h3 id="problem1：一列有多个参数"><a href="#problem1：一列有多个参数" class="headerlink" title="problem1：一列有多个参数"></a>problem1：一列有多个参数</h3><p>solution：比如英文名字，是有两部分组成的，包含两个参数Firstname、Lastnamr，我们需要将name一列拆分为Firstname和Lastname两个字段，我们可以采用split方法，对其进行切分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'First_namr'</span>,<span class="string">'Last_name'</span>] = df[<span class="string">'name'</span>].str.split(expand=<span class="keyword">True</span>)</span><br><span class="line">df.drop(<span class="string">'name'</span>,axis=<span class="number">1</span>,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="problem2-重读数据"><a href="#problem2-重读数据" class="headerlink" title="problem2:重读数据"></a>problem2:重读数据</h3><p>solution：我们校验数据是否存在重复数据，如果有重复数据，如果就用pandas提供的drop_duplicates()来删除重复数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.drop_duplicates([<span class="string">'First_name'</span>,<span class="string">'Last_name'</span>],inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/数据分析/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>数据分析</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/01/12/爬取网易云热评并生成词云/">
+      爬取网易云热评并生成词云
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="分析热评的请求URL"><a href="#分析热评的请求URL" class="headerlink" title="分析热评的请求URL"></a>分析热评的请求URL</h2><ul>
+<li><p>首先我们先对请求抓包，发现所有的评论都包含在 <strong><a href="https://music.163.com/weapi/v1/resource/comments/R_SO_4_32785700?csrf_token=&quot;" target="_blank" rel="noopener">https://music.163.com/weapi/v1/resource/comments/R_SO_4_32785700?csrf_token=&quot;</a></strong>里面，然后再去分析这个请求，发现这是一个<strong>POST</strong>请求，请求参数由两个<strong>params</strong>以及<strong>encSecKey</strong>。好了到此我们需要的东西都有了，接下来我们分析如何去得到这两个参数。</p>
+<h3 id="找到请求"><a href="#找到请求" class="headerlink" title="找到请求"></a>找到请求</h3><p><img src="/2019/01/12/爬取网易云热评并生成词云/1.png" alt="1.png"></p>
+<h3 id="分析请求参数"><a href="#分析请求参数" class="headerlink" title="分析请求参数"></a>分析请求参数</h3><p><img src="/2019/01/12/爬取网易云热评并生成词云/2.png" alt="2.png"></p>
+<h2 id="分析js加密"><a href="#分析js加密" class="headerlink" title="分析js加密"></a>分析js加密</h2></li>
+<li>找到全局js文件，找到两个参数所在的位置<br><img src="/2019/01/12/爬取网易云热评并生成词云/3.png" alt="3.png"></li>
+<li>发现这两个参数是由<strong>window.asrsea</strong>获得的，接着去定位到这个函数找到对应的原函数<strong>d</strong><br><img src="/2019/01/12/爬取网易云热评并生成词云/4.png" alt="4.ong"></li>
+<li>对js进行调试，发现d的四个参数，有三个是定值，这个函数还用到了a、b、c三个函数<br><img src="/2019/01/12/爬取网易云热评并生成词云/5.png" alt="5"></li>
+<li>其中a是产生一个16位的随机数（这里我直接让它等于<strong>FwtEYduOXlNEHbLP</strong>）为什么要等与这个呢 hhh 因为我发现这个随机数，他在生成encText的时候用了一次，生成encSecKey的时候，又用了一次，而且encSecKey就只跟这个随机数相关，所以让这个随机数为定值的话，就可以直接得到encSecKey的值，不用再去搞一个rsa加密，为了让你们看清楚，我还是把贴出来把<br><img src="/2019/01/12/爬取网易云热评并生成词云/6.png" alt="6"></li>
+<li><strong>b</strong>函数就是我们主要要解决的<strong>AES</strong>加密，经过调试，我们可以知道它的两个参数a、b分别是加密字符转、密钥。以及AES的偏移量为<strong>0102030405060708</strong>、加密模式为<strong>CBC</strong><br><img src="/2019/01/12/爬取网易云热评并生成词云/7.png" alt="7"></li>
+<li>接下来看c函数，c函数其实是<strong>RSA</strong>加密，获取encSecKey的值的他的三个参数，只有a是变量，是我们随机生成的16为随机数，这里我们就默认为定值，b、c应该是和rsa加密有关的参数，应为本身并没有学过加密，这里我就不多说了，但是经过调试，我们可以知道b、c是定值 <strong>b =010001</strong> c是一大串字符串。见下图。<br><img src="/2019/01/12/爬取网易云热评并生成词云/8.png" alt="8"></li>
+<li><p>最后我们具体分析一下d函数，经过N次调试，我发现这其实和我的想法差不多，h是一个字典，包含了我们需要的两个参数。encText是由两次AES加密产生的及两次b，加密字符串是一样的，然后密钥第一次是个定值<strong>0CoJUm6Qyw8W8jud</strong>，第二次是16位随机数，也相当于定值。所以encText就出来了，params是由一次RSA加密产生的，并且只与16位的随机数有关，这里就清楚为什么我让随机数直接等于<strong>FwtEYduOXlNEHbLP</strong>，哈哈。因为我调试的时候，刚好出现了这么个随机数，于是我就直接拿过来用了，这个随机数对应的encSecKey = <strong>81e7a41af9830200d5606be1a632e57eb0006b3cdae579127115c6323d4c4802f3af9efcee21d9f4126dde266773cbd795f19ae44028f9f8d038cd62d2816952fa99bb61ecb5fba87d5b178ff4b982ee34c7491808f7cb774554a0235a210caf2e5e867a0e2ebdf6f994be1b198ab43b14ce1f7cfa6f80b9070dea5fc5d6c712</strong><br><img src="/2019/01/12/爬取网易云热评并生成词云/9.png" alt=""></p>
+<h2 id="用python重写js加密"><a href="#用python重写js加密" class="headerlink" title="用python重写js加密"></a>用python重写js加密</h2></li>
+<li><p>经过js加密码的分析，我用python实现了一下AES加密，具体代码如下，包含两个参数，一个是需要加密的字符串，一个是密钥具体如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">AES_encrypt</span><span class="params">(text, key)</span>:</span></span><br><span class="line">   pad = <span class="number">16</span> - len(text) % <span class="number">16</span></span><br><span class="line">   text = text + pad * chr(pad)</span><br><span class="line">   encryptor = AES.new(key, AES.MODE_CBC, <span class="string">"0102030405060708"</span>)</span><br><span class="line">   encrypt_text = encryptor.encrypt(text)</span><br><span class="line">   encrypt_text = base64.b64encode(encrypt_text)</span><br><span class="line">   <span class="keyword">return</span> encrypt_text</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两次调用这个函数。得到结果与调试的结果对比，一模一样。哈哈，上代码、上图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f_key = <span class="string">"0CoJUm6Qyw8W8jud"</span></span><br><span class="line">text = <span class="string">"&#123;\"rid\":\"R_SO_4_32785700\",\"offset\":\"20\",\"total\":\"true\",\"limit\":\"20\",\"csrf_token\":\"\"&#125;"</span></span><br><span class="line">rs = AES_encrypt(text, f_key)</span><br><span class="line">params = AES_encrypt(str(rs)[<span class="number">2</span>:<span class="number">-1</span>], <span class="string">"FwtEYduOXlNEHbLP"</span>)</span><br></pre></td></tr></table></figure>
+<p>这里解释一下，text是我进过N次调试得出的，因为在请求评论之前，text有好几个值来验证其他的东西，这里我大概理解了一下text的含义，这里我们只要知道offset是偏移量，limit是每次请求多少条，比如你请求前二十条则offset=0，limit = 20，我上面的是请求20-40条。<br><img src="/2019/01/12/爬取网易云热评并生成词云/10.png" alt=""><br><img src="/2019/01/12/爬取网易云热评并生成词云/11.png" alt=""></p>
+</li>
+<li><p>然后直接获取的encSecKey直接赋值就好啦，结合这两个参数，我们的请求参数就构造好了，直接POST吧，就能得到评论啦，哈哈，上代码，上图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> data = &#123;</span><br><span class="line">    <span class="string">'params'</span>: params,</span><br><span class="line">    <span class="string">'encSecKey'</span>: encSecKey</span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Accept-Language'</span>:<span class="string">"zh-CN,zh;q=0.9,en;q=0.8"</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">'Cookie'</span>: <span class="string">'appver=1.5.0.75771'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>: <span class="string">'http://music.163.com/'</span></span><br><span class="line">&#125;</span><br><span class="line">url = <span class="string">"https://music.163.com/weapi/v1/resource/comments/R_SO_4_32785700?csrf_token="</span></span><br><span class="line">raw = requests.post(url,headers=headers, data=data)</span><br><span class="line">print(raw.json())</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/12/爬取网易云热评并生成词云/12.png" alt=""></p>
+</li>
+</ul>
+<h2 id="解析json，获取评论"><a href="#解析json，获取评论" class="headerlink" title="解析json，获取评论"></a>解析json，获取评论</h2>
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2018/12/25/git简单指令/">
+      git简单指令
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-12-25</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="git简单指令"><a href="#git简单指令" class="headerlink" title="git简单指令"></a>git简单指令</h1><h2 id="首先放一张学习路线"><a href="#首先放一张学习路线" class="headerlink" title="首先放一张学习路线"></a>首先放一张学习路线</h2><p><img src="/2018/12/25/git简单指令/Git.png" alt="git学习路线"></p>
+<h2 id="1、创建版本库"><a href="#1、创建版本库" class="headerlink" title="1、创建版本库"></a>1、创建版本库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir huzai //创建一个空目录</span><br><span class="line"><span class="built_in">cd</span> huzai  //进入此目录</span><br><span class="line">git init  //初始化git仓库</span><br></pre></td></tr></table></figure>
+<h2 id="2、添加文件到版本库"><a href="#2、添加文件到版本库" class="headerlink" title="2、添加文件到版本库"></a>2、添加文件到版本库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add file  //将文件添加到缓存区</span><br><span class="line">git commit -m <span class="string">"post message"</span> //提交并附带提交信息</span><br></pre></td></tr></table></figure>
+<h2 id="3、版本回退"><a href="#3、版本回退" class="headerlink" title="3、版本回退"></a>3、版本回退</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^ //HEAD是一个指针，指向当前的版本,^代表上一代版本，HEAD^^代表上两代</span><br><span class="line">git reflog //查询每次提交的commit_id</span><br><span class="line">git reset --hard commit_id //根据id进行回退</span><br></pre></td></tr></table></figure>
+<h2 id="4、管理修改"><a href="#4、管理修改" class="headerlink" title="4、管理修改"></a>4、管理修改</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD -- file //查看工作区（file）与最新版本（HEAD）的区别</span><br></pre></td></tr></table></figure>
+<h2 id="5、撤销修改"><a href="#5、撤销修改" class="headerlink" title="5、撤销修改"></a>5、撤销修改</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- file //直接丢弃工作区的修改（可用于恢复误删的文件）</span><br><span class="line">//对于已经添加到缓存的修改</span><br><span class="line">git reset HEAD file //撤销缓存区的修改</span><br><span class="line">git checkout -- file</span><br></pre></td></tr></table></figure>
+<h2 id="6、删除文件"><a href="#6、删除文件" class="headerlink" title="6、删除文件"></a>6、删除文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm file //删除本地文件</span><br><span class="line">git rm file //删除版本库中的文件</span><br><span class="line">git commit -m <span class="string">"post delete"</span> //提交删除事务</span><br></pre></td></tr></table></figure>
+<h2 id="7、连接远程仓库"><a href="#7、连接远程仓库" class="headerlink" title="7、连接远程仓库"></a>7、连接远程仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//先生成连接密钥</span><br><span class="line">ssh-kengen -t rsa -C username</span><br><span class="line">//将id_rsa.pub中的内容复制到github的密钥管理中</span><br><span class="line">//再根据github的提示将本地仓库与远程仓库进行关联</span><br><span class="line">git remote add origin git@github.com:username/repository</span><br><span class="line">//再推送master分支的所有内容到远程仓库</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h2 id="8、从远程仓库进行下载"><a href="#8、从远程仓库进行下载" class="headerlink" title="8、从远程仓库进行下载"></a>8、从远程仓库进行下载</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:username/repository</span><br></pre></td></tr></table></figure>
+<h2 id="9、创建新的分支并切换到该分支下"><a href="#9、创建新的分支并切换到该分支下" class="headerlink" title="9、创建新的分支并切换到该分支下"></a>9、创建新的分支并切换到该分支下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b branchname //创建并切换</span><br><span class="line">git branch branch_name //创建</span><br><span class="line">git checkout branch_name //切换</span><br></pre></td></tr></table></figure>
+<h2 id="10、合并指定分支到当前分支"><a href="#10、合并指定分支到当前分支" class="headerlink" title="10、合并指定分支到当前分支"></a>10、合并指定分支到当前分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge branch_name</span><br></pre></td></tr></table></figure>
+<h2 id="11、删除分支"><a href="#11、删除分支" class="headerlink" title="11、删除分支"></a>11、删除分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d branch_name</span><br></pre></td></tr></table></figure>
+<h2 id="12、如果合并时出现冲突"><a href="#12、如果合并时出现冲突" class="headerlink" title="12、如果合并时出现冲突"></a>12、如果合并时出现冲突</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat conflic_filename</span><br><span class="line">//git 会用&lt;&lt;&lt;&lt;&lt; ===== &gt;&gt;&gt;&gt;&gt;&gt;显示不同分支的内容，你则需要手动解决冲突</span><br></pre></td></tr></table></figure>
+<h2 id="13、分支管理策略"><a href="#13、分支管理策略" class="headerlink" title="13、分支管理策略"></a>13、分支管理策略</h2><p>master分支应该是非常稳定的，也就是用于发布最新版本的，平时不应该在上面干活，干活都应该在dev分支上<br>也就是说dev分支是不稳定的，到了某个时候将dev分支合并到master分支上，你和你的小伙伴应该在各自的分支上干活，然后推送到dev分支上</p>
+<h2 id="14、bug分支"><a href="#14、bug分支" class="headerlink" title="14、bug分支"></a>14、bug分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add now_file</span><br><span class="line">git stash //保护现场</span><br><span class="line">//这里修改bug</span><br><span class="line">git stash pop //提取现场，继续工作</span><br></pre></td></tr></table></figure>
+<h2 id="15、丢弃一个没有被合并的分支"><a href="#15、丢弃一个没有被合并的分支" class="headerlink" title="15、丢弃一个没有被合并的分支"></a>15、丢弃一个没有被合并的分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D branch_name</span><br></pre></td></tr></table></figure>
+<h2 id="16、多人协作"><a href="#16、多人协作" class="headerlink" title="16、多人协作"></a>16、多人协作</h2><p> 1、尝试git push origin branch_name<br> 2、如果推送失败，说明远程分支比你的版本新，则你git pull 拉取远程文件<br> 3、合并你两的分支，如果有冲突则手动解决问题<br> 4、重复1</p>
+<ul>
+<li>注：如果git pull 提示 no tracking information 则说明远程分支和本地分支没有关联用下面的命令进行关联<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --<span class="built_in">set</span>-uostream-to branch_name origin/branch_name</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或者你不知道有什么分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote -v //查看远程仓库的信息</span><br><span class="line">git checkout -b branch_name origin/branch_name //创建本地分支以及远程分支</span><br><span class="line">git branch --<span class="built_in">set</span>-upstream-to branch_name origin/branch_name //进行关联</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/git/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>git</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2018/12/25/数据分析-pandas/">
+      数据分析-pandas
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-12-25</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="数据分析—-pandas"><a href="#数据分析—-pandas" class="headerlink" title="数据分析—-pandas"></a>数据分析—-pandas</h1><h2 id="核心数据结构-Series-amp-DataFrame"><a href="#核心数据结构-Series-amp-DataFrame" class="headerlink" title="核心数据结构 Series &amp; DataFrame"></a>核心数据结构 Series &amp; DataFrame</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series, DataFrame</span><br></pre></td></tr></table></figure>
+<h3 id="Series是一个定长的字典序列，它有两个基本属性index-、-value-index-默认是-0-1-2-3-递增的，也可以自己指定索引-index-‘a’-‘b’-‘c’"><a href="#Series是一个定长的字典序列，它有两个基本属性index-、-value-index-默认是-0-1-2-3-递增的，也可以自己指定索引-index-‘a’-‘b’-‘c’" class="headerlink" title="Series是一个定长的字典序列，它有两个基本属性index 、 value index 默认是 0 ,1,2,3 递增的，也可以自己指定索引 index=[‘a’, ‘b’, ‘c’]"></a><strong>Series是一个定长的字典序列</strong>，它有两个基本属性<strong>index 、 value</strong> index 默认是 0 ,1,2,3 递增的，也可以自己指定索引 index=[‘a’, ‘b’, ‘c’]</h3><h3 id="创建Series的三种方式"><a href="#创建Series的三种方式" class="headerlink" title="创建Series的三种方式"></a>创建Series的三种方式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x1 = Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">x2 = Series(data=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],index=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">dic = &#123;<span class="string">'a'</span>:<span class="number">1</span>,<span class="string">'b'</span>:<span class="number">2</span>,<span class="string">'c'</span>:<span class="number">3</span>,<span class="string">'d'</span>:<span class="number">4</span>&#125;</span><br><span class="line">x3 = Series(dic)</span><br><span class="line">print(x1)</span><br><span class="line">print(x2)</span><br><span class="line">print(x3)</span><br></pre></td></tr></table></figure>
+<pre><code>0    1
+1    2
+2    3
+3    4
+dtype: int64
+a    1
+b    2
+c    3
+d    4
+dtype: int64
+a    1
+b    2
+c    3
+d    4
+dtype: int64
+</code></pre><h3 id="DataFrame类似数据库中的表，可以将其看成是由有相同的索引的Series组成"><a href="#DataFrame类似数据库中的表，可以将其看成是由有相同的索引的Series组成" class="headerlink" title="DataFrame类似数据库中的表，可以将其看成是由有相同的索引的Series组成"></a>DataFrame类似数据库中的表，可以将其看成是由有相同的索引的Series组成</h3><h3 id="创建DataFra几种方式"><a href="#创建DataFra几种方式" class="headerlink" title="创建DataFra几种方式"></a>创建DataFra几种方式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">"chinese"</span>:[<span class="number">90</span>,<span class="number">80</span>,<span class="number">70</span>,<span class="number">60</span>,<span class="number">50</span>],<span class="string">'math'</span>:[<span class="number">70</span>,<span class="number">80</span>,<span class="number">70</span>,<span class="number">90</span>,<span class="number">60</span>],<span class="string">'english'</span>:[<span class="number">30</span>,<span class="number">50</span>,<span class="number">70</span>,<span class="number">80</span>,<span class="number">60</span>]&#125;</span><br><span class="line">df1 = DataFrame(data=data,index=[<span class="string">'zhangfei'</span>,<span class="string">'guanyu'</span>,<span class="string">'zhaoyun'</span>,<span class="string">'huangzhong'</span>,<span class="string">'machao'</span>])</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>            chinese  english  math
+zhangfei         90       30    70
+guanyu           80       50    80
+zhaoyun          70       70    70
+huangzhong       60       80    90
+machao           50       60    60
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line">df2 = DataFrame(pd.read_excel(<span class="string">'datas/grades.xlsx'</span>))</span><br><span class="line">df2 = df2.drop_duplicates()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df2)</span><br></pre></td></tr></table></figure>
+<pre><code>     姓名   高数  英语  C++
+0   蒋广佳   43  69   61
+1    廖菲   80  64   62
+2   沈秀玲   68  74   98
+3    韦丹   48  53   64
+4   张梦雅   72  73   96
+5   赵雅欣   60  63   70
+6   曹海广   74  60   20
+7   陈泽灿   38  21   92
+8    邓杰   88  67   84
+9   高海亮   86  74   96
+10  顾晓冬   84  60   90
+11  侯星宇   64  69   96
+12  江宜哲   60  33   70
+13  李洪汀   76  56   84
+14  梁杨杨   68  54   94
+15   刘辉   68  63   98
+16  罗嘉豪   39  44   56
+17  施亚君   90  63   90
+18   孙添   64  63   78
+19   王杰   74  60   76
+20   王泽   52  48   94
+21  徐孟圆   60  69   74
+22  杨福程   70  49   76
+23  尤澳晨   91  67   86
+24   翟佳   78  73   88
+25   张旭  100  60   98
+26  支星哲   80  63  100
+27  邹湘涛   54  40   90
+</code></pre><h2 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h2><h3 id="删除不必要的行或列"><a href="#删除不必要的行或列" class="headerlink" title="删除不必要的行或列"></a>删除不必要的行或列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#删除行</span></span><br><span class="line">df2 = df2.drop(columns=[<span class="string">'姓名'</span>])</span><br><span class="line">print(df2)</span><br></pre></td></tr></table></figure>
+<pre><code>     高数  英语  C++
+0    43  69   61
+1    80  64   62
+2    68  74   98
+3    48  53   64
+4    72  73   96
+5    60  63   70
+6    74  60   20
+7    38  21   92
+8    88  67   84
+9    86  74   96
+10   84  60   90
+11   64  69   96
+12   60  33   70
+13   76  56   84
+14   68  54   94
+15   68  63   98
+16   39  44   56
+17   90  63   90
+18   64  63   78
+19   74  60   76
+20   52  48   94
+21   60  69   74
+22   70  49   76
+23   91  67   86
+24   78  73   88
+25  100  60   98
+26   80  63  100
+27   54  40   90
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#删除列</span></span><br><span class="line">df2 = df2.drop(index = [<span class="number">27</span>])</span><br><span class="line">print(df2)</span><br></pre></td></tr></table></figure>
+<pre><code>     高数  英语  C++
+0    43  69   61
+1    80  64   62
+2    68  74   98
+3    48  53   64
+4    72  73   96
+5    60  63   70
+6    74  60   20
+7    38  21   92
+8    88  67   84
+9    86  74   96
+10   84  60   90
+11   64  69   96
+12   60  33   70
+13   76  56   84
+14   68  54   94
+15   68  63   98
+16   39  44   56
+17   90  63   90
+18   64  63   78
+19   74  60   76
+20   52  48   94
+21   60  69   74
+22   70  49   76
+23   91  67   86
+24   78  73   88
+25  100  60   98
+26   80  63  100
+</code></pre><h3 id="重命名列名"><a href="#重命名列名" class="headerlink" title="重命名列名"></a>重命名列名</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2 = df2.rename(columns=&#123;<span class="string">'高数'</span>:<span class="string">'math'</span>,<span class="string">'英语'</span>:<span class="string">'english'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="去除重复的值"><a href="#去除重复的值" class="headerlink" title="去除重复的值"></a>去除重复的值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2 = df2.drop_duplicates()</span><br></pre></td></tr></table></figure>
+<h3 id="更改数据格式"><a href="#更改数据格式" class="headerlink" title="更改数据格式"></a>更改数据格式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df2[<span class="string">'math'</span>] = df2[<span class="string">'math'</span>].astype(<span class="string">'str'</span>)</span><br><span class="line"><span class="comment">#df2['math'].astype(np.int64)</span></span><br></pre></td></tr></table></figure>
+<h3 id="清除数据间的空格"><a href="#清除数据间的空格" class="headerlink" title="清除数据间的空格"></a>清除数据间的空格</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df2[<span class="string">'math'</span>] = df2[<span class="string">'math'</span>].map(str.strip) <span class="comment">#删除左右两边的空格</span></span><br><span class="line">df2[<span class="string">'math'</span>] = df2[<span class="string">'math'</span>].map(str.lstrip) <span class="comment">#删除左边的空格（str.rstrip 右边的空格）</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除指定字符"><a href="#删除指定字符" class="headerlink" title="删除指定字符"></a>删除指定字符</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2[<span class="string">'math'</span>] = df2[<span class="string">'math'</span>].str.strip(<span class="string">'$'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2.columns = df2.columns.str.upper() <span class="comment">#全部大写（lower（）全部小写 title（）首字母大写）</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>MATH</th><br>      <th>ENGLISH</th><br>      <th>C++</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>43</td><br>      <td>69</td><br>      <td>61</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>80</td><br>      <td>64</td><br>      <td>62</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>68</td><br>      <td>74</td><br>      <td>98</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>48</td><br>      <td>53</td><br>      <td>64</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>72</td><br>      <td>73</td><br>      <td>96</td><br>    </tr><br>    <tr><br>      <th>5</th><br>      <td>60</td><br>      <td>63</td><br>      <td>70</td><br>    </tr><br>    <tr><br>      <th>6</th><br>      <td>74</td><br>      <td>60</td><br>      <td>20</td><br>    </tr><br>    <tr><br>      <th>7</th><br>      <td>38</td><br>      <td>21</td><br>      <td>92</td><br>    </tr><br>    <tr><br>      <th>8</th><br>      <td>88</td><br>      <td>67</td><br>      <td>84</td><br>    </tr><br>    <tr><br>      <th>9</th><br>      <td>86</td><br>      <td>74</td><br>      <td>96</td><br>    </tr><br>    <tr><br>      <th>10</th><br>      <td>84</td><br>      <td>60</td><br>      <td>90</td><br>    </tr><br>    <tr><br>      <th>11</th><br>      <td>64</td><br>      <td>69</td><br>      <td>96</td><br>    </tr><br>    <tr><br>      <th>12</th><br>      <td>60</td><br>      <td>33</td><br>      <td>70</td><br>    </tr><br>    <tr><br>      <th>13</th><br>      <td>76</td><br>      <td>56</td><br>      <td>84</td><br>    </tr><br>    <tr><br>      <th>14</th><br>      <td>68</td><br>      <td>54</td><br>      <td>94</td><br>    </tr><br>    <tr><br>      <th>15</th><br>      <td>68</td><br>      <td>63</td><br>      <td>98</td><br>    </tr><br>    <tr><br>      <th>16</th><br>      <td>39</td><br>      <td>44</td><br>      <td>56</td><br>    </tr><br>    <tr><br>      <th>17</th><br>      <td>90</td><br>      <td>63</td><br>      <td>90</td><br>    </tr><br>    <tr><br>      <th>18</th><br>      <td>64</td><br>      <td>63</td><br>      <td>78</td><br>    </tr><br>    <tr><br>      <th>19</th><br>      <td>74</td><br>      <td>60</td><br>      <td>76</td><br>    </tr><br>    <tr><br>      <th>20</th><br>      <td>52</td><br>      <td>48</td><br>      <td>94</td><br>    </tr><br>    <tr><br>      <th>21</th><br>      <td>60</td><br>      <td>69</td><br>      <td>74</td><br>    </tr><br>    <tr><br>      <th>22</th><br>      <td>70</td><br>      <td>49</td><br>      <td>76</td><br>    </tr><br>    <tr><br>      <th>23</th><br>      <td>91</td><br>      <td>67</td><br>      <td>86</td><br>    </tr><br>    <tr><br>      <th>24</th><br>      <td>78</td><br>      <td>73</td><br>      <td>88</td><br>    </tr><br>    <tr><br>      <th>25</th><br>      <td>100</td><br>      <td>60</td><br>      <td>98</td><br>    </tr><br>    <tr><br>      <th>26</th><br>      <td>80</td><br>      <td>63</td><br>      <td>100</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+<h3 id="使用apply函数对数据进行清洗"><a href="#使用apply函数对数据进行清洗" class="headerlink" title="使用apply函数对数据进行清洗"></a>使用apply函数对数据进行清洗</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#df2['MATH'] = df2['MATH'].apply(str.lower)</span></span><br><span class="line">df2[<span class="string">'MATH'</span>] = df2[<span class="string">'MATH'</span>].astype(np.int64)</span><br><span class="line">df2</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>MATH</th><br>      <th>ENGLISH</th><br>      <th>C++</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>43</td><br>      <td>69</td><br>      <td>61</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>80</td><br>      <td>64</td><br>      <td>62</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>68</td><br>      <td>74</td><br>      <td>98</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>48</td><br>      <td>53</td><br>      <td>64</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>72</td><br>      <td>73</td><br>      <td>96</td><br>    </tr><br>    <tr><br>      <th>5</th><br>      <td>60</td><br>      <td>63</td><br>      <td>70</td><br>    </tr><br>    <tr><br>      <th>6</th><br>      <td>74</td><br>      <td>60</td><br>      <td>20</td><br>    </tr><br>    <tr><br>      <th>7</th><br>      <td>38</td><br>      <td>21</td><br>      <td>92</td><br>    </tr><br>    <tr><br>      <th>8</th><br>      <td>88</td><br>      <td>67</td><br>      <td>84</td><br>    </tr><br>    <tr><br>      <th>9</th><br>      <td>86</td><br>      <td>74</td><br>      <td>96</td><br>    </tr><br>    <tr><br>      <th>10</th><br>      <td>84</td><br>      <td>60</td><br>      <td>90</td><br>    </tr><br>    <tr><br>      <th>11</th><br>      <td>64</td><br>      <td>69</td><br>      <td>96</td><br>    </tr><br>    <tr><br>      <th>12</th><br>      <td>60</td><br>      <td>33</td><br>      <td>70</td><br>    </tr><br>    <tr><br>      <th>13</th><br>      <td>76</td><br>      <td>56</td><br>      <td>84</td><br>    </tr><br>    <tr><br>      <th>14</th><br>      <td>68</td><br>      <td>54</td><br>      <td>94</td><br>    </tr><br>    <tr><br>      <th>15</th><br>      <td>68</td><br>      <td>63</td><br>      <td>98</td><br>    </tr><br>    <tr><br>      <th>16</th><br>      <td>39</td><br>      <td>44</td><br>      <td>56</td><br>    </tr><br>    <tr><br>      <th>17</th><br>      <td>90</td><br>      <td>63</td><br>      <td>90</td><br>    </tr><br>    <tr><br>      <th>18</th><br>      <td>64</td><br>      <td>63</td><br>      <td>78</td><br>    </tr><br>    <tr><br>      <th>19</th><br>      <td>74</td><br>      <td>60</td><br>      <td>76</td><br>    </tr><br>    <tr><br>      <th>20</th><br>      <td>52</td><br>      <td>48</td><br>      <td>94</td><br>    </tr><br>    <tr><br>      <th>21</th><br>      <td>60</td><br>      <td>69</td><br>      <td>74</td><br>    </tr><br>    <tr><br>      <th>22</th><br>      <td>70</td><br>      <td>49</td><br>      <td>76</td><br>    </tr><br>    <tr><br>      <th>23</th><br>      <td>91</td><br>      <td>67</td><br>      <td>86</td><br>    </tr><br>    <tr><br>      <th>24</th><br>      <td>78</td><br>      <td>73</td><br>      <td>88</td><br>    </tr><br>    <tr><br>      <th>25</th><br>      <td>100</td><br>      <td>60</td><br>      <td>98</td><br>    </tr><br>    <tr><br>      <th>26</th><br>      <td>80</td><br>      <td>63</td><br>      <td>100</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plus</span><span class="params">(df)</span>:</span></span><br><span class="line">    df[<span class="string">'Total'</span>] = df[<span class="string">'MATH'</span>]+df[<span class="string">'ENGLISH'</span>]+df[<span class="string">'C++'</span>]</span><br><span class="line">    <span class="keyword">return</span> df</span><br><span class="line">df2 = df2.apply(plus,axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df2)</span><br></pre></td></tr></table></figure>
+<pre><code>    MATH  ENGLISH  C++  Total
+0     43       69   61    173
+1     80       64   62    206
+2     68       74   98    240
+3     48       53   64    165
+4     72       73   96    241
+5     60       63   70    193
+6     74       60   20    154
+7     38       21   92    151
+8     88       67   84    239
+9     86       74   96    256
+10    84       60   90    234
+11    64       69   96    229
+12    60       33   70    163
+13    76       56   84    216
+14    68       54   94    216
+15    68       63   98    229
+16    39       44   56    139
+17    90       63   90    243
+18    64       63   78    205
+19    74       60   76    210
+20    52       48   94    194
+21    60       69   74    203
+22    70       49   76    195
+23    91       67   86    244
+24    78       73   88    239
+25   100       60   98    258
+26    80       63  100    243
+</code></pre><h2 id="pandas中常用的统计函数"><a href="#pandas中常用的统计函数" class="headerlink" title="pandas中常用的统计函数"></a>pandas中常用的统计函数</h2><p><img src="/2018/12/25/数据分析-pandas/1.jpg" alt="1.jpg"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df2.describe())</span><br></pre></td></tr></table></figure>
+<pre><code>             MATH    ENGLISH         C++       Total
+count   27.000000  27.000000   27.000000   27.000000
+mean    69.444444  59.703704   81.148148  210.296296
+std     16.113380  12.406000   17.933003   34.410212
+min     38.000000  21.000000   20.000000  139.000000
+25%     60.000000  55.000000   72.000000  193.500000
+50%     70.000000  63.000000   86.000000  216.000000
+75%     80.000000  68.000000   95.000000  239.500000
+max    100.000000  74.000000  100.000000  258.000000
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/数据分析/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>数据分析</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2018/12/23/数据分析-numpy/">
       数据分析----numpy 
     </a>
