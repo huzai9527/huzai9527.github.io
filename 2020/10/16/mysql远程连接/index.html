@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Tag: ubuntu | huzai9527&#39;s personal blog</title>
+  <title>mysql远程连接 | huzai9527&#39;s personal blog</title>
   
   
 
@@ -159,25 +159,12 @@
 
   <div class="l_body nocover">
     <div class='body-wrapper'>
-      
-<div class="l_main">
+      <div class="l_main">
   
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
+
   
+    <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+      
 
 
   <section class="meta">
@@ -186,11 +173,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2020/07/09/ubuntu自动换源/">
-      ubuntu自动换源
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2020/10/16/mysql远程连接/">
+        mysql远程连接
+      </a>
+    </h1>
+  
 
 
       
@@ -216,7 +205,7 @@
             <div class="new-meta-item date">
   <a class="notlink">
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-07-09</p>
+    <p>2020-10-16</p>
   </a>
 </div>
 
@@ -229,6 +218,19 @@
         
           
             
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
 
           
         
@@ -245,39 +247,160 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="下载huanyuan-sh"><a href="#下载huanyuan-sh" class="headerlink" title="下载huanyuan.sh"></a>下载huanyuan.sh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span>  git@github.com:huzai9527/ubuntu_huanyuan.git</span><br></pre></td></tr></table></figure>
-<h2 id="进入文件夹"><a href="#进入文件夹" class="headerlink" title="进入文件夹"></a>进入文件夹</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash huanyuan.sh</span><br></pre></td></tr></table></figure>
-<h2 id="期间需要你输入管理员密码"><a href="#期间需要你输入管理员密码" class="headerlink" title="期间需要你输入管理员密码"></a>期间需要你输入管理员密码</h2>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h2 id="3306-端口"><a href="#3306-端口" class="headerlink" title="3306 端口"></a>3306 端口</h2><ul>
+<li>此前确保3306端口是打开的(<strong>服务器防火墙</strong>)</li>
+<li><p>在服务器中查看端口状态  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an|grep 3306</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果仅仅出现👇下面的信息,则说明3306端口仅仅对localhost开放,外网是无法访问的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>你需要找到<strong>mysql.cnf</strong> mysql 的配置文件,有可能不止一个,且不一定和我的文件名一样,</p>
+</li>
+<li><p>找到.cnf配置文件中的,将其注释</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#bind-address = 127.0.0.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果像我这样,就说明端口是开放的,且已经有主机连接<br><img src="/2020/10/16/mysql远程连接/1.jpg" alt="1.jpg"></p>
+</li>
+</ul>
+<h2 id="mysql用户权限"><a href="#mysql用户权限" class="headerlink" title="mysql用户权限"></a>mysql用户权限</h2><ul>
+<li>在mysql的mysql表中,有用户信息</li>
+<li><p>查看你的用户是否允许,除localhost以外的ip访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select host,user from user;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如图,想要外网访问的用户,其对应的host应该是外网ip</p>
+</li>
+<li><p>如果想要任意ip访问,其对应的host设置为“<strong>%</strong>”<br><img src="/2020/10/16/mysql远程连接/2.jpg" alt="2.jpg"></p>
+</li>
+<li><p>或者你可以直接创建一个新用户,给他权限</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grant all on database_name.* to user_name@&apos;%&apos; identified by &apos;user_password&apos;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+          
+
+
+  <section class="meta" id="footer-meta">
+    <hr>
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-16T21:00:01+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>last updated at Oct 16, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/mysql/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>mysql</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/10/16/mysql远程连接/&title=mysql远程连接 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/10/16/mysql远程连接/&title=mysql远程连接 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/10/16/mysql远程连接/&title=mysql远程连接 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/ubuntu/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>ubuntu</a>
-        
-      </div>
-    
   </section>
-</article>
 
-          </div>
+
         
-      
-    
-  </section>
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2020/07/09/ubuntu自动换源/" rel="prev" title="ubuntu自动换源">
+                                    
+                                        ubuntu自动换源
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/ubuntu/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>ubuntu</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
   
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
 
   
 
 
-    
   
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'mysql远程连接',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class="l_side">
   
