@@ -3,13 +3,19 @@
   
     
     <entry>
-      <title>东南大学青年大学习统计</title>
+      <title>东南大学无锡分校青年大学习统计</title>
       <link href="/2020/10/21/%E4%B8%9C%E5%8D%97%E5%A4%A7%E5%AD%A6%E9%9D%92%E5%B9%B4%E5%A4%A7%E5%AD%A6%E4%B9%A0%E7%BB%9F%E8%AE%A1/"/>
       <url>/2020/10/21/%E4%B8%9C%E5%8D%97%E5%A4%A7%E5%AD%A6%E9%9D%92%E5%B9%B4%E5%A4%A7%E5%AD%A6%E4%B9%A0%E7%BB%9F%E8%AE%A1/</url>
       
         <content type="html"><![CDATA[<h1 id="东南大学青年大学习统计"><a href="#东南大学青年大学习统计" class="headerlink" title="东南大学青年大学习统计"></a>东南大学青年大学习统计</h1><h2 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h2><p><img src="/2020/10/21/东南大学青年大学习统计/1.png" alt="image.png"></p><h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><ul><li><p>你可以按照下面的方式下载代码到本地</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth 1 https://github.com/huzai9527/studyAnalysis.git SUSmember-dev</span><br></pre></td></tr></table></figure></li><li><p>本项目在<strong>python 3</strong> 下运行,并且依赖<strong>pands</strong>,你可以在终端运行以下命令进行安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pandas</span><br></pre></td></tr></table></figure></li></ul><h2 id="所需要的文件以及格式"><a href="#所需要的文件以及格式" class="headerlink" title="所需要的文件以及格式"></a>所需要的文件以及格式</h2><ul><li>本院总名单,按照如下格式,首行为班级名称,首列为索引号(excel自带),将班级同学名字替换即可<br><img src="/2020/10/21/东南大学青年大学习统计/2.png" alt="image.png"></li><li>班级累计分数:首行为列名第一列列名空,第二列列名累计分数</li><li>第一列为填班级名,第二列为保存的班级名<br><img src="/2020/10/21/东南大学青年大学习统计/3.png" alt="image.png"></li><li>最后是大学习的统计情况,此文件是上级下发的,只要移到此目录即可<br><img src="/2020/10/21/东南大学青年大学习统计/4.png" alt="image.png"></li><li><p><strong>注:</strong> 总名单以及班级累计分数可以在下载好的文件中直接修改</p><h2 id="安装好环境以及准备好相应文件后-在终端运行-文件目录路径下"><a href="#安装好环境以及准备好相应文件后-在终端运行-文件目录路径下" class="headerlink" title="安装好环境以及准备好相应文件后,在终端运行(文件目录路径下)"></a>安装好环境以及准备好相应文件后,在终端运行(文件目录路径下)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python SUSmember.py 无锡分校-东南-第十一期</span><br></pre></td></tr></table></figure></li><li><p>运行完成输出，各班详细情况，并在结果文件夹生成EXCELL统计文件<br><img src="/2020/10/21/东南大学青年大学习统计/5.png" alt="image.png"></p></li></ul><h2 id="有不是团员的只要在总名单中删除即可"><a href="#有不是团员的只要在总名单中删除即可" class="headerlink" title="有不是团员的只要在总名单中删除即可"></a>有不是团员的只要在总名单中删除即可</h2>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> 数据分析 </tag>
+            
+        </tags>
       
     </entry>
     
