@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-16T21:16:11.964Z</updated>
+  <updated>2020-10-21T07:11:20.544Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>东南大学青年大学习统计</title>
+    <link href="http://yoursite.com/2020/10/21/%E4%B8%9C%E5%8D%97%E5%A4%A7%E5%AD%A6%E9%9D%92%E5%B9%B4%E5%A4%A7%E5%AD%A6%E4%B9%A0%E7%BB%9F%E8%AE%A1/"/>
+    <id>http://yoursite.com/2020/10/21/东南大学青年大学习统计/</id>
+    <published>2020-10-21T07:06:45.000Z</published>
+    <updated>2020-10-21T07:11:20.544Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="东南大学青年大学习统计"><a href="#东南大学青年大学习统计" class="headerlink" title="东南大学青年大学习统计"></a>东南大学青年大学习统计</h1><h2 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h2><p><img src="/2020/10/21/东南大学青年大学习统计/1.png" alt="image.png"></p><h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><ul><li><p>你可以按照下面的方式下载代码到本地</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth 1 https://github.com/huzai9527/studyAnalysis.git SUSmember-dev</span><br></pre></td></tr></table></figure></li><li><p>本项目在<strong>python 3</strong> 下运行,并且依赖<strong>pands</strong>,你可以在终端运行以下命令进行安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pandas</span><br></pre></td></tr></table></figure></li></ul><h2 id="所需要的文件以及格式"><a href="#所需要的文件以及格式" class="headerlink" title="所需要的文件以及格式"></a>所需要的文件以及格式</h2><ul><li>本院总名单,按照如下格式,首行为班级名称,首列为索引号(excel自带),将班级同学名字替换即可<br><img src="/2020/10/21/东南大学青年大学习统计/2.png" alt="image.png"></li><li>班级累计分数:首行为列名第一列列名空,第二列列名累计分数</li><li>第一列为填班级名,第二列为保存的班级名<br><img src="/2020/10/21/东南大学青年大学习统计/3.png" alt="image.png"></li><li>最后是大学习的统计情况,此文件是上级下发的,只要移到此目录即可<br><img src="/2020/10/21/东南大学青年大学习统计/4.png" alt="image.png"></li><li><p><strong>注:</strong> 总名单以及班级累计分数可以在下载好的文件中直接修改</p><h2 id="安装好环境以及准备好相应文件后-在终端运行-文件目录路径下"><a href="#安装好环境以及准备好相应文件后-在终端运行-文件目录路径下" class="headerlink" title="安装好环境以及准备好相应文件后,在终端运行(文件目录路径下)"></a>安装好环境以及准备好相应文件后,在终端运行(文件目录路径下)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python SUSmember.py 无锡分校-东南-第十一期</span><br></pre></td></tr></table></figure></li><li><p>运行完成输出，各班详细情况，并在结果文件夹生成EXCELL统计文件<br><img src="/2020/10/21/东南大学青年大学习统计/5.png" alt="image.png"></p></li></ul><h2 id="有不是团员的只要在总名单中删除即可"><a href="#有不是团员的只要在总名单中删除即可" class="headerlink" title="有不是团员的只要在总名单中删除即可"></a>有不是团员的只要在总名单中删除即可</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;东南大学青年大学习统计&quot;&gt;&lt;a href=&quot;#东南大学青年大学习统计&quot; class=&quot;headerlink&quot; title=&quot;东南大学青年大学习统计&quot;&gt;&lt;/a&gt;东南大学青年大学习统计&lt;/h1&gt;&lt;h2 id=&quot;运行截图&quot;&gt;&lt;a href=&quot;#运行截图&quot; class=&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>SSM框架整合</title>
@@ -440,29 +461,6 @@
     
     
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>github+hexo搭建个人博客</title>
-    <link href="http://yoursite.com/2018/11/11/github-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2018/11/11/github-hexo搭建个人博客/</id>
-    <published>2018-11-11T09:46:19.000Z</published>
-    <updated>2020-06-30T12:29:17.396Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-创建的项目名默认为-用户名-github-io-创建时点击生成readme文件，方便后面添加说明"><a href="#1-创建的项目名默认为-用户名-github-io-创建时点击生成readme文件，方便后面添加说明" class="headerlink" title="1.创建的项目名默认为  用户名.github.io,创建时点击生成readme文件，方便后面添加说明"></a>1.创建的项目名默认为  <strong>用户名.github.io</strong>,创建时点击生成readme文件，方便后面添加说明</h3><p><img aligen="center" src="https://i.loli.net/2018/11/13/5beaa5e07e5a7.png"></p><h3 id="2-在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer"><a href="#2-在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer" class="headerlink" title="2.在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer"></a>2.在本地创建一个文件夹，我是在E盘创建的blog，推荐用vscode作为编辑器，在编辑器里面打开文件夹，打开Terminer</h3><p><img src="https://i.loli.net/2018/11/13/5beaacf147c83.png" alt="使用vscode打开文件夹"></p><h3 id="3-使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来"><a href="#3-使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来" class="headerlink" title="3.使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来"></a>3.使用hexo初始化文件夹，这一步会产生很多的hexo配置文件，我们先不管，先跑起来</h3><p><img src="https://i.loli.net/2018/11/13/5beaae3c7ee9d.png" alt="hexo初始化文件夹"></p><h3 id="4-运行hexo-server打开服务，看看本地能不能显示"><a href="#4-运行hexo-server打开服务，看看本地能不能显示" class="headerlink" title="4.运行hexo server打开服务，看看本地能不能显示"></a>4.运行hexo server打开服务，看看本地能不能显示</h3><p><img src="https://i.loli.net/2018/11/13/5beab03a63524.png" alt="hexo server"><br>运行后访问url，如果看到如图就成功了<br><img src="https://i.loli.net/2018/11/13/5beab09f5e2ab.jpg" alt="运行效果"></p><h3 id="5-配置文件中填写git的配置信息，按照如下格式填写"><a href="#5-配置文件中填写git的配置信息，按照如下格式填写" class="headerlink" title="5.配置文件中填写git的配置信息，按照如下格式填写"></a>5.配置文件中填写git的配置信息，按照如下格式填写</h3><p><img src="https://i.loli.net/2018/11/13/5beab1fb7f83a.png" alt="配置信息"></p><h3 id="6-打开文件夹，右键git-bash-here"><a href="#6-打开文件夹，右键git-bash-here" class="headerlink" title="6.打开文件夹，右键git bash here"></a>6.打开文件夹，右键git bash here</h3><p><img src="https://i.loli.net/2018/11/13/5beab3362770b.png" alt="git bash here"></p><h3 id="7-输入cd-ssh，进入ssh文件夹"><a href="#7-输入cd-ssh，进入ssh文件夹" class="headerlink" title="7.输入cd ~/.ssh，进入ssh文件夹"></a>7.输入cd ~/.ssh，进入ssh文件夹</h3><p><img src="https://i.loli.net/2018/11/13/5beab3e76e0c4.png" alt="ssh"></p><h3 id="8-配置git中的用户名和邮箱"><a href="#8-配置git中的用户名和邮箱" class="headerlink" title="8.配置git中的用户名和邮箱"></a>8.配置git中的用户名和邮箱</h3><p><img src="https://i.loli.net/2018/11/13/5beab93273357.png" alt="配置用户名"></p><h3 id="9-生成ssh密钥"><a href="#9-生成ssh密钥" class="headerlink" title="9.生成ssh密钥"></a>9.生成ssh密钥</h3><p><img src="https://i.loli.net/2018/11/13/5beab95f2f069.png" alt="生成密钥"></p><h3 id="10-在github的项目中加入密钥"><a href="#10-在github的项目中加入密钥" class="headerlink" title="10.在github的项目中加入密钥"></a>10.在github的项目中加入密钥</h3><p><img src="https://i.loli.net/2018/11/13/5beab988e1bda.png" alt="添加密钥"></p><h3 id="11-测试密钥链接是否成功"><a href="#11-测试密钥链接是否成功" class="headerlink" title="11.测试密钥链接是否成功"></a>11.测试密钥链接是否成功</h3><p><img src="https://i.loli.net/2018/11/13/5beab9fc045d7.png" alt="测试"></p><h3 id="12-测试成功后再再编辑器中运行"><a href="#12-测试成功后再再编辑器中运行" class="headerlink" title="12.测试成功后再再编辑器中运行"></a>12.测试成功后再再编辑器中运行</h3><pre><code>hexo cleanhexo ghexo d</code></pre><p><img src="https://i.loli.net/2018/11/13/5beaba9fb29d7.png" alt="4.png">这样就算上传成功</p><h3 id="13-访问你的博客，看到之前再本地运行的界面，就行了"><a href="#13-访问你的博客，看到之前再本地运行的界面，就行了" class="headerlink" title="13.访问你的博客，看到之前再本地运行的界面，就行了"></a>13.访问你的博客，看到之前再本地运行的界面，就行了</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;1-创建的项目名默认为-用户名-github-io-创建时点击生成readme文件，方便后面添加说明&quot;&gt;&lt;a href=&quot;#1-创建的项目名默认为-用户名-github-io-创建时点击生成readme文件，方便后面添加说明&quot; class=&quot;headerlink&quot;
-      
-    
-    </summary>
-    
-    
-      <category term="github" scheme="http://yoursite.com/tags/github/"/>
     
   </entry>
   
