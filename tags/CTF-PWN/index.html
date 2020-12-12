@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Tag: docker | huzai9527&#39;s personal blog</title>
+  <title>Tag: CTF PWN | huzai9527&#39;s personal blog</title>
   
   
 
@@ -187,8 +187,8 @@
       
         
   <h2 class="title">
-    <a href="/2020/07/01/docker常用命令/">
-      docker常用命令
+    <a href="/2020/12/12/PWN-堆相关的漏洞/">
+      PWN-堆相关的漏洞
     </a>
   </h2>
 
@@ -216,7 +216,7 @@
             <div class="new-meta-item date">
   <a class="notlink">
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-07-01</p>
+    <p>2020-12-12</p>
   </a>
 </div>
 
@@ -247,40 +247,109 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="docker-command-help"><a href="#docker-command-help" class="headerlink" title="docker command help"></a>docker command help</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">command</span> --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/01/docker常用命令/1.jpg" alt="1"></p>
-<h2 id="use-images"><a href="#use-images" class="headerlink" title="use images"></a>use images</h2><h3 id="list-images"><a href="#list-images" class="headerlink" title="list images"></a>list images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/01/docker常用命令/2.jpg" alt="2"></p>
-<h3 id="start-container-by-image"><a href="#start-container-by-image" class="headerlink" title="start container by image"></a>start container by image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu:16.04 /bin/bash</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/01/docker常用命令/3.jpg" alt="3"></p>
-<h3 id="search-images"><a href="#search-images" class="headerlink" title="search images"></a>search images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search mysql</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/01/docker常用命令/5.jpg" alt="5"></p>
-<h3 id="get-new-images"><a href="#get-new-images" class="headerlink" title="get new images"></a>get new images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:18.04</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/01/docker常用命令/4.jpg" alt="4"></p>
-<h3 id="delete-image"><a href="#delete-image" class="headerlink" title="delete image"></a>delete image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi ubuntu:18.04</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/01/docker常用命令/6.jpg" alt="6"></p>
-<h3 id="more-operations-https-www-runoob-com-docker-docker-image-usage-html"><a href="#more-operations-https-www-runoob-com-docker-docker-image-usage-html" class="headerlink" title="[more operations][https://www.runoob.com/docker/docker-image-usage.html] "></a><strong>[more operations][<a href="https://www.runoob.com/docker/docker-image-usage.html]" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-image-usage.html]</a> </strong></h3><h2 id="use-container"><a href="#use-container" class="headerlink" title="use container"></a>use container</h2><h3 id="start-container"><a href="#start-container" class="headerlink" title="start container"></a>start container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu:16.04 /bin/bash <span class="comment">## -d background</span></span><br></pre></td></tr></table></figure>
-<h3 id="show-containers"><a href="#show-containers" class="headerlink" title="show containers"></a>show containers</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/01/docker常用命令/7.jpg" alt="7"></p>
-<h3 id="stop-amp-start-amp-restart-container"><a href="#stop-amp-start-amp-restart-container" class="headerlink" title="stop &amp; start &amp; restart container"></a>stop &amp; start &amp; restart container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker start container_id <span class="comment">## RUN IN THE BACKGROUND</span></span><br><span class="line">docker stop container_id</span><br><span class="line">docker restart container_id</span><br></pre></td></tr></table></figure>
-<h3 id="enter-container"><a href="#enter-container" class="headerlink" title="enter container"></a>enter container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach container_id <span class="comment">## use exit will stop container</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it container_id /bin/bash  <span class="comment">## use exit will not stop container</span></span><br></pre></td></tr></table></figure>
-<h3 id="export-container"><a href="#export-container" class="headerlink" title="export container"></a>export container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">export</span> container_id &gt; container.tar</span><br></pre></td></tr></table></figure>
-<h3 id="import-container-snap-to-image"><a href="#import-container-snap-to-image" class="headerlink" title="import container_snap to image"></a>import container_snap to image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat docker/mysql.tar | docker import - mysql:v1</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/01/docker常用命令/9.jpg" alt="8"></p>
-<h3 id="delete-container"><a href="#delete-container" class="headerlink" title="delete container"></a>delete container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f container_id</span><br></pre></td></tr></table></figure>
-<h3 id="show-container’s-port-mapping"><a href="#show-container’s-port-mapping" class="headerlink" title="show container’s port mapping"></a>show container’s port mapping</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker port container_id</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/01/docker常用命令/9.jpg" alt="9"></p>
-<h3 id="connect-container-by-port-mapping"><a href="#connect-container-by-port-mapping" class="headerlink" title="connect container by port mapping"></a>connect container by port mapping</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD = 123456 mysql</span><br></pre></td></tr></table></figure>
-<h2 id="connect-containers"><a href="#connect-containers" class="headerlink" title="connect containers"></a>connect containers</h2><h3 id="create-a-docker-network"><a href="#create-a-docker-network" class="headerlink" title="create a docker network"></a>create a docker network</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge hadoop-net</span><br></pre></td></tr></table></figure>
-<h3 id="show-networks"><a href="#show-networks" class="headerlink" title="show networks"></a>show networks</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network ls</span><br></pre></td></tr></table></figure>
-<h3 id="run-a-container-and-connect-to-the-network"><a href="#run-a-container-and-connect-to-the-network" class="headerlink" title="run a container and connect to the network"></a>run a container and connect to the network</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name hadoop1 --network hadoop-net ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+      <h2 id="三、堆相关的漏洞"><a href="#三、堆相关的漏洞" class="headerlink" title="三、堆相关的漏洞"></a>三、堆相关的漏洞</h2><h3 id="1-堆介绍"><a href="#1-堆介绍" class="headerlink" title="1.堆介绍"></a>1.堆介绍</h3><ul>
+<li>结构示意图<ul>
+<li><img src="/2020/12/12/PWN-堆相关的漏洞/image-20201117102955545.png" alt="image-20201117102955545"></li>
+<li>N位：define NON_MAIN_ARENA 用于表示是否属于主线程，0表示主线程的堆块结构，1表示子线程的堆块结构</li>
+<li>M位：define IS_MAPPED 0X2 用于表示是否由mmap分配，0表示由堆块中的top chunk分裂产生，1表示由mmap分配</li>
+<li>P位：define PREV_ISUSE 0x1 用于表示上一堆块是否处于空闲状态，0表示处于空闲状态，1表示处于使用状态。主要用于来判断free是否能够上一堆块进行合并</li>
+</ul>
+</li>
+<li>堆空闲块管理结构bin<ul>
+<li>当allocated chunk被释放以后，会放入bin或者top chunk中去。bin的作用是加快分配速度，其通过链表方式（chunk结构体中的fd和bk指针）进行管理</li>
+<li>fast bin<ul>
+<li>单链表结构进行组织，用fd指针指向下一堆块，采用LIFO机制</li>
+<li>它将堆块的p标志为都设为1，处于占用状态，以防止释放时fast bin进行合并，用于快速分配小内存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>malloc基本规则<ul>
+<li>将申请size按照一定的规则对齐，得到最终要分配的大小size_real<ul>
+<li>X86:size+4 按照0x10字节对齐</li>
+<li>X64：size+8按照0x20字节对齐</li>
+</ul>
+</li>
+<li>检查size_real 是否符合fast bin 的大小，若是则查看fast bin中对应的size_real 的那条链表中是否存在堆块，若是则分配，否则进行下一步</li>
+<li>检查size-real 是否符合small bin 的大小，若是则查看fast bin中对应的size_real 的那条链表中是否存在堆块，若是则分配，否则进行下一步</li>
+<li>检查size-real 是否符合large bin 的大小，若是则调用malloc_consolidate函数对fast bin中所有堆块进行合并，其过程为将fast bin中的堆块取出，清除下一块的p标识位并进行堆块合并，将最终的堆块放入unsorted bin。然后在small bin 和large bin中找到合适size_real大小的块。若找到则分配，并将多余的部分放入unsorted bin ，否则下一步</li>
+<li>检查top chunk的大小是否符合size_real的大小，若是则分配前面一部分，并重新设置top chunk，否则调用malloc_consolidate函数对fast bin中所有的堆块进行合并，若依然不否，则借助系统调用来开辟新的空间进行分配，若还是不满足，则返回失败</li>
+</ul>
+</li>
+<li>free 基本规则<ul>
+<li>首先会检查地址是否对齐,并根据size找到下一块的位置,检查其p标识位是否为1</li>
+<li>检查释放块的size是否符合fastbin的大小区间,若是则直接放入fast bin,并保持下一堆块中的p标识位为1不变(这样可以避免在前后块释放时进行堆块的合并,以方便快速分配小内存),否则进行下一步</li>
+<li>若本堆块size域中的p标识位为0(前一堆块处于释放状态)则利用本快的pre_size找到前一堆块的开头,将其从bin链表中摘除(unlink),并合并这两个块,得到新的释放块</li>
+<li>根据size找到下一堆块,如果是top chunk,则直接合并到top chunk中,直接返回.否则检查最后一堆块是否处于释放状态(通过检查下一堆块的p标识位是否为0).将其从bin链表中摘除(unlink),并合并这两块,得到新的释放块.</li>
+<li>将上述合并得到的最终堆块放入unstorted bin中去</li>
+</ul>
+</li>
+<li>tcache<ul>
+<li>作用<ul>
+<li>提高堆的使用效率</li>
+</ul>
+</li>
+<li>注意点<ul>
+<li>tcache的管理是单链表,采用LIFO原则</li>
+<li>tcache的管理结构存在于堆中,默认有64个entry,每个entry最多存放7个chunk</li>
+<li>tcache的next指针指向chunk的数据区</li>
+<li>tcache的某个entry被占满以后,符合该entry大小的chunk被free后的规则和原有机制相同</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-相关的数据结构"><a href="#2-相关的数据结构" class="headerlink" title="2. 相关的数据结构"></a>2. 相关的数据结构</h3><h4 id="微观结构"><a href="#微观结构" class="headerlink" title="微观结构"></a>微观结构</h4><h5 id="malloc-chunk"><a href="#malloc-chunk" class="headerlink" title="malloc_chunk"></a>malloc_chunk</h5><p>结构</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  This struct declaration is misleading (but accurate and necessary).</span></span><br><span class="line"><span class="comment">  It declares a "view" into memory allowing access to necessary</span></span><br><span class="line"><span class="comment">  fields at known offsets from a given base. See explanation below.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">malloc_chunk</span> &#123;</span></span><br><span class="line"></span><br><span class="line">  INTERNAL_SIZE_T      prev_size;  <span class="comment">/* Size of previous chunk (if free).  */</span></span><br><span class="line">  INTERNAL_SIZE_T      size;       <span class="comment">/* Size in bytes, including overhead. */</span></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">malloc_chunk</span>* <span class="title">fd</span>;</span>         <span class="comment">/* double links -- used only if free. */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">malloc_chunk</span>* <span class="title">bk</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Only used for large blocks: pointer to next larger size.  */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">malloc_chunk</span>* <span class="title">fd_nextsize</span>;</span> <span class="comment">/* double links -- used only if free. */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">malloc_chunk</span>* <span class="title">bk_nextsize</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="Bin"><a href="#Bin" class="headerlink" title="Bin"></a>Bin</h5><ul>
+<li><p>ptmalloc 根据chunk的大小以及使用状态将chunk分为4类:fast bin, small bin, large bin, unstorted bin</p>
+</li>
+<li><p>一个bin相当于一个chunk链表</p>
+</li>
+<li>fast bin 采用LIFO策略,支持的最大的chunk的数据空间大小为64字节,最大支持的bin的个数位10,inuse位始终置为1,防止被合并</li>
+<li>small bins中每个chunk的大小与其所在bin的index的关系为:chunk_size = 2*size_sz*index</li>
+</ul>
+<h5 id="Top-Chunk"><a href="#Top-Chunk" class="headerlink" title="Top Chunk"></a>Top Chunk</h5><p>程序第一次进行malloc的时候,heap会被分成两块,一块给用户,剩下的那块就是Top Chunk(处于当前堆的物理地址最高的chunk,不属于任何bin),它的作用是在当前所有bin都无法满足用户的请求大小时,如果其满足大小,就进行分配,将剩下的部分作为新的TopChunk.否则对heap进行扩展后再进行分配.</p>
+<h4 id="宏观结构"><a href="#宏观结构" class="headerlink" title="宏观结构"></a>宏观结构</h4><h5 id="heap-info"><a href="#heap-info" class="headerlink" title="heap_info"></a>heap_info</h5><p>​    程序刚开始执行时是没有heap区域的,当其申请内存时,就需要一个结构记录对应的信息,而且一般当前的heap资源被用完后,重新申请的heap一般是不连续的,因此需要记录不同heap之间连接结构,而heap的作用就是这个</p>
+<h5 id="malloc-state"><a href="#malloc-state" class="headerlink" title="malloc_state"></a>malloc_state</h5><p>该结构用于管理堆,记录每个arena当前申请内存的具体状态,比如是否有空闲的chunk等,他是一全局变量存储在libc.so中</p>
+<h3 id="3-深入理解堆的实现"><a href="#3-深入理解堆的实现" class="headerlink" title="3.深入理解堆的实现"></a>3.深入理解堆的实现</h3><p>宏观角度</p>
+<pre><code>- 创建堆
+- 堆初始化
+- 删除堆
+</code></pre><p>微观角度</p>
+<ul>
+<li>申请内存块</li>
+<li>释放内存块</li>
+</ul>
+<h3 id="3-相关的漏洞"><a href="#3-相关的漏洞" class="headerlink" title="3.相关的漏洞"></a>3.相关的漏洞</h3><h4 id="1-最基本的堆漏洞"><a href="#1-最基本的堆漏洞" class="headerlink" title="1. 最基本的堆漏洞"></a>1. 最基本的堆漏洞</h4><ul>
+<li>由于对堆内容类型判断不明而形成的错误引用,通常情况下,可以使用堆块存储复杂的结构体,其中可能会包括函数指针、变量、数组等成员.如果一个结构体数据按照其他结构体格式来解析,那么只要在特定的域布置好数据,就会导致漏洞的发生.</li>
+</ul>
+<h4 id="2-堆缓冲区溢出"><a href="#2-堆缓冲区溢出" class="headerlink" title="2.堆缓冲区溢出"></a>2.堆缓冲区溢出</h4><ol>
+<li><p>常规溢出</p>
+<p>堆缓冲区溢出与栈缓冲区溢出类似</p>
+</li>
+<li><p>Off By One</p>
+<p>只能溢出一子节,通常位于堆块末尾,溢出的1子节恰好能够覆盖下一堆块的size域的最低位,难以利用,一般有固定的套路</p>
+</li>
+<li><p>Use After Free</p>
+<p>若堆指针在释放后未被置空,形成悬挂指针(野指针),当下次访问该指针时,依然能够访问到原始指针指向的堆内容</p>
+<ol>
+<li>申请一段空间,并将其释放,释放后并不将指针置为空,因此这个指针仍然可以使用,把这个指针简称为p1</li>
+<li>申请空间p2,由于malloc分配过程使得p2指向的空间为刚刚释放的p1指针的空间,构造恶意数据将这段内存空间布局好,既覆盖p1中的数据</li>
+<li>可利用p1,一般多有一个函数指针,由于之前已经使用P2将P1中的数据覆盖了,所以此时的数据即是我们可以控制的,既存在劫持函数流的情况</li>
+</ol>
+</li>
+<li><p>Doubble Free</p>
+<p>对指针进行多次释放.多次释放会使堆块发生重叠,前后申请的堆块可能会指向同一块内存</p>
+</li>
+</ol>
+
       
     </div>
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/docker/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>docker</a>
+          <a href="/tags/CTF-PWN/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>CTF PWN</a>
         
       </div>
     

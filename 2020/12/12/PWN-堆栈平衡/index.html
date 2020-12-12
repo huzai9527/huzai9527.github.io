@@ -249,13 +249,17 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <h2 id="堆栈平衡和栈转移"><a href="#堆栈平衡和栈转移" class="headerlink" title="堆栈平衡和栈转移"></a>堆栈平衡和栈转移</h2><h3 id="1-栈平衡"><a href="#1-栈平衡" class="headerlink" title="1.栈平衡"></a>1.栈平衡</h3><h4 id="1-为什么需要堆栈平衡"><a href="#1-为什么需要堆栈平衡" class="headerlink" title="1.为什么需要堆栈平衡?"></a>1.为什么需要堆栈平衡?</h4><pre><code>- 保持栈的大小,是ESP始终指向栈顶
-</code></pre><h4 id="2-概念"><a href="#2-概念" class="headerlink" title="2.概念"></a>2.概念</h4><ul>
+          <h2 id="堆栈平衡和栈转移"><a href="#堆栈平衡和栈转移" class="headerlink" title="堆栈平衡和栈转移"></a>堆栈平衡和栈转移</h2><h3 id="1-栈平衡"><a href="#1-栈平衡" class="headerlink" title="1.栈平衡"></a>1.栈平衡</h3><h4 id="1-为什么需要堆栈平衡"><a href="#1-为什么需要堆栈平衡" class="headerlink" title="1.为什么需要堆栈平衡?"></a>1.为什么需要堆栈平衡?</h4><ul>
+<li>保持栈的大小,是ESP始终指向栈顶</li>
+</ul>
+<h4 id="2-概念"><a href="#2-概念" class="headerlink" title="2.概念"></a>2.概念</h4><ul>
 <li>函数如果要返回父程序,则在堆栈中进行操作时,一定要在RET指令之前,将ESP指向函数压入栈中时的地址</li>
 <li>如果通过堆栈传递参数了,那么在函数执行完毕后,要平衡参数导致的堆栈变化</li>
 </ul>
-<h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h4><pre><code>- 当函数在栈中操作时,需要先把ESP交给**EBP**,然后继续操作,当操作完成后,在**ret**之前,要先将**ESP**恢复成进入栈之前的状态,最后再将**EBP**移除栈
-</code></pre><h3 id="2-栈转移"><a href="#2-栈转移" class="headerlink" title="2.栈转移"></a>2.栈转移</h3><h4 id="1-为什么需要栈转移"><a href="#1-为什么需要栈转移" class="headerlink" title="1.为什么需要栈转移?"></a>1.为什么需要栈转移?</h4><ul>
+<h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h4><ul>
+<li>当函数在栈中操作时,需要先把ESP交给<strong>EBP</strong>,然后继续操作,当操作完成后,在<strong>ret</strong>之前,要先将<strong>ESP</strong>恢复成进入栈之前的状态,最后再将<strong>EBP</strong>移除栈</li>
+</ul>
+<h3 id="2-栈转移"><a href="#2-栈转移" class="headerlink" title="2.栈转移"></a>2.栈转移</h3><h4 id="1-为什么需要栈转移"><a href="#1-为什么需要栈转移" class="headerlink" title="1.为什么需要栈转移?"></a>1.为什么需要栈转移?</h4><ul>
 <li>在栈空间不够存放payload的情况下,需要一个新的地址空间存放payload</li>
 <li>开启PIE保护,栈地址未知,我们可以将栈劫持到已知的区域</li>
 </ul>
@@ -286,7 +290,7 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-12T12:25:40+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-12T12:29:53+08:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>last updated at Dec 12, 2020</p>
@@ -346,6 +350,25 @@
         
         
             <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                            <h4>
+                                <a href="/2020/12/12/PWN-堆相关的漏洞/" rel="prev" title="PWN-堆相关的漏洞">
+                                  
+                                      PWN-堆相关的漏洞
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/CTF-PWN/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>CTF PWN</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
                 
                     <section class="next">
@@ -478,7 +501,7 @@
 </header>
 
     <div class="content material">
-      <a href="/tags/PWN-CTF/" style="font-size: 19px; color: #777">PWN CTF</a> <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
+      <a href="/tags/CTF-PWN/" style="font-size: 14px; color: #999">CTF PWN</a> <a href="/tags/PWN-CTF/" style="font-size: 19px; color: #777">PWN CTF</a> <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
     </div>
   </section>
 
