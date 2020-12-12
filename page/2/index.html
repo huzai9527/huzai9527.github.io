@@ -94,7 +94,7 @@
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="Search">
+						<input type="text" class="input u-search-input" placeholder="搜索">
 						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
@@ -164,6 +164,97 @@
   <section class="post-list">
     
     
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2020/07/09/ubuntu自动换源/">
+      ubuntu自动换源
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-07-09</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="下载huanyuan-sh"><a href="#下载huanyuan-sh" class="headerlink" title="下载huanyuan.sh"></a>下载huanyuan.sh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span>  git@github.com:huzai9527/ubuntu_huanyuan.git</span><br></pre></td></tr></table></figure>
+<h2 id="进入文件夹"><a href="#进入文件夹" class="headerlink" title="进入文件夹"></a>进入文件夹</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash huanyuan.sh</span><br></pre></td></tr></table></figure>
+<h2 id="期间需要你输入管理员密码"><a href="#期间需要你输入管理员密码" class="headerlink" title="期间需要你输入管理员密码"></a>期间需要你输入管理员密码</h2>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/ubuntu/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>ubuntu</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class="post-wrapper">
@@ -1451,112 +1542,6 @@ int64
           </div>
         
       
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
-  
-
-
-  <section class="meta">
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/11/23/小说更新后发送邮箱的问题解决/">
-      小说更新后发送邮箱的问题解决
-    </a>
-  </h2>
-
-
-      
-      <div class="new-meta-box">
-        
-          
-        
-          
-            
-  <div class="new-meta-item author">
-    <a href="http://yoursite.com" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>John Doe</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class="notlink">
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-11-23</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
-<li>先上一张图，看一下问题在哪<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/1.png" alt="1.png"></li>
-</ul>
-<p>从图上我们可以看到，虽然小说是每天发两次给我，但是有时候会漏掉一章，有时候又会重复发一章，这都是小说作者不按时更新惹的祸啊！！！既然小说作者的习惯改变不了，那就完善自我吧!</p>
-<h2 id="新的思路，加一个“缓存”"><a href="#新的思路，加一个“缓存”" class="headerlink" title="新的思路，加一个“缓存”"></a>新的思路，加一个“缓存”</h2><p>缓存是什么意思呢？</p>
-<ul>
-<li>本地建一个名为origin.txt的文本文件，每次爬取完成后与origin.txt里面的内容对比一下。</li>
-<li>如果一样则不发送。</li>
-<li>如果不一样就发送，并且将最新的内容保存到origin.txt文件中，作为下一次的对照。</li>
-</ul>
-<h2 id="演示效果"><a href="#演示效果" class="headerlink" title="演示效果"></a>演示效果</h2><ul>
-<li>再origin.txt里写入test，然后启动<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/2.png" alt="2.png"><br>我们可以看到，origin文件已被重新写入，并且新的文本已经发送到邮箱</li>
-<li>再次启动，也就是还没跟新的情况<br><img src="/2018/11/23/小说更新后发送邮箱的问题解决/3.png" alt="3"><br>我们看到，提示消息，这里不会跟新origin，也不会发送邮件</li>
-</ul>
-<h2 id="还遗留的问题"><a href="#还遗留的问题" class="headerlink" title="还遗留的问题"></a>还遗留的问题</h2><ul>
-<li>如果作者一下爆发怎么办（一分钟更新十章！）<br>思考一下，其实原理差不多，缓存大小不同罢了！有兴趣的可以尝试一下！<h2 id="项目源码已发布在github"><a href="#项目源码已发布在github" class="headerlink" title="项目源码已发布在github"></a>项目源码已发布在github</h2><a href="https://github.com/huzai9527/fictionSend" target="_blank" rel="noopener">https://github.com/huzai9527/fictionSend</a></li>
-</ul>
-
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/python/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>python</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1567,7 +1552,7 @@ int64
           
             <a class="prev" rel="prev" href="/">
               <section class="post prev">
-                <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
               </section>
             </a>
           
@@ -1577,7 +1562,7 @@ int64
           
             <a class="next" rel="next" href="/page/3/">
               <section class="post next">
-                &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+                &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
               </section>
             </a>
           
@@ -1664,7 +1649,7 @@ int64
   <section class="widget tagcloud">
     
 <header class="material">
-  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
   
     <a class="rightBtn" rel="nofollow" href="/tags" title="/tags">
     <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
@@ -1672,7 +1657,7 @@ int64
 </header>
 
     <div class="content material">
-      <a href="/tags/CTF-PWN/" style="font-size: 14px; color: #999">CTF PWN</a> <a href="/tags/PWN-CTF/" style="font-size: 19px; color: #777">PWN CTF</a> <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
+      <a href="/tags/PWN-CTF/" style="font-size: 24px; color: #555">PWN CTF</a> <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
     </div>
   </section>
 
@@ -1745,19 +1730,19 @@ int64
     </div>
   
   <br>
-  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
 </div>
   <div>
-    Use
+    本站使用
     <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
-    as theme
+    作为主题
     
-      , 
-      total visits
+      ，
+      总访问量为
       <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      times
+      次
     
-    . 
+    。
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
@@ -1863,15 +1848,15 @@ int64
 <!-- 复制 -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  let COPY_SUCCESS = "Copied";
-  let COPY_FAILURE = "Copy failed";
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
   /*页面载入完成后，创建复制按钮*/
   !function (e, t, a) {
     /* code */
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       var clipboard = new ClipboardJS('.btn-copy', {
