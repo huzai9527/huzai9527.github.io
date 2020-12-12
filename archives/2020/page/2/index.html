@@ -179,6 +179,122 @@
       
         
   <h2 class="title">
+    <a href="/2020/07/01/docker常用命令/">
+      docker常用命令
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>John Doe</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-07-01</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="docker-command-help"><a href="#docker-command-help" class="headerlink" title="docker command help"></a>docker command help</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">command</span> --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/1.jpg" alt="1"></p>
+<h2 id="use-images"><a href="#use-images" class="headerlink" title="use images"></a>use images</h2><h3 id="list-images"><a href="#list-images" class="headerlink" title="list images"></a>list images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/2.jpg" alt="2"></p>
+<h3 id="start-container-by-image"><a href="#start-container-by-image" class="headerlink" title="start container by image"></a>start container by image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu:16.04 /bin/bash</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/3.jpg" alt="3"></p>
+<h3 id="search-images"><a href="#search-images" class="headerlink" title="search images"></a>search images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search mysql</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/5.jpg" alt="5"></p>
+<h3 id="get-new-images"><a href="#get-new-images" class="headerlink" title="get new images"></a>get new images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:18.04</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/4.jpg" alt="4"></p>
+<h3 id="delete-image"><a href="#delete-image" class="headerlink" title="delete image"></a>delete image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi ubuntu:18.04</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/6.jpg" alt="6"></p>
+<h3 id="more-operations-https-www-runoob-com-docker-docker-image-usage-html"><a href="#more-operations-https-www-runoob-com-docker-docker-image-usage-html" class="headerlink" title="[more operations][https://www.runoob.com/docker/docker-image-usage.html] "></a><strong>[more operations][<a href="https://www.runoob.com/docker/docker-image-usage.html]" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-image-usage.html]</a> </strong></h3><h2 id="use-container"><a href="#use-container" class="headerlink" title="use container"></a>use container</h2><h3 id="start-container"><a href="#start-container" class="headerlink" title="start container"></a>start container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu:16.04 /bin/bash <span class="comment">## -d background</span></span><br></pre></td></tr></table></figure>
+<h3 id="show-containers"><a href="#show-containers" class="headerlink" title="show containers"></a>show containers</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/7.jpg" alt="7"></p>
+<h3 id="stop-amp-start-amp-restart-container"><a href="#stop-amp-start-amp-restart-container" class="headerlink" title="stop &amp; start &amp; restart container"></a>stop &amp; start &amp; restart container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker start container_id <span class="comment">## RUN IN THE BACKGROUND</span></span><br><span class="line">docker stop container_id</span><br><span class="line">docker restart container_id</span><br></pre></td></tr></table></figure>
+<h3 id="enter-container"><a href="#enter-container" class="headerlink" title="enter container"></a>enter container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach container_id <span class="comment">## use exit will stop container</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it container_id /bin/bash  <span class="comment">## use exit will not stop container</span></span><br></pre></td></tr></table></figure>
+<h3 id="export-container"><a href="#export-container" class="headerlink" title="export container"></a>export container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">export</span> container_id &gt; container.tar</span><br></pre></td></tr></table></figure>
+<h3 id="import-container-snap-to-image"><a href="#import-container-snap-to-image" class="headerlink" title="import container_snap to image"></a>import container_snap to image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat docker/mysql.tar | docker import - mysql:v1</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/9.jpg" alt="8"></p>
+<h3 id="delete-container"><a href="#delete-container" class="headerlink" title="delete container"></a>delete container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f container_id</span><br></pre></td></tr></table></figure>
+<h3 id="show-container’s-port-mapping"><a href="#show-container’s-port-mapping" class="headerlink" title="show container’s port mapping"></a>show container’s port mapping</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker port container_id</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/07/01/docker常用命令/9.jpg" alt="9"></p>
+<h3 id="connect-container-by-port-mapping"><a href="#connect-container-by-port-mapping" class="headerlink" title="connect container by port mapping"></a>connect container by port mapping</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD = 123456 mysql</span><br></pre></td></tr></table></figure>
+<h2 id="connect-containers"><a href="#connect-containers" class="headerlink" title="connect containers"></a>connect containers</h2><h3 id="create-a-docker-network"><a href="#create-a-docker-network" class="headerlink" title="create a docker network"></a>create a docker network</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge hadoop-net</span><br></pre></td></tr></table></figure>
+<h3 id="show-networks"><a href="#show-networks" class="headerlink" title="show networks"></a>show networks</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network ls</span><br></pre></td></tr></table></figure>
+<h3 id="run-a-container-and-connect-to-the-network"><a href="#run-a-container-and-connect-to-the-network" class="headerlink" title="run a container and connect to the network"></a>run a container and connect to the network</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name hadoop1 --network hadoop-net ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/docker/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>docker</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2020/06/30/测试异地管理/">
       测试异地管理
     </a>
@@ -451,7 +567,7 @@
 </header>
 
     <div class="content material">
-      <a href="/tags/PWN-CTF/" style="font-size: 14px; color: #999">PWN CTF</a> <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
+      <a href="/tags/PWN-CTF/" style="font-size: 19px; color: #777">PWN CTF</a> <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
     </div>
   </section>
 

@@ -3,11 +3,28 @@
   
     
     <entry>
+      <title>PWN-堆栈平衡</title>
+      <link href="/2020/12/12/PWN-%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1/"/>
+      <url>/2020/12/12/PWN-%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="堆栈平衡和栈转移"><a href="#堆栈平衡和栈转移" class="headerlink" title="堆栈平衡和栈转移"></a>堆栈平衡和栈转移</h2><h3 id="1-栈平衡"><a href="#1-栈平衡" class="headerlink" title="1.栈平衡"></a>1.栈平衡</h3><h4 id="1-为什么需要堆栈平衡"><a href="#1-为什么需要堆栈平衡" class="headerlink" title="1.为什么需要堆栈平衡?"></a>1.为什么需要堆栈平衡?</h4><pre><code>- 保持栈的大小,是ESP始终指向栈顶</code></pre><h4 id="2-概念"><a href="#2-概念" class="headerlink" title="2.概念"></a>2.概念</h4><ul><li>函数如果要返回父程序,则在堆栈中进行操作时,一定要在RET指令之前,将ESP指向函数压入栈中时的地址</li><li>如果通过堆栈传递参数了,那么在函数执行完毕后,要平衡参数导致的堆栈变化</li></ul><h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h4><pre><code>- 当函数在栈中操作时,需要先把ESP交给**EBP**,然后继续操作,当操作完成后,在**ret**之前,要先将**ESP**恢复成进入栈之前的状态,最后再将**EBP**移除栈</code></pre><h3 id="2-栈转移"><a href="#2-栈转移" class="headerlink" title="2.栈转移"></a>2.栈转移</h3><h4 id="1-为什么需要栈转移"><a href="#1-为什么需要栈转移" class="headerlink" title="1.为什么需要栈转移?"></a>1.为什么需要栈转移?</h4><ul><li>在栈空间不够存放payload的情况下,需要一个新的地址空间存放payload</li><li>开启PIE保护,栈地址未知,我们可以将栈劫持到已知的区域</li></ul><h4 id="2-概念-1"><a href="#2-概念-1" class="headerlink" title="2.概念"></a>2.概念</h4><ul><li>劫持栈的rsp(ESP),使其指向其他位置,形成一个伪造的栈,在此栈中做ROP</li></ul><h4 id="3-必要的gadget"><a href="#3-必要的gadget" class="headerlink" title="3.必要的gadget"></a>3.必要的gadget</h4><ul><li>pop ebp;ret   释放EBP,并连接伪造的栈</li><li>leave;ret 更改ESP,指向后续的payload</li></ul><h4 id="4-原理"><a href="#4-原理" class="headerlink" title="4.原理"></a>4.原理</h4><ul><li>通过 <strong>pop ebp;ret + 伪造的栈</strong>让程序直接跳转到伪造的栈里面,然后为了保持栈平衡,从而执行 <strong>leave ;ret</strong>,最后继续执行伪造栈内的payload</li></ul><h4 id="5-过程"><a href="#5-过程" class="headerlink" title="5.过程"></a>5.过程</h4><ul><li>使用输入函数(如read),将后续的payload加载到bss段内,也就是伪造的栈</li><li>通过 <strong>pop ebp;ret | pop ebx;ret</strong> 来调整EBP寄存器</li><li>通过 <strong>leave ret;</strong> 来更改 <strong>ESP</strong>,使其指向伪造的栈</li><li>然后在伪造的栈中执行下一段ROP</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> PWN CTF </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>PWN-常见危险函数</title>
       <link href="/2020/12/12/PWN-%E5%B8%B8%E8%A7%81%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/"/>
       <url>/2020/12/12/PWN-%E5%B8%B8%E8%A7%81%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/</url>
       
-        <content type="html"><![CDATA[<h1 id="CTF-PWN"><a href="#CTF-PWN" class="headerlink" title="CTF-PWN"></a>CTF-PWN</h1><h2 id="一、常见的危险函数"><a href="#一、常见的危险函数" class="headerlink" title="一、常见的危险函数"></a>一、常见的危险函数</h2><ul><li><p>gets() 没有检查边界</p><ul><li>通过计算函数的偏移量,通过构造payload达到溢出</li></ul></li><li><p>fgets(buf, 40, stdin)</p><ul><li>能够接受39Byte,最后一个字节为NULL</li><li>如果buf的长度没有39也可以造成溢出</li></ul></li><li><p>read(stdin, buf, 40)</p><ul><li>从输入中读取40个Byte,到buf,最后的字节可以不是NULL</li><li><p>可能会造成信息的泄漏</p></li><li><p>read(0,buf,0x20) 从用户输入读取32个字符</p></li></ul></li><li><p>Write(int fd, buf, nbytes)</p><ul><li>fd 输出描述 1</li><li>buf 为要写入到数据的缓冲区地址</li><li>nbytes为要写入的数据的字节数</li></ul></li><li><p>strcpy</p></li><li><p>memcpy</p></li><li><p>scanf（“%s”，buff）</p></li><li><p>syscall系统调用</p><ul><li><p>操作系统实现系统调用的基本过程是:</p><ul><li>应用程序调用库函数(API)</li><li>API将系统调用号存入EAX,然后通过中断调用使系统进入内核态</li><li>内核中终端处理函数根据系统调用号,调用对应的内核函数(系统调用)</li><li>系统调用完成相应的功能,将返回值存入EAX,返回到中断处理函数</li><li>中断处理函数返回到API中</li><li>API将EAX返回给应用程序</li></ul></li><li><p>应用程序调用系统调用的过程</p><ul><li>把系统调用的编号存入EAX</li><li>把函数参数存入其他通用寄存器</li><li>触发0x80号中断(int 0x80)</li></ul></li><li><p>以上是32位的系统调用,与64 位的区别是</p><ul><li><p>传参方式不同</p><ul><li>32位<ul><li>先将系统调用号传入eax,然后将参数从左到右依次存入ebx,ecx,edx寄存器中,返回值存在eax中</li></ul></li><li>64位<ul><li>先将系统调用号传入rax,然后传参数 从左到右依次存入rdi,rsi,rdx寄存器中,返回值存在rax寄存器</li></ul></li></ul></li><li><p>系统调用号不同</p><ul><li>32位<ul><li>sys_read 的系统调用号为 30 sys_write 的系统调用号为4</li></ul></li><li>64位<ul><li>sys_read的调用号位0,sys_write的调用号为1亿</li></ul></li></ul></li><li><p>调用方式不同</p><ul><li>​    32位<ul><li>使用int 80 中断进行系统调用</li></ul></li><li>64位<ul><li>使用syscall进行系统调用</li></ul></li></ul></li></ul></li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="CTF-PWN"><a href="#CTF-PWN" class="headerlink" title="CTF-PWN"></a>CTF-PWN</h1><h2 id="常见的危险函数"><a href="#常见的危险函数" class="headerlink" title="常见的危险函数"></a>常见的危险函数</h2><ul><li><p>gets() 没有检查边界</p><ul><li>通过计算函数的偏移量,通过构造payload达到溢出</li></ul></li><li><p>fgets(buf, 40, stdin)</p><ul><li>能够接受39Byte,最后一个字节为NULL</li><li>如果buf的长度没有39也可以造成溢出</li></ul></li><li><p>read(stdin, buf, 40)</p><ul><li>从输入中读取40个Byte,到buf,最后的字节可以不是NULL</li><li><p>可能会造成信息的泄漏</p></li><li><p>read(0,buf,0x20) 从用户输入读取32个字符</p></li></ul></li><li><p>Write(int fd, buf, nbytes)</p><ul><li>fd 输出描述 1</li><li>buf 为要写入到数据的缓冲区地址</li><li>nbytes为要写入的数据的字节数</li></ul></li><li><p>strcpy</p></li><li><p>memcpy</p></li><li><p>scanf（“%s”，buff）</p></li><li><p>syscall系统调用</p><ul><li><p>操作系统实现系统调用的基本过程是:</p><ul><li>应用程序调用库函数(API)</li><li>API将系统调用号存入EAX,然后通过中断调用使系统进入内核态</li><li>内核中终端处理函数根据系统调用号,调用对应的内核函数(系统调用)</li><li>系统调用完成相应的功能,将返回值存入EAX,返回到中断处理函数</li><li>中断处理函数返回到API中</li><li>API将EAX返回给应用程序</li></ul></li><li><p>应用程序调用系统调用的过程</p><ul><li>把系统调用的编号存入EAX</li><li>把函数参数存入其他通用寄存器</li><li>触发0x80号中断(int 0x80)</li></ul></li><li><p>以上是32位的系统调用,与64 位的区别是</p><ul><li><p>传参方式不同</p><ul><li>32位<ul><li>先将系统调用号传入eax,然后将参数从左到右依次存入ebx,ecx,edx寄存器中,返回值存在eax中</li></ul></li><li>64位<ul><li>先将系统调用号传入rax,然后传参数 从左到右依次存入rdi,rsi,rdx寄存器中,返回值存在rax寄存器</li></ul></li></ul></li><li><p>系统调用号不同</p><ul><li>32位<ul><li>sys_read 的系统调用号为 30 sys_write 的系统调用号为4</li></ul></li><li>64位<ul><li>sys_read的调用号位0,sys_write的调用号为1亿</li></ul></li></ul></li><li><p>调用方式不同</p><ul><li>​    32位<ul><li>使用int 80 中断进行系统调用</li></ul></li><li>64位<ul><li>使用syscall进行系统调用</li></ul></li></ul></li></ul></li></ul></li></ul>]]></content>
       
       
       
