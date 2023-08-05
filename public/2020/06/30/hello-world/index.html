@@ -1,774 +1,225 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  <title>Hello World | huzai9527&#39;s personal blog</title>
-  
-  
-
-  
-  <link rel="alternate" href="/atom.xml" title="huzai9527's personal blog">
-  
-
-  <meta name="HandheldFriendly" content="True">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <!-- meta -->
-  
-
-  <!-- link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
-  
-
-  
-  <link rel="shortcut icon" type="image/x-icon" href="https://xaoxuu.com/assets/img/favicon.ico">
-  
-
-  
-    <link rel="stylesheet" href="/style.css">
-  
-
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=2.0" charset="UTF-8">
+  <h3>小房专用办公软件</h3>
+  <title>查询最近目的地</title>
+  <style>
+    input, button {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
     }
-  </script>
 
-  
-  
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* From www.lingdaima.com */
+    .card {
+    width: auto;
+    height: auto;
+    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+    border-radius: 20px;
+    transition: all .3s;
+    }
+    
+    .card2 {
+    width: 40%;
+    height: auto;
+    margin-left: auto;
+    background-color: #ccc;
+    transition: all .2s;
+    }
+    
+    .card2:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
+    }
+    
+    .card:hover {
+    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+    }
+</style>
+
 </head>
 
 <body>
-  
-  
-  <header class="l_header material">
-  <div id="loading-bar-wrapper">
-    <div id="loading-bar" class="material"></div>
-  </div>
-
-	<div class="wrapper">
-		<div class="nav-main container container--flex">
-      <a class="logo flat-box" href="/">
-        
-          huzai9527's personal blog
-        
-      </a>
-			<div class="menu navgation">
-				<ul class="h-list">
-          
-  					
-  						<li>
-								<a class="nav flat-box" href="/" id="home">
-									<i class="fas fa-grin fa-fw"></i>&nbsp;近期文章
-								</a>
-							</li>
-      			
-  						<li>
-								<a class="nav flat-box" href="https://github.com/huzai9527?tab=repositories" rel="nofollow" id="https:github.comhuzai9527?tab=repositories">
-									<i class="fas fa-folder-open fa-fw"></i>&nbsp;项目
-								</a>
-							</li>
-      			
-  						<li>
-								<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
-									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
-								</a>
-							</li>
-      			
-  						<li>
-								<a class="nav flat-box" href="https://xaoxuu.com/wiki/volantis/" rel="nofollow" id="https:xaoxuu.comwikivolantis">
-									<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
-								</a>
-							</li>
-      			
-      		
-				</ul>
-			</div>
-
-			
-				<div class="m_search">
-					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="Search">
-						<i class="icon fas fa-search fa-fw"></i>
-					</form>
-				</div>
-			
-			<ul class="switcher h-list">
-				
-					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
-				
-				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
-			</ul>
-		</div>
-
-		<div class="nav-sub container container--flex">
-			<a class="logo flat-box"></a>
-			<ul class="switcher h-list">
-				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
-        
-          <li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
-        
-			</ul>
-		</div>
-	</div>
-</header>
-	<aside class="menu-phone">
-    <header>
-		<nav class="menu navgation">
-      <ul>
-        
-          
-            <li>
-							<a class="nav flat-box" href="/" id="home">
-								<i class="fas fa-clock fa-fw"></i>&nbsp;近期文章
-							</a>
-            </li>
-          
-            <li>
-							<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
-								<i class="fas fa-archive fa-fw"></i>&nbsp;分类
-							</a>
-            </li>
-          
-            <li>
-							<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
-								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
-							</a>
-            </li>
-          
-            <li>
-							<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
-								<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
-							</a>
-            </li>
-          
-       
-      </ul>
-		</nav>
-    </header>
-	</aside>
-<script>setLoadingBarProgress(40);</script>
-
-
-
-  <div class="l_body nocover">
-    <div class='body-wrapper'>
-      <div class="l_main">
-  
-
-  
-    <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
-      
-
-
-  <section class="meta">
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  
-    <h1 class="title">
-      <a href="/2020/06/30/hello-world/">
-        Hello World
-      </a>
-    </h1>
-  
-
-
-      
-      <div class="new-meta-box">
-        
-          
-        
-          
-            
-  <div class="new-meta-item author">
-    <a href="http://yoursite.com" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>John Doe</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class="notlink">
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-06-30</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-  
-    <div class="new-meta-item browse busuanzi">
-      <a class="notlink">
-        <i class="fas fa-eye" aria-hidden="true"></i>
-        <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-      </a>
-    </div>
-  
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        </div>
-        
-          
-
-
-  <section class="meta" id="footer-meta">
-    <hr>
-    <div class="new-meta-box">
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-30T20:29:17+08:00">
-  <a class="notlink">
-    <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>last updated at Jun 30, 2020</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/30/hello-world/&title=Hello World | huzai9527's personal blog&summary=">
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/06/30/hello-world/&title=Hello World | huzai9527's personal blog&summary=">
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/30/hello-world/&title=Hello World | huzai9527's personal blog&summary=">
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
-          
-        </a>
-      
-    
-  </div>
-</div>
-
-
-
-        
-      
-    </div>
-  </section>
-
-
-        
-        
-            <div class="prev-next">
-                
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
-                            <h4>
-                                <a href="/2020/06/30/测试异地管理/" rel="prev" title="测试异地管理">
-                                  
-                                      测试异地管理
-                                  
-                                </a>
-                            </h4>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/01/20/数据分析-数据清洗/" rel="prev" title="数据分析----数据清洗">
-                                    
-                                        数据分析----数据清洗
-                                    
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/数据分析/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数据分析</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-            </div>
-        
-      </section>
-    </article>
-  
-
-  
-    <!-- 显示推荐文章和评论 -->
-
-
-
-  
-
-
-  
-
-
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-
-  <script>
-    window.subData = {
-      title: 'Hello World',
-      tools: true
-    }
-  </script>
-
-
-</div>
-<aside class="l_side">
-  
-    
-    
-      
-        
-          
-          
-            <section class="widget author">
-  <div class="content material">
-    
-      <div class="avatar">
-        <img class="avatar" src="https://i.loli.net/2019/08/27/SCTrzsMhKIg2OYq.jpg">
-      </div>
-    
-    
-      <div class="text">
-        
-        
-          <p>王子和公主过上了性福的生活，那守城的小兵呢？</p>
-
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-          
-        
-      
-        
-          
-          
-            
-
-          
-        
-      
-        
-          
-          
-            
-  <section class="widget tagcloud">
-    
-<header class="material">
-  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
-  
-    <a class="rightBtn" rel="nofollow" href="/tags" title="/tags">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
-  
-</header>
-
-    <div class="content material">
-      <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/github/" style="font-size: 14px; color: #999">github</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/python-scrapy-爬虫/" style="font-size: 14px; color: #999">python scrapy 爬虫</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/数据分析/" style="font-size: 24px; color: #555">数据分析</a> <a href="/tags/网络编程-python/" style="font-size: 14px; color: #999">网络编程 python</a>
-    </div>
-  </section>
-
-
-          
-        
-      
-        
-          
-          
-            
-
-
-  <section class="widget music">
-    
-<header class="material">
-  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
-  
-    <a class="rightBtn" rel="external nofollow noopener noreferrer" target="_blank" href="https://music.163.com/#/user/home?id=63035382" title="https://music.163.com/#/user/home?id=63035382">
-    <i class="far fa-heart fa-fw"></i></a>
-  
-</header>
-
-    <div class="content material">
-      
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
-  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="netease" data-type="playlist" data-id="2615636388" data-volume="0.7">
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
-
-
-    </div>
-  </section>
-
-
-          
-        
-      
-    
-
-  
-</aside>
-
-<footer id="footer" class="clearfix">
-  
-  
-    <div class="social-wrapper">
-      
-        
-          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-        
-          <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-        
-          <a href="https://github.com/linxbin" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-        
-          <a href="https://github.com/linxbin" class="social fab fa-qq flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-    </div>
-  
-  <br>
-  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
-</div>
   <div>
-    Use
-    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
-    as theme
-    
-      , 
-      total visits
-      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      times
-    
-    . 
+      <input type="text" id="location" placeholder="请输入目的地"><br>
+      <input list="browsers" placeholder="选择车型">
+      <button onclick="search()">查询</button>
+
+      <datalist id="browsers">
+        <option value="摩托车" >
+        <option value="小汽车" >
+        <option value="B2">
+      </datalist>
   </div>
-</footer>
-<script>setLoadingBarProgress(80);</script>
 
-
-      <script>setLoadingBarProgress(60);</script>
+  
+  <div id="result" class="card">
+    <div id="duration_rst" class="card2">
     </div>
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    <div id="distance_rst" class="card2">
+    </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  
 
   <script>
-    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
-    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
-    var ALGOLIA_API_KEY = "";
-    var ALGOLIA_APP_ID = "";
-    var ALGOLIA_INDEX_NAME = "";
-    var AZURE_SERVICE_NAME = "";
-    var AZURE_INDEX_NAME = "";
-    var AZURE_QUERY_KEY = "";
-    var BAIDU_API_ID = "";
-    var SEARCH_SERVICE = "hexo" || "hexo";
-    var ROOT = "/"||"/";
-    if(!ROOT.endsWith('/'))ROOT += '/';
-  </script>
+    const durationRst = document.getElementById('duration_rst');
+    const distanceRst = document.getElementById('distance_rst');
+    durationRst.style.width = '50%';
+    durationRst.style.float = 'left';
 
-<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
-
-
-  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
-  <script type="text/javascript">
-    $(function() {
-      const $reveal = $('.reveal');
-      if ($reveal.length === 0) return;
-      const sr = ScrollReveal({ distance: 0 });
-      sr.reveal('.reveal');
-    });
-  </script>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-  <script type="text/javascript">
-    $(function() {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
-    });
-  </script>
-
-
-  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
-
-
-
-
-  
-  
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
-    <script type="text/javascript">
-      $(function(){
-        if ('.cover') {
-          $('.cover').backstretch(
-          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
-          {
-            duration: "6000",
-            fade: "2500"
-          });
-        } else {
-          $.backstretch(
-          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
-          {
-            duration: "6000",
-            fade: "2500"
-          });
-        }
-      });
-    </script>
-  
+    distanceRst.style.width = '50%'; 
+    distanceRst.style.float = 'left';
+    var source_location;
+    let dest_arry = ["121.639504,31.273412","121.746710,31.050890","121.540806,31.344113","121.713605,31.022783",
+                      "121.723961,31.092850","121.380561,30.954698","121.643164,30.862205","121.607127,30.853017",
+                    "121.431450,31.086068","121.353684,31.113637","121.341790,31.173650","121.350915,31.068615",
+                  "121.238240,31.199829","121.257090,31.041043","121.389330,31.336640","121.423230,31.396576",
+                "121.427953,31.381296","121.319279,30.732723","121.601031,31.098898","121.508529,31.144717",
+              "121.665220,31.205236","121.260401,30.899303","121.668069,31.272104","121.225158,31.337326"];
+                      //0 1
+     let dest_name = ["金桥镇,上川路361号,金桥校区中航驾校，汽车夜训到八点，周一到周六9-11、13-16:30车管所体检，周一到周六当场面签，安技考试，9号线金海路接送/12号线申江路接送，5公里内上门接送",
+                     "南汇镇/惠南镇,文化西路667号,桃花村培训基地，16号线惠南路站",
+                    // 2 3 4
+                     "高桥镇,江心沙路9号,申城培训基地，尽量不推、改推锦隆或金桥，当场体检，汽车当场面签、摩托三林面签，周浦考实操，10号线高桥西",
+                     "宣桥镇,南芦公路158号,安技考场，当场体检面签，16号线野生动物园站，C证就近10公里内接送",
+                     "六灶镇,会龙路606号,邮佳考场，当场面签，周浦考实操",
+                     //5 6
+                     "南桥镇,大叶公路1885号,明松培训基地，金山云之驾考实操，汽车模拟200一次，5号线萧塘路站接送",
+                     "海湾镇,随塘河路3851-3901号,广源基地，广源体检，广源面签，星火考试，考试费300，汽车10公里内接送",
+                     //7 8 9
+                     "海湾镇,随塘河路325号,星火考场，广源体检，广源面签",
+                     "梅陇镇,双柏路1333号,梅陇考场，周一三五六9-11、12-14:30当场体检，当场面签，15号线双柏路/颛桥站接送",
+                     "莘庄镇,淀南路69号,申春考场，1号线莘庄站/9号线九亭站",
+                     //10 11 12
+                     "七宝镇,沪青平公路501号,光明培训基地，摩托夜训到七点，周二周六9-11、13-16当场体检，周一至周六9-16点青浦面签100元/总部三林面签免费，摩托青浦大众考实操、考试费300元，14号线静安寺站/9号线七宝站接送",
+                     "莘庄镇,申港路298号,银都考场，周一周四五六9-13:30当场体检、当场面签，考试费300，1号线莘庄站接送",
+                     "徐泾镇,北青公路4149号,大众考场，周一四五六9-11、13-15当场体检，周一至周六9-16面签100/总部三林面签免费，考试费300，2号线淞虹路/17号线蟠龙路",
+                     //13 14 15
+                     "茸北镇,文翔路18号,荣安培训基地，五六点下班，医院体检/青浦体检，周一至周六9-16青浦面签100/金山面签免费，金山云之驾考实操、考试费200，，9号线松江大学城站",
+                     "顾村镇,顾陈路388号,华茂考场，摩托夜训到五点、周六到九点，周一三六9-11、13-15当场体检160元，周一三六9-11、12:30-15:00当场面签100元，考试费300，15号线顾村公园站接送/7号线上大路站",
+                     "杨行镇,富锦路2028号,锦隆考场，摩托夜训到四五点、周六到八点，周一二四五六9-11、13-15当场体检、当场面签100元，考试费300，1号线富锦路站",
+                     //16 17
+                     "顾村近杨行镇,友谊西路588号,刘行考场，当场体检面签，1号线友谊西路站接送","金山卫镇,金山大道3365号,荣安石化基地，当场体检面签，无地铁站",
+                     //18 19 20
+                    "周浦镇,瑞建路488号,光明考场，周一三四六，9-11、13-16:30当场体检，当场面签，18号线沈梅路和16号线周浦东接送",
+                    "三林镇,上南路4160号,中航基地，汽车夜训到九点、摩托夜训到十点，每周二周六当场体检，周一至周六9-16点当场面签，周浦考实操,11号线三林站/6号线上南路/7号线后滩站接送/8或13号线成山路站接送",
+                    "唐镇,齐爱路300号,闻铭培训基地，周一二三五六9-11、13-16当场体检160元、当场面签，嘉定考实操，2号线唐镇站",
+                    //21 22 23
+                    "金桥镇,金明路75号,光明基地，摩托夜训到十点，周四、周六9-15:30当场体检，三林面签，周浦考实操，14号线云顺路接送/9号线台儿庄路/2号线广兰路",
+                    "曹路镇,民雷路333号,易驰培训基地，9号线曹路站接送","安亭镇,伊宁路2000号,安亭考场，五点下班，周六体检，周一至周六面签50元，考试费255"];
 
 
-
-
-
-
-
-
-
-
-
-  <script src="/js/app.js"></script>
-
-
-  <script src="/js/search.js"></script>
-
-
-
-
-<!-- 复制 -->
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-  let COPY_SUCCESS = "Copied";
-  let COPY_FAILURE = "Copy failed";
-  /*页面载入完成后，创建复制按钮*/
-  !function (e, t, a) {
-    /* code */
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
-        }
-      });
-
-      clipboard.on('success', function(e) {
-        //您可以加入成功提示
-        console.info('Action:', e.action);
-        console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
-        success_prompt(COPY_SUCCESS);
-        e.clearSelection();
-      });
-      clipboard.on('error', function(e) {
-        //您可以加入失败提示
-        console.error('Action:', e.action);
-        console.error('Trigger:', e.trigger);
-        fail_prompt(COPY_FAILURE);
-      });
+    let dest_arry2 = ["121.639504,31.273412","121.746710,31.050890"];
+    let dest_name2 = ["金桥镇,上川路361号,金桥校区中航驾校","南汇镇/惠南镇,文化西路667号,桃花村培训基地"];
+    let car_pos = [0,1,2,3,5,6,8,9,10,11,12,13,14,15,16,17,18,19,20,22,23];
+    let moto_pos = [2,4,6,10,11,12,13,14,15,17,18,19,20,21,23];
+    let b2_pos = [7,12,19];
+    let result = [];
+    let duration_rst = [];
+    let distance_rst = [];
+    function search(){
+      result = [];
+      duration_rst = [];
+      distance_rst = [];
+      var input = document.querySelector('input[list]');
+      car_type = input.value; 
+      console.log(car_type)
+      var location_name = document.getElementById("location").value;
+      source_location = getLocation(location_name);
+      var rst = getBestRoute(source_location,car_type);
+      time_first = '';
+      for(var i =0;i<rst.distance_rst.length;i++){
+         time_first += '<span class="location">场地:</span>' + rst.duration_rst[i].taget_dest +'<br>'+ '<span class="distance">距离:</span>' + Math.round(rst.duration_rst[i].distance/1000 *10 )/10+"公里" +'<br>'+ '<span class="duration">用时:</span>' + Math.trunc(rst.duration_rst[i].duration/60)+"分钟" + "<br>";
+      }
+      document.getElementById("duration_rst").innerHTML = "<h2>用时最短的方案</h2>"+ time_first;
+      distance_first = '';
+      for(var i =0;i<rst.distance_rst.length;i++){
+         distance_first += '<span class="location">场地:</span>' + rst.distance_rst[i].taget_dest+'<br>' + '<span class="distance">距离:</span>' + Math.round(rst.distance_rst[i].distance/1000 *10 )/10+"公里" +'<br>'+'<span class="duration">用时:</span>' + Math.trunc(rst.distance_rst[i].duration/60)+"分钟" + "<br>";
+      }
+      document.getElementById("distance_rst").innerHTML =  "<h2>距离最短的方案</h2>"+distance_first;
     }
-    initCopyCode();
 
-  }(window, document);
+    
+    // 模拟调用API获取结果
+    function getBestRoute(source_location,car_type) {
+      if(car_type == '小汽车'){
+        for(var i=0;i<car_pos.length;i++){
+          var rst = getRoute(source_location,dest_arry[car_pos[i]]);
+          result.push({distance:rst.distance,duration:rst.duration,taget_dest:dest_name[car_pos[i]]})
+        }
+      }
+       if(car_type == '摩托车'){
+        for(var i=0;i<moto_pos.length;i++){
+          var rst = getRoute(source_location,dest_arry[moto_pos[i]]);
+          result.push({distance:rst.distance,duration:rst.duration,taget_dest:dest_name[moto_pos[i]]})
+        }
+      }
+       if(car_type == 'B2'){
+        for(var i=0;i<b2_pos.length;i++){
+          var rst = getRoute(source_location,dest_arry[b2_pos[i]]);
+          result.push({distance:rst.distance,duration:rst.duration,taget_dest:dest_name[b2_pos[i]]})
+        }
+      }
+      result.sort((a,b)=>a.duration-b.duration);
+      for(var i=0;i<result.length;i++){
+        duration_rst[i] = result[i]
+      }
+      result.sort((a,b)=>a.distance-b.distance);
+      for(var i=0;i<result.length;i++){
+        distance_rst[i] = result[i]
+      }
+      console.log(duration_rst)
+      console.log(distance_rst)
 
-  /**
-   * 弹出式提示框，默认1.5秒自动消失
-   * @param message 提示信息
-   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
-   * @param time 消失时间
-   */
-  var prompt = function (message, style, time)
-  {
-      style = (style === undefined) ? 'alert-success' : style;
-      time = (time === undefined) ? 1500 : time*1000;
-      $('<div>')
-          .appendTo('body')
-          .addClass('alert ' + style)
-          .html(message)
-          .show()
-          .delay(time)
-          .fadeOut();
-  };
+      return {
+        duration_rst:duration_rst,
+        distance_rst:distance_rst
+      }
+    };
 
-  // 成功提示
-  var success_prompt = function(message, time)
-  {
-      prompt(message, 'alert-success', time);
-  };
+    // get route from src to dest
+    function getRoute(src,dest){
+      var xhr = new XMLHttpRequest();
+      var get_route_url = 'https://restapi.amap.com/v3/direction/driving?origin='+src+'&destination='+dest+'&output=xml&key=e002ec7b8bf307962ce1dcc183821f17'
+      console.log(get_route_url)
+      xhr.open('GET', get_route_url,false);
+      var distance;
+      var duration;
+      xhr.send();
+      if(xhr.status === 200){
+        var xmlDoc = xhr.responseXML;
+        distance = xmlDoc.getElementsByTagName("distance")[0].textContent;
+        duration = xmlDoc.getElementsByTagName("duration")[0].textContent;
+      }
+      return{
+        distance: distance,
+        duration: duration
+      }
+    };
 
-  // 失败提示
-  var fail_prompt = function(message, time)
-  {
-      prompt(message, 'alert-danger', time);
-  };
+    // change location_name to (lon,lat) 
+    function getLocation(location_name){
+      var xhr = new XMLHttpRequest();
+      var get_location_url = 'https://restapi.amap.com/v3/geocode/geo?address='+location_name+'&city=%E4%B8%8A%E6%B5%B7&output=xml&key=e002ec7b8bf307962ce1dcc183821f17'
+      xhr.open('GET', get_location_url,false);
+      xhr.send();
+      if(xhr.status === 200){
+          // 处理响应数据
+          var xmlDoc = xhr.responseXML;
+          source_location = xmlDoc.getElementsByTagName("location")[0].textContent;
+          console.log(source_location); 
+      }
+      return source_location;
+    }
+  </script>
 
-  // 提醒
-  var warning_prompt = function(message, time)
-  {
-      prompt(message, 'alert-warning', time);
-  };
-
-  // 信息提示
-  var info_prompt = function(message, time)
-  {
-      prompt(message, 'alert-info', time);
-  };
-
-</script>
-
-
-<!-- fancybox -->
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script>
-  let LAZY_LOAD_IMAGE = "";
-  $(".article-entry").find("fancybox").find("img").each(function () {
-      var element = document.createElement("a");
-      $(element).attr("data-fancybox", "gallery");
-      $(element).attr("href", $(this).attr("src"));
-      /* 图片采用懒加载处理时,
-       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
-       * 那么此处将原本的属性名src替换为对应属性名data-original,
-       * 修改如下
-       */
-       if (LAZY_LOAD_IMAGE) {
-         $(element).attr("href", $(this).attr("data-original"));
-       }
-      $(this).wrap(element);
-  });
-</script>
-
-
-
-
-
-  <script>setLoadingBarProgress(100);</script>
 </body>
 </html>
